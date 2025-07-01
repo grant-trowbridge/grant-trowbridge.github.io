@@ -4,12 +4,13 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+I am a Cybersecurity Engineer with 3 years experience in defense contracting with interests in baseline management and offensive security.
 
-### More Information
+### Certifications
 
-A place to include any other types of information that you'd like to include about yourself.
+- CompTIA Security+
+- TCM Security Practical Junior Penetration Tester (PJPT)
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[trowbridgegolf@gmail.com](mailto:trowbridgegolf@gmail.com)
