@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 02 Jul 2025 22:33:48 -0400</pubDate>
-    <lastBuildDate>Wed, 02 Jul 2025 22:33:48 -0400</lastBuildDate>
+    <pubDate>Thu, 03 Jul 2025 13:24:15 -0400</pubDate>
+    <lastBuildDate>Thu, 03 Jul 2025 13:24:15 -0400</lastBuildDate>
     <generator>Jekyll v3.9.4</generator>
     
       <item>
@@ -18,8 +18,26 @@
 
 &lt;h1&gt;Identifying the Vulnerability&lt;/h1&gt;
 
-&lt;p&gt;After gaining your initial foothold, and switching to another user with compromised credentials, your immediate thought should be &amp;quot;what privileges do I now have in this user context?&amp;quot; The answer? A sudo command for the &lt;code&gt;make&lt;/code&gt; binary:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;p&gt;After gaining your initial foothold, and switching to another user with compromised credentials, your immediate thought should be:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;what privileges do I have in this new user context?&lt;/em&gt; &lt;/p&gt;
+
+&lt;p&gt;The answer? A sudo command for the &lt;code&gt;make&lt;/code&gt; binary:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-SPX-PrivEsc_Sudo-Cmd.png&quot; alt=&quot;profiler sudo privileges&quot;&gt;&lt;/p&gt;
+
+&lt;h2&gt;Research&lt;/h2&gt;
+
+&lt;p&gt;Anytime you come across a specific binary with special permissions (&lt;code&gt;sudo&lt;/code&gt; in this case), always consult the &lt;a href=&quot;https://gtfobins.github.io/gtfobins/make/#sudo&quot;&gt;GTFOBins&lt;/a&gt; GitHub Pages site.&lt;/p&gt;
+
+&lt;p&gt;Initially, it looks like we have an easy win here, but we do not have access to the &lt;code&gt;-s&lt;/code&gt; and &lt;code&gt;--eval&lt;/code&gt; flags shown in the example code snippet. Remember, the whitelisted command from the &lt;code&gt;sudo -l&lt;/code&gt; output was &lt;code&gt;/usr/bin/make install -C /home/profiler/php-spx&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-SPX-PrivEsc_Make-GTFOBin.png&quot; alt=&quot;GTFOBin Research&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;ll be honest, I was stumped on this problem for a good hour or so. I decided to thoroughly enumerate the rest of the system. I was convinced I missed something somewhere. Eventually, I did realize that the &lt;code&gt;sudo&lt;/code&gt; permission for this new user was the obvious privilege escalation vulnerability. It was my only direct access to command execution as &lt;em&gt;root&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3&gt;Even More Research&lt;/h3&gt;
+</description>
         <pubDate>Wed, 02 Jul 2025 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2025/PG-SPX-PrivEsc/</link>
         <guid isPermaLink="true">http://localhost:4000/2025/PG-SPX-PrivEsc/</guid>

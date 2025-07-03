@@ -41,8 +41,26 @@
 
 <h1>Identifying the Vulnerability</h1>
 
-<p>After gaining your initial foothold, and switching to another user with compromised credentials, your immediate thought should be &quot;what privileges do I now have in this user context?&quot; The answer? A sudo command for the <code>make</code> binary:</p>
-<div class="highlight"><pre><code class="language-" data-lang=""></code></pre></div>
+<p>After gaining your initial foothold, and switching to another user with compromised credentials, your immediate thought should be:</p>
+
+<p><em>what privileges do I have in this new user context?</em> </p>
+
+<p>The answer? A sudo command for the <code>make</code> binary:</p>
+
+<p><img src="/assets/img/PG-SPX-PrivEsc_Sudo-Cmd.png" alt="profiler sudo privileges"></p>
+
+<h2>Research</h2>
+
+<p>Anytime you come across a specific binary with special permissions (<code>sudo</code> in this case), always consult the <a href="https://gtfobins.github.io/gtfobins/make/#sudo">GTFOBins</a> GitHub Pages site.</p>
+
+<p>Initially, it looks like we have an easy win here, but we do not have access to the <code>-s</code> and <code>--eval</code> flags shown in the example code snippet. Remember, the whitelisted command from the <code>sudo -l</code> output was <code>/usr/bin/make install -C /home/profiler/php-spx</code>:</p>
+
+<p><img src="/assets/img/PG-SPX-PrivEsc_Make-GTFOBin.png" alt="GTFOBin Research"></p>
+
+<p>I&#39;ll be honest, I was stumped on this problem for a good hour or so. I decided to thoroughly enumerate the rest of the system. I was convinced I missed something somewhere. Eventually, I did realize that the <code>sudo</code> permission for this new user was the obvious privilege escalation vulnerability. It was my only direct access to command execution as <em>root</em>.</p>
+
+<h3>Even More Research</h3>
+
   </article>
 </div>
     </div>
