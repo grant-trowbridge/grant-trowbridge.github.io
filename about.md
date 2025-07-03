@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I am a Cybersecurity Engineer with 3 years experience in defense contracting with interests in baseline management and offensive security.
+I am a Cybersecurity Engineer with 3 years experience in defense contracting. My primary interests are offensive security and signals intelligence.
 
 ### Certifications
 

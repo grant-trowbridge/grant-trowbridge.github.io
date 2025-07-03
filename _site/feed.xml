@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>grant-trowbridge.github.io</title>
+    <title>Grant Trowbridge&apos;s Blog</title>
     <description>Cybersecurity blog covering security-related topics, CTFs, and signals
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 02 Jul 2025 20:30:08 -0400</pubDate>
-    <lastBuildDate>Wed, 02 Jul 2025 20:30:08 -0400</lastBuildDate>
+    <pubDate>Wed, 02 Jul 2025 22:33:48 -0400</pubDate>
+    <lastBuildDate>Wed, 02 Jul 2025 22:33:48 -0400</lastBuildDate>
     <generator>Jekyll v3.9.4</generator>
     
       <item>
         <title>Proving Grounds SPX: Privilege Escalation</title>
-        <description>&lt;p&gt;As I continue to progress through &lt;a href=&quot;https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview&quot;&gt;TJ Null&amp;#39;s OSCP PWK V3 list&lt;/a&gt;, I wanted to cover a particular box that had a very unique privilege escalation vulnerability that isn&amp;#39;t seen very often.&lt;/p&gt;
-</description>
+        <description>&lt;p&gt;As I continue to progress through &lt;a href=&quot;https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview&quot;&gt;TJ Null&amp;#39;s OSCP PWK V3 list&lt;/a&gt;, I wanted to cover a particular machine that had a very unique privilege escalation vulnerability. This machine is given the name SPX. I&amp;#39;ll skip over initial access for the sake of brevity and limiting spoilers.&lt;/p&gt;
+
+&lt;p&gt;Speaking of spoilers, if you plan on completing this machine and don&amp;#39;t want answers given away, DO NOT PROCEED!&lt;/p&gt;
+
+&lt;h1&gt;Identifying the Vulnerability&lt;/h1&gt;
+
+&lt;p&gt;After gaining your initial foothold, and switching to another user with compromised credentials, your immediate thought should be &amp;quot;what privileges do I now have in this user context?&amp;quot; The answer? A sudo command for the &lt;code&gt;make&lt;/code&gt; binary:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         <pubDate>Wed, 02 Jul 2025 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2025/PG-SPX-PrivEsc/</link>
         <guid isPermaLink="true">http://localhost:4000/2025/PG-SPX-PrivEsc/</guid>
