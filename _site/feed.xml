@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 03 Jul 2025 20:02:45 -0400</pubDate>
-    <lastBuildDate>Thu, 03 Jul 2025 20:02:45 -0400</lastBuildDate>
+    <pubDate>Fri, 04 Jul 2025 13:06:52 -0400</pubDate>
+    <lastBuildDate>Fri, 04 Jul 2025 13:06:52 -0400</lastBuildDate>
     <generator>Jekyll v3.9.4</generator>
     
       <item>
@@ -38,13 +38,35 @@
 
 &lt;h3&gt;Even More Research&lt;/h3&gt;
 
-&lt;p&gt;Having used the &lt;code&gt;make&lt;/code&gt; utility previously, I knew it calls on instructions specified in a MakeFile. I searched for MakeFile exploits/privilege escalation techniques. A few Google searches eventually led me to this &lt;a href=&quot;https://medium.com/@adamforsythebartlett/makefile-privilege-escalation-oscp-62ea2c666d23&quot;&gt;Medium&lt;/a&gt; article, written by one Adam Bartlett:&lt;/p&gt;
+&lt;p&gt;Having used the &lt;code&gt;make&lt;/code&gt; utility in the past, I knew it calls on instructions specified in a Makefile. I searched for Makefile exploits/privilege escalation techniques. A few Google searches eventually led me to this &lt;a href=&quot;https://medium.com/@adamforsythebartlett/makefile-privilege-escalation-oscp-62ea2c666d23&quot;&gt;Medium&lt;/a&gt; article, written by one Adam Bartlett. He explains that &lt;code&gt;make&lt;/code&gt; can be used to execute bash commands in the same directory that the &lt;code&gt;Makefile&lt;/code&gt; resides in. Here is the malicious syntax for bash execution.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-SPX-PrivEsc_Make-Medium-Blog.png&quot; alt=&quot;Medium Article Example&quot;&gt;&lt;/p&gt;
 
-&lt;h1&gt;Crafting the MakeFile&lt;/h1&gt;
+&lt;h1&gt;Crafting the Makefile&lt;/h1&gt;
 
-&lt;p&gt;Now it&amp;#39;s time to match the example to our target system.&lt;/p&gt;
+&lt;p&gt;Now it&amp;#39;s time to match the example to our target system. I always like to start by making a backup of a file I&amp;#39;m modifying. It&amp;#39;s not a requirement by any means, but it&amp;#39;s good practice.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;profiler@spx:/var/www$ cd ~/php-spx/
+profiler@spx:~/php-spx$ cp Makefile ./Makefile.bak
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;There&amp;#39;s many different bash techniques that can be used to spawn a root shell. I chose to create a malicous copy of bash with an SUID bit. This allows any user to execute this bash copy with a &lt;code&gt;-p&lt;/code&gt; flag, which tells bash to not reset the effective user ID with my real user ID. In short, bash will run with the file owner&amp;#39;s permissions (root).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-SPX-PrivEsc_New-Makefile.png&quot; alt=&quot;Malicious Makefile&quot;&gt;&lt;/p&gt;
+
+&lt;h1&gt;Escalating Privileges&lt;/h1&gt;
+
+&lt;p&gt;With the malicious Makefile in place, it&amp;#39;s simply a matter of executing profiler&amp;#39;s allowed &lt;code&gt;sudo&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-SPX-PrivEsc_Sudo-Make-Exploit.png&quot; alt=&quot;Sudo Make Exploit&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Now I&amp;#39;ll execute the new &lt;code&gt;/tmp/evil&lt;/code&gt; bash copy, ensuring the &lt;code&gt;-p&lt;/code&gt; flag is provided as an argument to spawn a root shell!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-SPX-PrivEsc_Bash-Privilege-Escalation.png&quot; alt=&quot;Evil Bash Copy&quot;&gt;&lt;/p&gt;
+
+&lt;h1&gt;Lessons Learned&lt;/h1&gt;
+
+&lt;p&gt;The very specific &lt;code&gt;sudo&lt;/code&gt; command is a great starting point, but the true vulnerability lies in the specified directory, &lt;code&gt;/home/profiler/php-spx&lt;/code&gt;, where the standard user &lt;code&gt;profiler&lt;/code&gt; has &lt;em&gt;write&lt;/em&gt; access to the directory, and as a result, to the &lt;em&gt;Makefile&lt;/em&gt; itself. If the specified directory prevented the &lt;code&gt;profiler&lt;/code&gt; user write access, or was instead owned by &lt;code&gt;root&lt;/code&gt;, there would be no opportunity to escalate privileges. In short, the devil is always in the details, and file permissions matter!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-SPX-PrivEsc_Lessons-Learned.png&quot; alt=&quot;Lessons Learned&quot;&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 02 Jul 2025 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2025/PG-SPX-PrivEsc/</link>

@@ -61,13 +61,35 @@
 
 <h3>Even More Research</h3>
 
-<p>Having used the <code>make</code> utility previously, I knew it calls on instructions specified in a MakeFile. I searched for MakeFile exploits/privilege escalation techniques. A few Google searches eventually led me to this <a href="https://medium.com/@adamforsythebartlett/makefile-privilege-escalation-oscp-62ea2c666d23">Medium</a> article, written by one Adam Bartlett:</p>
+<p>Having used the <code>make</code> utility in the past, I knew it calls on instructions specified in a Makefile. I searched for Makefile exploits/privilege escalation techniques. A few Google searches eventually led me to this <a href="https://medium.com/@adamforsythebartlett/makefile-privilege-escalation-oscp-62ea2c666d23">Medium</a> article, written by one Adam Bartlett. He explains that <code>make</code> can be used to execute bash commands in the same directory that the <code>Makefile</code> resides in. Here is the malicious syntax for bash execution.</p>
 
 <p><img src="/assets/img/PG-SPX-PrivEsc_Make-Medium-Blog.png" alt="Medium Article Example"></p>
 
-<h1>Crafting the MakeFile</h1>
+<h1>Crafting the Makefile</h1>
 
-<p>Now it&#39;s time to match the example to our target system.</p>
+<p>Now it&#39;s time to match the example to our target system. I always like to start by making a backup of a file I&#39;m modifying. It&#39;s not a requirement by any means, but it&#39;s good practice.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">profiler@spx:/var/www$ cd ~/php-spx/
+profiler@spx:~/php-spx$ cp Makefile ./Makefile.bak
+</code></pre></div>
+<p>There&#39;s many different bash techniques that can be used to spawn a root shell. I chose to create a malicous copy of bash with an SUID bit. This allows any user to execute this bash copy with a <code>-p</code> flag, which tells bash to not reset the effective user ID with my real user ID. In short, bash will run with the file owner&#39;s permissions (root).</p>
+
+<p><img src="/assets/img/PG-SPX-PrivEsc_New-Makefile.png" alt="Malicious Makefile"></p>
+
+<h1>Escalating Privileges</h1>
+
+<p>With the malicious Makefile in place, it&#39;s simply a matter of executing profiler&#39;s allowed <code>sudo</code> command.</p>
+
+<p><img src="/assets/img/PG-SPX-PrivEsc_Sudo-Make-Exploit.png" alt="Sudo Make Exploit"></p>
+
+<p>Now I&#39;ll execute the new <code>/tmp/evil</code> bash copy, ensuring the <code>-p</code> flag is provided as an argument to spawn a root shell!</p>
+
+<p><img src="/assets/img/PG-SPX-PrivEsc_Bash-Privilege-Escalation.png" alt="Evil Bash Copy"></p>
+
+<h1>Lessons Learned</h1>
+
+<p>The very specific <code>sudo</code> command is a great starting point, but the true vulnerability lies in the specified directory, <code>/home/profiler/php-spx</code>, where the standard user <code>profiler</code> has <em>write</em> access to the directory, and as a result, to the <em>Makefile</em> itself. If the specified directory prevented the <code>profiler</code> user write access, or was instead owned by <code>root</code>, there would be no opportunity to escalate privileges. In short, the devil is always in the details, and file permissions matter!</p>
+
+<p><img src="/assets/img/PG-SPX-PrivEsc_Lessons-Learned.png" alt="Lessons Learned"></p>
 
   </article>
 </div>
