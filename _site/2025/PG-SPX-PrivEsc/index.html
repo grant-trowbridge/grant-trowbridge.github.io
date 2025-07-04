@@ -35,7 +35,7 @@
   <h2 class="single__title">Proving Grounds SPX: Privilege Escalation</h2>
   <span class="single__date">Jul 2, 2025</span> 
   <article class="single__article">
-  <p>As I continue to progress through <a href="https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview">TJ Null&#39;s OSCP PWK V3 list</a>, I wanted to cover a particular machine that had a very unique privilege escalation vulnerability. This machine is given the name SPX. I&#39;ll skip over initial access for the sake of brevity and limiting spoilers.</p>
+  <p>As I continue to progress through <a href="https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview">TJ Null&#39;s OSCP PWK V3 list</a>, I wanted to cover a particular machine that had a very unique privilege escalation vulnerability. The machine in question is SPX. I&#39;ll skip over initial access for the sake of brevity and limiting spoilers.</p>
 
 <p>Speaking of spoilers, if you plan on completing this machine and don&#39;t want answers given away, DO NOT PROCEED!</p>
 
@@ -57,9 +57,17 @@
 
 <p><img src="/assets/img/PG-SPX-PrivEsc_Make-GTFOBin.png" alt="GTFOBin Research"></p>
 
-<p>I&#39;ll be honest, I was stumped on this problem for a good hour or so. I decided to thoroughly enumerate the rest of the system. I was convinced I missed something somewhere. Eventually, I did realize that the <code>sudo</code> permission for this new user was the obvious privilege escalation vulnerability. It was my only direct access to command execution as <em>root</em>.</p>
+<p>I&#39;ll be honest, I was stumped on this problem for a good hour or so. I decided to thoroughly enumerate the rest of the system. I was convinced I missed something somewhere. Eventually, I realized the <code>sudo</code> permission for this new user was the obvious privilege escalation vulnerability. It was my only direct access to command execution as <em>root</em>.</p>
 
 <h3>Even More Research</h3>
+
+<p>Having used the <code>make</code> utility previously, I knew it calls on instructions specified in a MakeFile. I searched for MakeFile exploits/privilege escalation techniques. A few Google searches eventually led me to this <a href="https://medium.com/@adamforsythebartlett/makefile-privilege-escalation-oscp-62ea2c666d23">Medium</a> article, written by one Adam Bartlett:</p>
+
+<p><img src="/assets/img/PG-SPX-PrivEsc_Make-Medium-Blog.png" alt="Medium Article Example"></p>
+
+<h1>Crafting the MakeFile</h1>
+
+<p>Now it&#39;s time to match the example to our target system.</p>
 
   </article>
 </div>

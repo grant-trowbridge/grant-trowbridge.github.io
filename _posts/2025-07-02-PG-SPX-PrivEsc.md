@@ -3,7 +3,7 @@ layout: post
 title: "Proving Grounds SPX: Privilege Escalation"
 ---
 
-As I continue to progress through [TJ Null's OSCP PWK V3 list](https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview), I wanted to cover a particular machine that had a very unique privilege escalation vulnerability. This machine is given the name SPX. I'll skip over initial access for the sake of brevity and limiting spoilers.
+As I continue to progress through [TJ Null's OSCP PWK V3 list](https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview), I wanted to cover a particular machine that had a very unique privilege escalation vulnerability. The machine in question is SPX. I'll skip over initial access for the sake of brevity and limiting spoilers.
 
 Speaking of spoilers, if you plan on completing this machine and don't want answers given away, DO NOT PROCEED!
 
@@ -25,7 +25,14 @@ Initially, it looks like we have an easy win here, but we do not have access to 
 
 ![GTFOBin Research](/assets/img/PG-SPX-PrivEsc_Make-GTFOBin.png)
 
-I'll be honest, I was stumped on this problem for a good hour or so. I decided to thoroughly enumerate the rest of the system. I was convinced I missed something somewhere. Eventually, I did realize that the `sudo` permission for this new user was the obvious privilege escalation vulnerability. It was my only direct access to command execution as *root*.
+I'll be honest, I was stumped on this problem for a good hour or so. I decided to thoroughly enumerate the rest of the system. I was convinced I missed something somewhere. Eventually, I realized the `sudo` permission for this new user was the obvious privilege escalation vulnerability. It was my only direct access to command execution as *root*.
 
 ### Even More Research
 
+Having used the `make` utility previously, I knew it calls on instructions specified in a MakeFile. I searched for MakeFile exploits/privilege escalation techniques. A few Google searches eventually led me to this [Medium](https://medium.com/@adamforsythebartlett/makefile-privilege-escalation-oscp-62ea2c666d23) article, written by one Adam Bartlett:
+
+![Medium Article Example](/assets/img/PG-SPX-PrivEsc_Make-Medium-Blog.png)
+
+# Crafting the MakeFile
+
+Now it's time to match the example to our target system.

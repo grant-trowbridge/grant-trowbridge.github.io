@@ -6,13 +6,13 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 03 Jul 2025 13:24:15 -0400</pubDate>
-    <lastBuildDate>Thu, 03 Jul 2025 13:24:15 -0400</lastBuildDate>
+    <pubDate>Thu, 03 Jul 2025 20:02:45 -0400</pubDate>
+    <lastBuildDate>Thu, 03 Jul 2025 20:02:45 -0400</lastBuildDate>
     <generator>Jekyll v3.9.4</generator>
     
       <item>
         <title>Proving Grounds SPX: Privilege Escalation</title>
-        <description>&lt;p&gt;As I continue to progress through &lt;a href=&quot;https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview&quot;&gt;TJ Null&amp;#39;s OSCP PWK V3 list&lt;/a&gt;, I wanted to cover a particular machine that had a very unique privilege escalation vulnerability. This machine is given the name SPX. I&amp;#39;ll skip over initial access for the sake of brevity and limiting spoilers.&lt;/p&gt;
+        <description>&lt;p&gt;As I continue to progress through &lt;a href=&quot;https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview&quot;&gt;TJ Null&amp;#39;s OSCP PWK V3 list&lt;/a&gt;, I wanted to cover a particular machine that had a very unique privilege escalation vulnerability. The machine in question is SPX. I&amp;#39;ll skip over initial access for the sake of brevity and limiting spoilers.&lt;/p&gt;
 
 &lt;p&gt;Speaking of spoilers, if you plan on completing this machine and don&amp;#39;t want answers given away, DO NOT PROCEED!&lt;/p&gt;
 
@@ -34,9 +34,17 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-SPX-PrivEsc_Make-GTFOBin.png&quot; alt=&quot;GTFOBin Research&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;I&amp;#39;ll be honest, I was stumped on this problem for a good hour or so. I decided to thoroughly enumerate the rest of the system. I was convinced I missed something somewhere. Eventually, I did realize that the &lt;code&gt;sudo&lt;/code&gt; permission for this new user was the obvious privilege escalation vulnerability. It was my only direct access to command execution as &lt;em&gt;root&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;I&amp;#39;ll be honest, I was stumped on this problem for a good hour or so. I decided to thoroughly enumerate the rest of the system. I was convinced I missed something somewhere. Eventually, I realized the &lt;code&gt;sudo&lt;/code&gt; permission for this new user was the obvious privilege escalation vulnerability. It was my only direct access to command execution as &lt;em&gt;root&lt;/em&gt;.&lt;/p&gt;
 
 &lt;h3&gt;Even More Research&lt;/h3&gt;
+
+&lt;p&gt;Having used the &lt;code&gt;make&lt;/code&gt; utility previously, I knew it calls on instructions specified in a MakeFile. I searched for MakeFile exploits/privilege escalation techniques. A few Google searches eventually led me to this &lt;a href=&quot;https://medium.com/@adamforsythebartlett/makefile-privilege-escalation-oscp-62ea2c666d23&quot;&gt;Medium&lt;/a&gt; article, written by one Adam Bartlett:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-SPX-PrivEsc_Make-Medium-Blog.png&quot; alt=&quot;Medium Article Example&quot;&gt;&lt;/p&gt;
+
+&lt;h1&gt;Crafting the MakeFile&lt;/h1&gt;
+
+&lt;p&gt;Now it&amp;#39;s time to match the example to our target system.&lt;/p&gt;
 </description>
         <pubDate>Wed, 02 Jul 2025 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2025/PG-SPX-PrivEsc/</link>
