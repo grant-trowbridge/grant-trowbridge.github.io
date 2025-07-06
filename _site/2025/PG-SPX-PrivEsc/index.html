@@ -33,7 +33,7 @@
     <div id="content__column">
       <div id="single">
   <h2 class="single__title">Proving Grounds SPX: Privilege Escalation</h2>
-  <span class="single__date">Jul 2, 2025</span> 
+  <span class="single__date">Jul 6, 2025</span> 
   <article class="single__article">
   <p>As I progress through <a href="https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview">TJ Null&#39;s OSCP PWK V3 list</a>, I wanted to cover a particular machine that had a very unique privilege escalation vulnerability. The machine in question is SPX. I&#39;ll skip over initial access for the sake of brevity and limiting spoilers. Speaking of spoilers, you&#39;ve been warned!</p>
 
@@ -51,7 +51,7 @@
 
 <p>Anytime I come across a specific Unix binary with special permissions (<code>sudo</code> in this case), I always consult the <a href="https://gtfobins.github.io/gtfobins/make/#sudo">GTFOBins</a> GitHub Pages site.</p>
 
-<p>Initially, it looked like I had an easy win here, but I do not have access to the <code>-s</code> and <code>--eval</code> flags shown in the example code snippet. The target&#39;s whitelisted command from the <code>sudo -l</code> output was <code>/usr/bin/make install -C /home/profiler/php-spx</code>:</p>
+<p>Initially, it looked like I had an easy win here, but I do not have access to the <code>-s</code> and <code>--eval</code> flags shown in the example GTFOBins code snippet. The target&#39;s whitelisted command from the <code>sudo -l</code> output was <code>/usr/bin/make install -C /home/profiler/php-spx</code>:</p>
 
 <p><img src="/assets/img/PG-SPX-PrivEsc_Make-GTFOBin.png" alt="GTFOBin Research"></p>
 
@@ -59,33 +59,39 @@
 
 <h3>Even More Research</h3>
 
-<p>Having used the <code>make</code> utility in the past, I knew it calls on instructions specified in a Makefile. I searched for Makefile exploits/privilege escalation techniques. A few Google searches eventually led me to this <a href="https://medium.com/@adamforsythebartlett/makefile-privilege-escalation-oscp-62ea2c666d23">Medium</a> article, written by one Adam Bartlett. He explains that <code>make</code> can be used to execute bash commands in the same directory that the <code>Makefile</code> resides in. Here is the malicious syntax for bash execution provided in the article.</p>
+<p>Having used the <code>make</code> utility in the past, I knew it called on instructions specified in a <code>Makefile</code>. I searched for <code>Makefile</code> exploits/privilege escalation techniques. Googling this topic eventually led me to this <a href="https://medium.com/@adamforsythebartlett/makefile-privilege-escalation-oscp-62ea2c666d23">Medium</a> article, written by one Adam Bartlett. He explains that <code>make</code> can be used to execute bash commands when the target directory is specified using the <code>-C</code> flag.</p>
+
+<blockquote>
+<p>The “make” command looks for a file called “Makefile”. If you’re looking for code execution, make sure you’re running “make” in the location where “Makefile” is executed, or specify the directory using the -C flag.</p>
+</blockquote>
+
+<p>Here is the malicious syntax for bash execution provided in the article.</p>
 
 <p><img src="/assets/img/PG-SPX-PrivEsc_Make-Medium-Blog.png" alt="Medium Article Example"></p>
 
 <h1>Crafting the Makefile</h1>
 
 <p>Now it&#39;s time to match the example to the target system. I always like to start by making a backup of a file I&#39;m modifying. It&#39;s not a requirement by any means, but it&#39;s a good habit to have.</p>
-<div class="highlight"><pre><code class="language-" data-lang="">profiler@spx:/var/www$ cd ~/php-spx/
+<div class="highlight"><pre><code class="language-" data-lang="">profiler@spx:/var/www/html$ cd ~/php-spx/
 profiler@spx:~/php-spx$ cp Makefile ./Makefile.bak
 </code></pre></div>
-<p>There&#39;s many different bash techniques that can be used to spawn a root shell in this scenario. I chose to create a malicous copy of bash with an SUID bit. When a standard user executes this bash copy with a <code>-p</code> flag, it tells bash to not reset the effective user ID with my real user ID. In short, bash will run with the file owner&#39;s permissions (root).</p>
+<p>There&#39;s many different bash techniques that can be used to spawn a <em>root</em> shell in this scenario. I chose to create a malicous copy of bash with an SUID bit. When a standard user executes this bash copy with a <code>-p</code> flag, it tells bash to not reset the effective user ID with my real user ID. In short, bash will run with the file owner&#39;s permissions (<em>root</em>).</p>
 
 <p><img src="/assets/img/PG-SPX-PrivEsc_New-Makefile.png" alt="Malicious Makefile"></p>
 
 <h1>Escalating Privileges</h1>
 
-<p>With the malicious Makefile in place, it&#39;s simply a matter of executing the allowed <code>sudo</code> command.</p>
+<p>With the malicious <code>Makefile</code> in place, it&#39;s simply a matter of executing the allowed <code>sudo</code> command.</p>
 
 <p><img src="/assets/img/PG-SPX-PrivEsc_Sudo-Make-Exploit.png" alt="Sudo Make Exploit"></p>
 
-<p>Now I&#39;ll execute the new <code>/tmp/evil</code> bash binary, ensuring the <code>-p</code> flag is provided to spawn a root shell!</p>
+<p>Now I&#39;ll execute the new <code>/tmp/evil</code> bash binary, ensuring the <code>-p</code> flag is provided to spawn a <em>root</em> shell!</p>
 
 <p><img src="/assets/img/PG-SPX-PrivEsc_Bash-Privilege-Escalation.png" alt="Evil Bash Binary"></p>
 
 <h1>Lessons Learned</h1>
 
-<p>The very specific <code>sudo</code> command was a great starting point for securing the system, but the true vulnerability lies in the specified directory, <code>/home/profiler/php-spx</code>. The standard user <code>profiler</code> had <em>write</em> access to the directory, and as a result, <em>write</em> access to the <code>Makefile</code> itself. If the directory prevented the <code>profiler</code> user from having write access, or was instead a directory owned by <code>root</code>, there would be no opportunity to escalate privileges.</p>
+<p>The very specific <code>sudo</code> command was a great starting point for securing the system, but the true vulnerability lies in the specified directory&#39;s permissions, <code>/home/profiler/php-spx</code>. The standard user <em>profiler</em> had <strong>write</strong> access to the directory, and as a result, write access to the <code>Makefile</code> itself. If the directory prevented the <em>profiler</em> user from having write access, there would be no opportunity to escalate privileges.</p>
 
 <p>This machine was an excellent reminder that the devil is always in the details, and file permissions matter!</p>
 

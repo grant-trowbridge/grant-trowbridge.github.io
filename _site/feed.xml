@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 05 Jul 2025 00:41:46 -0400</pubDate>
-    <lastBuildDate>Sat, 05 Jul 2025 00:41:46 -0400</lastBuildDate>
+    <pubDate>Sun, 06 Jul 2025 13:57:04 -0400</pubDate>
+    <lastBuildDate>Sun, 06 Jul 2025 13:57:04 -0400</lastBuildDate>
     <generator>Jekyll v3.9.4</generator>
     
       <item>
@@ -28,7 +28,7 @@
 
 &lt;p&gt;Anytime I come across a specific Unix binary with special permissions (&lt;code&gt;sudo&lt;/code&gt; in this case), I always consult the &lt;a href=&quot;https://gtfobins.github.io/gtfobins/make/#sudo&quot;&gt;GTFOBins&lt;/a&gt; GitHub Pages site.&lt;/p&gt;
 
-&lt;p&gt;Initially, it looked like I had an easy win here, but I do not have access to the &lt;code&gt;-s&lt;/code&gt; and &lt;code&gt;--eval&lt;/code&gt; flags shown in the example code snippet. The target&amp;#39;s whitelisted command from the &lt;code&gt;sudo -l&lt;/code&gt; output was &lt;code&gt;/usr/bin/make install -C /home/profiler/php-spx&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Initially, it looked like I had an easy win here, but I do not have access to the &lt;code&gt;-s&lt;/code&gt; and &lt;code&gt;--eval&lt;/code&gt; flags shown in the example GTFOBins code snippet. The target&amp;#39;s whitelisted command from the &lt;code&gt;sudo -l&lt;/code&gt; output was &lt;code&gt;/usr/bin/make install -C /home/profiler/php-spx&lt;/code&gt;:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-SPX-PrivEsc_Make-GTFOBin.png&quot; alt=&quot;GTFOBin Research&quot;&gt;&lt;/p&gt;
 
@@ -36,39 +36,45 @@
 
 &lt;h3&gt;Even More Research&lt;/h3&gt;
 
-&lt;p&gt;Having used the &lt;code&gt;make&lt;/code&gt; utility in the past, I knew it calls on instructions specified in a Makefile. I searched for Makefile exploits/privilege escalation techniques. A few Google searches eventually led me to this &lt;a href=&quot;https://medium.com/@adamforsythebartlett/makefile-privilege-escalation-oscp-62ea2c666d23&quot;&gt;Medium&lt;/a&gt; article, written by one Adam Bartlett. He explains that &lt;code&gt;make&lt;/code&gt; can be used to execute bash commands in the same directory that the &lt;code&gt;Makefile&lt;/code&gt; resides in. Here is the malicious syntax for bash execution provided in the article.&lt;/p&gt;
+&lt;p&gt;Having used the &lt;code&gt;make&lt;/code&gt; utility in the past, I knew it called on instructions specified in a &lt;code&gt;Makefile&lt;/code&gt;. I searched for &lt;code&gt;Makefile&lt;/code&gt; exploits/privilege escalation techniques. Googling this topic eventually led me to this &lt;a href=&quot;https://medium.com/@adamforsythebartlett/makefile-privilege-escalation-oscp-62ea2c666d23&quot;&gt;Medium&lt;/a&gt; article, written by one Adam Bartlett. He explains that &lt;code&gt;make&lt;/code&gt; can be used to execute bash commands when the target directory is specified using the &lt;code&gt;-C&lt;/code&gt; flag.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The “make” command looks for a file called “Makefile”. If you’re looking for code execution, make sure you’re running “make” in the location where “Makefile” is executed, or specify the directory using the -C flag.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Here is the malicious syntax for bash execution provided in the article.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-SPX-PrivEsc_Make-Medium-Blog.png&quot; alt=&quot;Medium Article Example&quot;&gt;&lt;/p&gt;
 
 &lt;h1&gt;Crafting the Makefile&lt;/h1&gt;
 
 &lt;p&gt;Now it&amp;#39;s time to match the example to the target system. I always like to start by making a backup of a file I&amp;#39;m modifying. It&amp;#39;s not a requirement by any means, but it&amp;#39;s a good habit to have.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;profiler@spx:/var/www$ cd ~/php-spx/
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;profiler@spx:/var/www/html$ cd ~/php-spx/
 profiler@spx:~/php-spx$ cp Makefile ./Makefile.bak
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;There&amp;#39;s many different bash techniques that can be used to spawn a root shell in this scenario. I chose to create a malicous copy of bash with an SUID bit. When a standard user executes this bash copy with a &lt;code&gt;-p&lt;/code&gt; flag, it tells bash to not reset the effective user ID with my real user ID. In short, bash will run with the file owner&amp;#39;s permissions (root).&lt;/p&gt;
+&lt;p&gt;There&amp;#39;s many different bash techniques that can be used to spawn a &lt;em&gt;root&lt;/em&gt; shell in this scenario. I chose to create a malicous copy of bash with an SUID bit. When a standard user executes this bash copy with a &lt;code&gt;-p&lt;/code&gt; flag, it tells bash to not reset the effective user ID with my real user ID. In short, bash will run with the file owner&amp;#39;s permissions (&lt;em&gt;root&lt;/em&gt;).&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-SPX-PrivEsc_New-Makefile.png&quot; alt=&quot;Malicious Makefile&quot;&gt;&lt;/p&gt;
 
 &lt;h1&gt;Escalating Privileges&lt;/h1&gt;
 
-&lt;p&gt;With the malicious Makefile in place, it&amp;#39;s simply a matter of executing the allowed &lt;code&gt;sudo&lt;/code&gt; command.&lt;/p&gt;
+&lt;p&gt;With the malicious &lt;code&gt;Makefile&lt;/code&gt; in place, it&amp;#39;s simply a matter of executing the allowed &lt;code&gt;sudo&lt;/code&gt; command.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-SPX-PrivEsc_Sudo-Make-Exploit.png&quot; alt=&quot;Sudo Make Exploit&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;Now I&amp;#39;ll execute the new &lt;code&gt;/tmp/evil&lt;/code&gt; bash binary, ensuring the &lt;code&gt;-p&lt;/code&gt; flag is provided to spawn a root shell!&lt;/p&gt;
+&lt;p&gt;Now I&amp;#39;ll execute the new &lt;code&gt;/tmp/evil&lt;/code&gt; bash binary, ensuring the &lt;code&gt;-p&lt;/code&gt; flag is provided to spawn a &lt;em&gt;root&lt;/em&gt; shell!&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-SPX-PrivEsc_Bash-Privilege-Escalation.png&quot; alt=&quot;Evil Bash Binary&quot;&gt;&lt;/p&gt;
 
 &lt;h1&gt;Lessons Learned&lt;/h1&gt;
 
-&lt;p&gt;The very specific &lt;code&gt;sudo&lt;/code&gt; command was a great starting point for securing the system, but the true vulnerability lies in the specified directory, &lt;code&gt;/home/profiler/php-spx&lt;/code&gt;. The standard user &lt;code&gt;profiler&lt;/code&gt; had &lt;em&gt;write&lt;/em&gt; access to the directory, and as a result, &lt;em&gt;write&lt;/em&gt; access to the &lt;code&gt;Makefile&lt;/code&gt; itself. If the directory prevented the &lt;code&gt;profiler&lt;/code&gt; user from having write access, or was instead a directory owned by &lt;code&gt;root&lt;/code&gt;, there would be no opportunity to escalate privileges.&lt;/p&gt;
+&lt;p&gt;The very specific &lt;code&gt;sudo&lt;/code&gt; command was a great starting point for securing the system, but the true vulnerability lies in the specified directory&amp;#39;s permissions, &lt;code&gt;/home/profiler/php-spx&lt;/code&gt;. The standard user &lt;em&gt;profiler&lt;/em&gt; had &lt;strong&gt;write&lt;/strong&gt; access to the directory, and as a result, write access to the &lt;code&gt;Makefile&lt;/code&gt; itself. If the directory prevented the &lt;em&gt;profiler&lt;/em&gt; user from having write access, there would be no opportunity to escalate privileges.&lt;/p&gt;
 
 &lt;p&gt;This machine was an excellent reminder that the devil is always in the details, and file permissions matter!&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-SPX-PrivEsc_Lessons-Learned.png&quot; alt=&quot;Lessons Learned&quot;&gt;&lt;/p&gt;
 </description>
-        <pubDate>Wed, 02 Jul 2025 00:00:00 -0400</pubDate>
+        <pubDate>Sun, 06 Jul 2025 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2025/PG-SPX-PrivEsc/</link>
         <guid isPermaLink="true">http://localhost:4000/2025/PG-SPX-PrivEsc/</guid>
         
