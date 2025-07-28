@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: whoami
 permalink: /about/
 ---
 
@@ -13,4 +13,4 @@ I am a Cybersecurity Engineer with 3 years of experience in defense contracting.
 
 ### Contact me
 
-[trowbridgegolf@gmail.com](mailto:trowbridgegolf@gmail.com)
+[LinkedIn](https://www.linkedin.com/in/grant-trowbridge-091945198/)
