@@ -6,9 +6,68 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 27 Jul 2025 20:25:59 -0400</pubDate>
-    <lastBuildDate>Sun, 27 Jul 2025 20:25:59 -0400</lastBuildDate>
+    <pubDate>Mon, 28 Jul 2025 21:27:20 -0400</pubDate>
+    <lastBuildDate>Mon, 28 Jul 2025 21:27:20 -0400</lastBuildDate>
     <generator>Jekyll v3.9.4</generator>
+    
+      <item>
+        <title>Proving Grounds Craft: Walkthrough</title>
+        <description>&lt;p&gt;Today&amp;#39;s CTF blog will cover Proving Grounds machine Craft.&lt;/p&gt;
+
+&lt;h1&gt;Enumeration&lt;/h1&gt;
+
+&lt;p&gt;I&amp;#39;ll start by kicking off an &lt;code&gt;nmap&lt;/code&gt; scan of all 65535 TCP ports to see what we&amp;#39;re working with.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Nmap-Tcp-Scan-1.png&quot; alt=&quot;nmap TCP Scan 1&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;It looks like the target is blocking ICMP packets. Not a problem, &lt;code&gt;nmap&lt;/code&gt; can be instructed to skip host discovery using the &lt;code&gt;-Pn&lt;/code&gt; flag. Let&amp;#39;s try that again.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Nmap-Tcp-Scan-2.png&quot; alt=&quot;nmap TCP Scan 2&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;The scan only returned port 80, which is serving some sort of HTTP service. Let&amp;#39;s gather more information about this service with an aggressive scan.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Nmap-Tcp-Scan-3.png&quot; alt=&quot;nmap TCP Scan 3&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;The scan didn&amp;#39;t return anything too noteworthy, but I&amp;#39;ll jot down the service names and versions to research later. As a side note, make sure to enumerate UDP ports as well. In this particular case, the scan didn&amp;#39;t return any ports.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Nmap-Udp-Scan.png&quot; alt=&quot;nmap UDP Scan&quot;&gt;&lt;/p&gt;
+
+&lt;h2&gt;Web Application Enumeration&lt;/h2&gt;
+
+&lt;p&gt;HTTP(S) services call for directory/file brute forcing. I&amp;#39;ll use the &lt;code&gt;gobuster&lt;/code&gt; &lt;strong&gt;dir&lt;/strong&gt; mode and provide the &lt;code&gt;-x&lt;/code&gt; flag to specify the file extensions I want to test. It doesn&amp;#39;t take long to find some interesting stuff like &lt;code&gt;/uploads&lt;/code&gt; and &lt;code&gt;/upload.php&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Gobuster-Scan.png&quot; alt=&quot;gobuster Scan&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;ll browse out to the root directory in Firefox to see what the rendered page looks like. Google Translate wasn&amp;#39;t any help, but it&amp;#39;s safe to assume that this is some sort of business website. Further down the page, I found an upload feature for submitting resumes!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Craft-Landing-Page.png&quot; alt=&quot;Craft Landing Page&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Craft-Upload.png&quot; alt=&quot;Craft Upload&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;To test the upload function, I will provide a simple text file to see what happens. It appears this &lt;code&gt;upload.php&lt;/code&gt; file checks the file extension to ensure only &lt;code&gt;.odt&lt;/code&gt; files are allowed.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Craft-Upload-Test-1.png&quot; alt=&quot;Craft Upload Test 1&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Craft-Upload-Test-2.png&quot; alt=&quot;Craft Upload Test 2&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Now it&amp;#39;s time to enlist the help of BurpSuite to modify the POST request. I spent a lot of time messing with different PHP file extensions and some null byte shenanigans, but nothing worked. If I want to upload a file to this web server, it must have a &lt;code&gt;.odt&lt;/code&gt; file extension.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Craft-Upload-BurpSuite.png&quot; alt=&quot;Craft Upload BurpSuite&quot;&gt;&lt;/p&gt;
+
+&lt;h1&gt;.odt File Research &amp;amp; Creation&lt;/h1&gt;
+
+&lt;p&gt;Having created malicous Office 365 macros in the past, I assume LibreOffice may have similar functions that can be abused. I did some Googling and found this &lt;a href=&quot;https://medium.com/@akshay__0/initial-access-via-malicious-odt-macro-ac7f5d15796d&quot;&gt;Medium article&lt;/a&gt; detailing malicious ODT file macros. The syntax for this macro is targeted for Linux machines, so the script itself is not useful to me, but the instructions for creating a LibreOffice macro are still of value. Knowing this, I searched for Microsoft VBA Macro reverse shell scripts and found another &lt;a href=&quot;https://medium.com/@mavrogiannispan/phishing-2-0-9f49654de4a6&quot;&gt;Medium Article&lt;/a&gt; written by Mavrogiannis Panagiotis that contained proper syntax for Windows targets. First, I need to create a malicious document in LibreOffice. Select &lt;strong&gt;File &amp;gt; New &amp;gt; Text Document&lt;/strong&gt; to create a new file. Once the document window opens, navigate to &lt;strong&gt;File &amp;gt; Save As..&lt;/strong&gt; and save the file, ensuring the &lt;code&gt;.odt&lt;/code&gt; extension is specified.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Odt-Step-1.png&quot; alt=&quot;Odt Step 1&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Odt-Step-2.png&quot; alt=&quot;Odt Step 2&quot;&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 28 Jul 2025 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2025/PG-Craft-Walkthrough/</link>
+        <guid isPermaLink="true">http://localhost:4000/2025/PG-Craft-Walkthrough/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Proving Grounds SPX: Privilege Escalation</title>
