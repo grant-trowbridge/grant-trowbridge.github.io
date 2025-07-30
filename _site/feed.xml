@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 28 Jul 2025 21:27:20 -0400</pubDate>
-    <lastBuildDate>Mon, 28 Jul 2025 21:27:20 -0400</lastBuildDate>
+    <pubDate>Tue, 29 Jul 2025 21:20:23 -0400</pubDate>
+    <lastBuildDate>Tue, 29 Jul 2025 21:20:23 -0400</lastBuildDate>
     <generator>Jekyll v3.9.4</generator>
     
       <item>
@@ -54,13 +54,106 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Craft-Upload-BurpSuite.png&quot; alt=&quot;Craft Upload BurpSuite&quot;&gt;&lt;/p&gt;
 
-&lt;h1&gt;.odt File Research &amp;amp; Creation&lt;/h1&gt;
+&lt;h2&gt;.odt File Research &amp;amp; Creation&lt;/h2&gt;
 
-&lt;p&gt;Having created malicous Office 365 macros in the past, I assume LibreOffice may have similar functions that can be abused. I did some Googling and found this &lt;a href=&quot;https://medium.com/@akshay__0/initial-access-via-malicious-odt-macro-ac7f5d15796d&quot;&gt;Medium article&lt;/a&gt; detailing malicious ODT file macros. The syntax for this macro is targeted for Linux machines, so the script itself is not useful to me, but the instructions for creating a LibreOffice macro are still of value. Knowing this, I searched for Microsoft VBA Macro reverse shell scripts and found another &lt;a href=&quot;https://medium.com/@mavrogiannispan/phishing-2-0-9f49654de4a6&quot;&gt;Medium Article&lt;/a&gt; written by Mavrogiannis Panagiotis that contained proper syntax for Windows targets. First, I need to create a malicious document in LibreOffice. Select &lt;strong&gt;File &amp;gt; New &amp;gt; Text Document&lt;/strong&gt; to create a new file. Once the document window opens, navigate to &lt;strong&gt;File &amp;gt; Save As..&lt;/strong&gt; and save the file, ensuring the &lt;code&gt;.odt&lt;/code&gt; extension is specified.&lt;/p&gt;
+&lt;p&gt;Having created malicous Office 365 macros in the past, I assume LibreOffice may have similar functions that can be abused. I did some Googling and found this &lt;a href=&quot;https://medium.com/@akshay__0/initial-access-via-malicious-odt-macro-ac7f5d15796d&quot;&gt;Medium article&lt;/a&gt; detailing malicious ODT file macros. The syntax for this macro is targeted for Linux machines, so the script itself is not useful to me, but the instructions for creating a LibreOffice macro are still of value.&lt;/p&gt;
+
+&lt;p&gt;Knowing this, I searched for Microsoft VBA Macro reverse shell scripts and found another &lt;a href=&quot;https://medium.com/@mavrogiannispan/phishing-2-0-9f49654de4a6&quot;&gt;Medium Article&lt;/a&gt; written by Mavrogiannis Panagiotis that contained proper syntax for Windows targets. First, I need to create a malicious document in LibreOffice. Select &lt;strong&gt;File &amp;gt; New &amp;gt; Text Document&lt;/strong&gt; to create a new file. Once the document window opens, navigate to &lt;strong&gt;File &amp;gt; Save As..&lt;/strong&gt; and save the file, ensuring the &lt;code&gt;.odt&lt;/code&gt; extension is specified.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Odt-Step-1.png&quot; alt=&quot;Odt Step 1&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Odt-Step-2.png&quot; alt=&quot;Odt Step 2&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, I will select &lt;strong&gt;Tools &amp;gt; Macros &amp;gt; Organize Macros &amp;gt; Basic...&lt;/strong&gt; to open up the &lt;em&gt;BASIC Macros&lt;/em&gt; window. In the window, select the name of the saved document and then click the &lt;strong&gt;New&lt;/strong&gt; button on the right-hand side to create a new module. In the pop-up window, provide a name for the module and click &lt;strong&gt;Ok&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Odt-Step-3.png&quot; alt=&quot;Odt Step 3&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Odt-Step-4.png&quot; alt=&quot;Odt Step 4&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Odt-Step-5.png&quot; alt=&quot;Odt Step 5&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Now I can copy the script structure from the Medium article and paste it into the macro window.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Odt-Step-6.png&quot; alt=&quot;Odt Step 6&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;You may have noticed that I left out the entire string from the &lt;code&gt;objshell.Run&lt;/code&gt; line. I am slightly modifying the VBA script example by generating a PowerShell Base64-encoded reverse shell command using &lt;code&gt;msfvenom&lt;/code&gt;. I prefer this format because I don&amp;#39;t have to fiddle with quotations within quotations which can be a headache at times. I&amp;#39;ll copy everything starting from &lt;code&gt;powershell.exe&lt;/code&gt; and paste into the empty double quotes in my script.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Odt-Step-7.png&quot; alt=&quot;Odt Step 7&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Odt-Step-8.png&quot; alt=&quot;Odt Step 8&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;The last step is to tie this macro to an event. I want this script to execute immediately after the document is open. To do this, I&amp;#39;ll navigate to &lt;strong&gt;Tools &amp;gt; Customize&lt;/strong&gt;. Inside the Customize window, click the  &lt;strong&gt;Events&lt;/strong&gt; button, select the &lt;strong&gt;Open Document&lt;/strong&gt; event, and click &lt;strong&gt;Macro...&lt;/strong&gt; on the right-hand side.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Odt-Step-9.png&quot; alt=&quot;Odt Step 9&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Expand the document tree until you find the macro name and select it. Click &lt;strong&gt;Ok&lt;/strong&gt; on the Macro Selector and Customize windows. Once in the document window, press &lt;code&gt;Ctrl + S&lt;/code&gt; one more time for good measure and close LibreOffice.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Odt-Step-10.png&quot; alt=&quot;Odt Step 10&quot;&gt;&lt;/p&gt;
+
+&lt;h1&gt;Initial Access&lt;/h1&gt;
+
+&lt;p&gt;Now it&amp;#39;s time to upload the &lt;code&gt;.odt&lt;/code&gt; file. Before I do that, I first need to setup a listener on Kali to catch the reverse shell connection. I am prepending my &lt;code&gt;nc&lt;/code&gt; command with &lt;code&gt;rlwrap&lt;/code&gt; which will help stabilize the Windows shell. Browse out to the root web directory again and select the saved &lt;code&gt;.odt&lt;/code&gt; file and select the &lt;strong&gt;Upload&lt;/strong&gt; button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_InitialAccess-Step-1.png&quot; alt=&quot;InitialAccess Step 1&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_InitialAccess-Step-2.png&quot; alt=&quot;InitialAccess Step 2&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;After a few seconds pass, a reverse shell is received from the target!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_InitialAccess-Step-3.png&quot; alt=&quot;InitiAccess Step 3&quot;&gt;&lt;/p&gt;
+
+&lt;h1&gt;Post-Exploitation Enumeration&lt;/h1&gt;
+
+&lt;p&gt;Let&amp;#39;s see if there are any flags we can access as &lt;code&gt;thecybergeek&lt;/code&gt;. This is a PowerShell one-liner that I use to scrape flag content in the &lt;code&gt;C:\Users\&lt;/code&gt; directory.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;n&quot;&gt;Get-ChildItem&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;C:\Users\&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Include&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;local.txt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;proof.txt&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Recurse&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-ErrorAction&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;SilentlyContinue&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Write-Host&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;[!] &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;$PSItem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FullName&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;`r`n`t&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Get-Content&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;$PSItem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FullName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;}
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Local.png&quot; alt=&quot;Local&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Local is now captured! Moving onto further enumeration, I&amp;#39;ll start with examining service information to check for any unquoted service paths using another PowerShell one-liner.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;n&quot;&gt;Get-CimInstance&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-ClassName&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;win32_service&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Select&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;State&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;PathName&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Where-Object&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;$PSItem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;State&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-eq&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Running&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I immediately notice a custom service named &lt;strong&gt;ResumeService1&lt;/strong&gt; with an unquoted service path of &lt;code&gt;C:\Program Files\nssm-2.24\win64\nssm.exe&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Unquoted-1.png&quot; alt=&quot;Post Exploit Enum 1&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;If my current user has write access to the &lt;code&gt;C:\&lt;/code&gt; directory, I could place a malicious executable there, restart the service, and send myself an NT Authority\SYSTEM shell. Unfortunately, my user cannot create files in that directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Unquoted-2.png&quot; alt=&quot;Post Exploit Enum 2&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;I didn&amp;#39;t find anything noteworthy my current user&amp;#39;s home directory, nor do I have any interesting privileges. I decided to enumerate all of the users on the target and noticed an &lt;strong&gt;apache&lt;/strong&gt; username. What if I have write access to the Apache root directory?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-1.png&quot; alt=&quot;Post Exploit Enum Apache 1&quot;&gt;&lt;/p&gt;
+
+&lt;h2&gt;Lateral Movement&lt;/h2&gt;
+
+&lt;p&gt;To find the root directory, I remembered from my &lt;code&gt;gobuster&lt;/code&gt; enumeration that I found a file called &lt;code&gt;upload.php&lt;/code&gt;. I can search for that filename to locate the root directory of the Apache web server. Once I discovered the &lt;code&gt;C:\xampp\htdocs\&lt;/code&gt; root directory, I attempted to write a text file to that location and it worked! I further verified this by curling the new web server file from Kali.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;n&quot;&gt;Get-ChildItem&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;C:\&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Filter&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;upload.php&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Recurse&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-File&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-ErrorAction&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;SilentlyContinue&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;$PSItem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FullName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-2.png&quot; alt=&quot;Post Exploit Enum Apache 2&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-3.png&quot; alt=&quot;Post Exploit Enum Apache 3&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;ve confirmed my write access on the Apache web server. Now I just need to write a PHP backdoor file instead of a text file. I&amp;#39;ll host the &lt;code&gt;simple-backdoor.php&lt;/code&gt; file from Kali using a Python HTTP server and download the file using the &lt;code&gt;Invoke-WebRequest&lt;/code&gt; Cmdlet.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-4.png&quot; alt=&quot;Post Exploit Enum Apache 4&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-5.png&quot; alt=&quot;Post Exploit Enum Apache 5&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;I now have code execution as &lt;strong&gt;apache&lt;/strong&gt;!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-6.png&quot; alt=&quot;Post Exploit Enum Apache 6&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Following the same form as the &lt;code&gt;.odt&lt;/code&gt; file macro, I&amp;#39;ll once again lean on &lt;code&gt;msfvenom&lt;/code&gt; to generate a PowerShell Base64-encoded reverse shell command to avoid URL encoding shenanigans. I can&amp;#39;t avoid URL encoding entirely, I&amp;#39;ll need to replace the spaces in my command with either &lt;code&gt;%20&lt;/code&gt; or &lt;code&gt;+&lt;/code&gt; characters to make the URL valid. If you are entering this command from the browser, this step will be automated. Don&amp;#39;t forget to setup the &lt;code&gt;nc&lt;/code&gt; listener on Kali before executing the command!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-7.png&quot; alt=&quot;Post Exploit Enum Apache 7&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-8.png&quot; alt=&quot;Post Exploit Enum Apache 8&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;I now have a shell as the &lt;strong&gt;apache&lt;/strong&gt; user.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-9.png&quot; alt=&quot;Post Exploit Enum Apache 9&quot;&gt;&lt;/p&gt;
+
+&lt;h1&gt;Privilege Escalation&lt;/h1&gt;
 </description>
         <pubDate>Mon, 28 Jul 2025 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2025/PG-Craft-Walkthrough/</link>

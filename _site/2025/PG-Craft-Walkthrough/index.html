@@ -77,13 +77,106 @@
 
 <p><img src="/assets/img/PG-Craft-Walkthrough_Craft-Upload-BurpSuite.png" alt="Craft Upload BurpSuite"></p>
 
-<h1>.odt File Research &amp; Creation</h1>
+<h2>.odt File Research &amp; Creation</h2>
 
-<p>Having created malicous Office 365 macros in the past, I assume LibreOffice may have similar functions that can be abused. I did some Googling and found this <a href="https://medium.com/@akshay__0/initial-access-via-malicious-odt-macro-ac7f5d15796d">Medium article</a> detailing malicious ODT file macros. The syntax for this macro is targeted for Linux machines, so the script itself is not useful to me, but the instructions for creating a LibreOffice macro are still of value. Knowing this, I searched for Microsoft VBA Macro reverse shell scripts and found another <a href="https://medium.com/@mavrogiannispan/phishing-2-0-9f49654de4a6">Medium Article</a> written by Mavrogiannis Panagiotis that contained proper syntax for Windows targets. First, I need to create a malicious document in LibreOffice. Select <strong>File &gt; New &gt; Text Document</strong> to create a new file. Once the document window opens, navigate to <strong>File &gt; Save As..</strong> and save the file, ensuring the <code>.odt</code> extension is specified.</p>
+<p>Having created malicous Office 365 macros in the past, I assume LibreOffice may have similar functions that can be abused. I did some Googling and found this <a href="https://medium.com/@akshay__0/initial-access-via-malicious-odt-macro-ac7f5d15796d">Medium article</a> detailing malicious ODT file macros. The syntax for this macro is targeted for Linux machines, so the script itself is not useful to me, but the instructions for creating a LibreOffice macro are still of value.</p>
+
+<p>Knowing this, I searched for Microsoft VBA Macro reverse shell scripts and found another <a href="https://medium.com/@mavrogiannispan/phishing-2-0-9f49654de4a6">Medium Article</a> written by Mavrogiannis Panagiotis that contained proper syntax for Windows targets. First, I need to create a malicious document in LibreOffice. Select <strong>File &gt; New &gt; Text Document</strong> to create a new file. Once the document window opens, navigate to <strong>File &gt; Save As..</strong> and save the file, ensuring the <code>.odt</code> extension is specified.</p>
 
 <p><img src="/assets/img/PG-Craft-Walkthrough_Odt-Step-1.png" alt="Odt Step 1"></p>
 
 <p><img src="/assets/img/PG-Craft-Walkthrough_Odt-Step-2.png" alt="Odt Step 2"></p>
+
+<p>Next, I will select <strong>Tools &gt; Macros &gt; Organize Macros &gt; Basic...</strong> to open up the <em>BASIC Macros</em> window. In the window, select the name of the saved document and then click the <strong>New</strong> button on the right-hand side to create a new module. In the pop-up window, provide a name for the module and click <strong>Ok</strong>.</p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_Odt-Step-3.png" alt="Odt Step 3"></p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_Odt-Step-4.png" alt="Odt Step 4"></p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_Odt-Step-5.png" alt="Odt Step 5"></p>
+
+<p>Now I can copy the script structure from the Medium article and paste it into the macro window.</p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_Odt-Step-6.png" alt="Odt Step 6"></p>
+
+<p>You may have noticed that I left out the entire string from the <code>objshell.Run</code> line. I am slightly modifying the VBA script example by generating a PowerShell Base64-encoded reverse shell command using <code>msfvenom</code>. I prefer this format because I don&#39;t have to fiddle with quotations within quotations which can be a headache at times. I&#39;ll copy everything starting from <code>powershell.exe</code> and paste into the empty double quotes in my script.</p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_Odt-Step-7.png" alt="Odt Step 7"></p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_Odt-Step-8.png" alt="Odt Step 8"></p>
+
+<p>The last step is to tie this macro to an event. I want this script to execute immediately after the document is open. To do this, I&#39;ll navigate to <strong>Tools &gt; Customize</strong>. Inside the Customize window, click the  <strong>Events</strong> button, select the <strong>Open Document</strong> event, and click <strong>Macro...</strong> on the right-hand side.</p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_Odt-Step-9.png" alt="Odt Step 9"></p>
+
+<p>Expand the document tree until you find the macro name and select it. Click <strong>Ok</strong> on the Macro Selector and Customize windows. Once in the document window, press <code>Ctrl + S</code> one more time for good measure and close LibreOffice.</p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_Odt-Step-10.png" alt="Odt Step 10"></p>
+
+<h1>Initial Access</h1>
+
+<p>Now it&#39;s time to upload the <code>.odt</code> file. Before I do that, I first need to setup a listener on Kali to catch the reverse shell connection. I am prepending my <code>nc</code> command with <code>rlwrap</code> which will help stabilize the Windows shell. Browse out to the root web directory again and select the saved <code>.odt</code> file and select the <strong>Upload</strong> button.</p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_InitialAccess-Step-1.png" alt="InitialAccess Step 1"></p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_InitialAccess-Step-2.png" alt="InitialAccess Step 2"></p>
+
+<p>After a few seconds pass, a reverse shell is received from the target!</p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_InitialAccess-Step-3.png" alt="InitiAccess Step 3"></p>
+
+<h1>Post-Exploitation Enumeration</h1>
+
+<p>Let&#39;s see if there are any flags we can access as <code>thecybergeek</code>. This is a PowerShell one-liner that I use to scrape flag content in the <code>C:\Users\</code> directory.</p>
+<div class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="n">Get-ChildItem</span><span class="w"> </span><span class="nt">-Path</span><span class="w"> </span><span class="nx">C:\Users\</span><span class="o">*</span><span class="w"> </span><span class="nt">-Include</span><span class="w"> </span><span class="s2">"local.txt"</span><span class="p">,</span><span class="s2">"proof.txt"</span><span class="w"> </span><span class="nt">-Recurse</span><span class="w"> </span><span class="nt">-ErrorAction</span><span class="w"> </span><span class="nx">SilentlyContinue</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">{</span><span class="n">Write-Host</span><span class="w"> </span><span class="s2">"[!] </span><span class="si">$(</span><span class="bp">$PSItem</span><span class="o">.</span><span class="nf">FullName</span><span class="si">)</span><span class="se">`r`n`t</span><span class="si">$(</span><span class="n">Get-Content</span><span class="w"> </span><span class="bp">$PSItem</span><span class="o">.</span><span class="nf">FullName</span><span class="p">)</span><span class="s2">"}
+</span></code></pre></div>
+<p><img src="/assets/img/PG-Craft-Walkthrough_Local.png" alt="Local"></p>
+
+<p>Local is now captured! Moving onto further enumeration, I&#39;ll start with examining service information to check for any unquoted service paths using another PowerShell one-liner.</p>
+<div class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="n">Get-CimInstance</span><span class="w"> </span><span class="nt">-ClassName</span><span class="w"> </span><span class="nx">win32_service</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Select</span><span class="w"> </span><span class="nx">Name</span><span class="p">,</span><span class="nx">State</span><span class="p">,</span><span class="nx">PathName</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Where-Object</span><span class="w"> </span><span class="p">{</span><span class="bp">$PSItem</span><span class="o">.</span><span class="nf">State</span><span class="w"> </span><span class="o">-eq</span><span class="w"> </span><span class="s1">'Running'</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>I immediately notice a custom service named <strong>ResumeService1</strong> with an unquoted service path of <code>C:\Program Files\nssm-2.24\win64\nssm.exe</code>.</p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Unquoted-1.png" alt="Post Exploit Enum 1"></p>
+
+<p>If my current user has write access to the <code>C:\</code> directory, I could place a malicious executable there, restart the service, and send myself an NT Authority\SYSTEM shell. Unfortunately, my user cannot create files in that directory.</p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Unquoted-2.png" alt="Post Exploit Enum 2"></p>
+
+<p>I didn&#39;t find anything noteworthy my current user&#39;s home directory, nor do I have any interesting privileges. I decided to enumerate all of the users on the target and noticed an <strong>apache</strong> username. What if I have write access to the Apache root directory?</p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-1.png" alt="Post Exploit Enum Apache 1"></p>
+
+<h2>Lateral Movement</h2>
+
+<p>To find the root directory, I remembered from my <code>gobuster</code> enumeration that I found a file called <code>upload.php</code>. I can search for that filename to locate the root directory of the Apache web server. Once I discovered the <code>C:\xampp\htdocs\</code> root directory, I attempted to write a text file to that location and it worked! I further verified this by curling the new web server file from Kali.</p>
+<div class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="n">Get-ChildItem</span><span class="w"> </span><span class="nt">-Path</span><span class="w"> </span><span class="nx">C:\</span><span class="w"> </span><span class="nt">-Filter</span><span class="w"> </span><span class="s2">"upload.php"</span><span class="w"> </span><span class="nt">-Recurse</span><span class="w"> </span><span class="nt">-File</span><span class="w"> </span><span class="nt">-ErrorAction</span><span class="w"> </span><span class="nx">SilentlyContinue</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">{</span><span class="bp">$PSItem</span><span class="o">.</span><span class="nf">FullName</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><img src="/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-2.png" alt="Post Exploit Enum Apache 2"></p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-3.png" alt="Post Exploit Enum Apache 3"></p>
+
+<p>I&#39;ve confirmed my write access on the Apache web server. Now I just need to write a PHP backdoor file instead of a text file. I&#39;ll host the <code>simple-backdoor.php</code> file from Kali using a Python HTTP server and download the file using the <code>Invoke-WebRequest</code> Cmdlet.</p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-4.png" alt="Post Exploit Enum Apache 4"></p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-5.png" alt="Post Exploit Enum Apache 5"></p>
+
+<p>I now have code execution as <strong>apache</strong>!</p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-6.png" alt="Post Exploit Enum Apache 6"></p>
+
+<p>Following the same form as the <code>.odt</code> file macro, I&#39;ll once again lean on <code>msfvenom</code> to generate a PowerShell Base64-encoded reverse shell command to avoid URL encoding shenanigans. I can&#39;t avoid URL encoding entirely, I&#39;ll need to replace the spaces in my command with either <code>%20</code> or <code>+</code> characters to make the URL valid. If you are entering this command from the browser, this step will be automated. Don&#39;t forget to setup the <code>nc</code> listener on Kali before executing the command!</p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-7.png" alt="Post Exploit Enum Apache 7"></p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-8.png" alt="Post Exploit Enum Apache 8"></p>
+
+<p>I now have a shell as the <strong>apache</strong> user.</p>
+
+<p><img src="/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-9.png" alt="Post Exploit Enum Apache 9"></p>
+
+<h1>Privilege Escalation</h1>
 
   </article>
 </div>
