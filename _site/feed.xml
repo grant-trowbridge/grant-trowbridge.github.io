@@ -6,13 +6,13 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 29 Jul 2025 21:20:23 -0400</pubDate>
-    <lastBuildDate>Tue, 29 Jul 2025 21:20:23 -0400</lastBuildDate>
+    <pubDate>Wed, 30 Jul 2025 21:10:31 -0400</pubDate>
+    <lastBuildDate>Wed, 30 Jul 2025 21:10:31 -0400</lastBuildDate>
     <generator>Jekyll v3.9.4</generator>
     
       <item>
         <title>Proving Grounds Craft: Walkthrough</title>
-        <description>&lt;p&gt;Today&amp;#39;s CTF blog will cover Proving Grounds machine Craft.&lt;/p&gt;
+        <description>&lt;p&gt;This post provides a step-by-step walkthrough of the Proving Grounds machine Craft. I decided to write up the entire machine because it is a great example of how enabled content in documents can be weaponized against an end user. Ever wonder why you sometimes see a word doc banner saying macros have been disabled? This machine is the answer. As always, for anyone working through the PG practice machines, spoilers are ahead!&lt;/p&gt;
 
 &lt;h1&gt;Enumeration&lt;/h1&gt;
 
@@ -56,7 +56,7 @@
 
 &lt;h2&gt;.odt File Research &amp;amp; Creation&lt;/h2&gt;
 
-&lt;p&gt;Having created malicous Office 365 macros in the past, I assume LibreOffice may have similar functions that can be abused. I did some Googling and found this &lt;a href=&quot;https://medium.com/@akshay__0/initial-access-via-malicious-odt-macro-ac7f5d15796d&quot;&gt;Medium article&lt;/a&gt; detailing malicious ODT file macros. The syntax for this macro is targeted for Linux machines, so the script itself is not useful to me, but the instructions for creating a LibreOffice macro are still of value.&lt;/p&gt;
+&lt;p&gt;Having created malicous Office 365 macros in the past, I assume LibreOffice may have similar functions that can be abused. I did some Googling and found this &lt;a href=&quot;https://medium.com/@akshay__0/initial-access-via-malicious-odt-macro-ac7f5d15796d&quot;&gt;Medium article&lt;/a&gt; detailing malicious &lt;code&gt;.odt&lt;/code&gt; file macros. The syntax for this macro is specific to Linux machines, so the script itself is not useful to me, but the instructions for creating a LibreOffice macro are still of value.&lt;/p&gt;
 
 &lt;p&gt;Knowing this, I searched for Microsoft VBA Macro reverse shell scripts and found another &lt;a href=&quot;https://medium.com/@mavrogiannispan/phishing-2-0-9f49654de4a6&quot;&gt;Medium Article&lt;/a&gt; written by Mavrogiannis Panagiotis that contained proper syntax for Windows targets. First, I need to create a malicious document in LibreOffice. Select &lt;strong&gt;File &amp;gt; New &amp;gt; Text Document&lt;/strong&gt; to create a new file. Once the document window opens, navigate to &lt;strong&gt;File &amp;gt; Save As..&lt;/strong&gt; and save the file, ensuring the &lt;code&gt;.odt&lt;/code&gt; extension is specified.&lt;/p&gt;
 
@@ -76,23 +76,25 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Odt-Step-6.png&quot; alt=&quot;Odt Step 6&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;You may have noticed that I left out the entire string from the &lt;code&gt;objshell.Run&lt;/code&gt; line. I am slightly modifying the VBA script example by generating a PowerShell Base64-encoded reverse shell command using &lt;code&gt;msfvenom&lt;/code&gt;. I prefer this format because I don&amp;#39;t have to fiddle with quotations within quotations which can be a headache at times. I&amp;#39;ll copy everything starting from &lt;code&gt;powershell.exe&lt;/code&gt; and paste into the empty double quotes in my script.&lt;/p&gt;
+&lt;p&gt;You may have noticed that I left out the entire string from the &lt;code&gt;objshell.Run&lt;/code&gt; line. I am slightly modifying the VBA script example by generating a PowerShell Base64-encoded reverse shell command using &lt;code&gt;msfvenom&lt;/code&gt;. I prefer this format because I don&amp;#39;t have to fiddle with quotations within quotations, which can be a headache at times. I&amp;#39;ll copy everything starting from &lt;code&gt;powershell.exe&lt;/code&gt; and paste into the empty double quotes in my script.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Odt-Step-7.png&quot; alt=&quot;Odt Step 7&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Odt-Step-8.png&quot; alt=&quot;Odt Step 8&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;The last step is to tie this macro to an event. I want this script to execute immediately after the document is open. To do this, I&amp;#39;ll navigate to &lt;strong&gt;Tools &amp;gt; Customize&lt;/strong&gt;. Inside the Customize window, click the  &lt;strong&gt;Events&lt;/strong&gt; button, select the &lt;strong&gt;Open Document&lt;/strong&gt; event, and click &lt;strong&gt;Macro...&lt;/strong&gt; on the right-hand side.&lt;/p&gt;
+&lt;p&gt;The last step is to tie this macro to an event. I want this script to execute immediately after the document is opened. To do this, I&amp;#39;ll navigate to &lt;strong&gt;Tools &amp;gt; Customize&lt;/strong&gt;. Inside the &lt;em&gt;Customize&lt;/em&gt; window, click the  &lt;strong&gt;Events&lt;/strong&gt; button, select the &lt;strong&gt;Open Document&lt;/strong&gt; event, and click &lt;strong&gt;Macro...&lt;/strong&gt; on the right-hand side.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Odt-Step-9.png&quot; alt=&quot;Odt Step 9&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;Expand the document tree until you find the macro name and select it. Click &lt;strong&gt;Ok&lt;/strong&gt; on the Macro Selector and Customize windows. Once in the document window, press &lt;code&gt;Ctrl + S&lt;/code&gt; one more time for good measure and close LibreOffice.&lt;/p&gt;
+&lt;p&gt;Expand the document tree until you find the macro name and select it. Click &lt;strong&gt;Ok&lt;/strong&gt; on the &lt;em&gt;Macro Selector&lt;/em&gt; and &lt;em&gt;Customize&lt;/em&gt; windows. Once back in the document window, press &lt;code&gt;Ctrl + S&lt;/code&gt; one more time for good measure and close LibreOffice.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Odt-Step-10.png&quot; alt=&quot;Odt Step 10&quot;&gt;&lt;/p&gt;
 
 &lt;h1&gt;Initial Access&lt;/h1&gt;
 
-&lt;p&gt;Now it&amp;#39;s time to upload the &lt;code&gt;.odt&lt;/code&gt; file. Before I do that, I first need to setup a listener on Kali to catch the reverse shell connection. I am prepending my &lt;code&gt;nc&lt;/code&gt; command with &lt;code&gt;rlwrap&lt;/code&gt; which will help stabilize the Windows shell. Browse out to the root web directory again and select the saved &lt;code&gt;.odt&lt;/code&gt; file and select the &lt;strong&gt;Upload&lt;/strong&gt; button.&lt;/p&gt;
+&lt;p&gt;Now it&amp;#39;s time to upload the &lt;code&gt;.odt&lt;/code&gt; file. Before I do that, I first need to setup a listener on Kali to catch the reverse shell connection. I am prepending my &lt;code&gt;nc&lt;/code&gt; command with &lt;code&gt;rlwrap&lt;/code&gt; which will help stabilize the Windows shell.&lt;/p&gt;
+
+&lt;p&gt;Browse out to the root web directory again, select the saved &lt;code&gt;.odt&lt;/code&gt; file, and click the &lt;strong&gt;Upload&lt;/strong&gt; button.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_InitialAccess-Step-1.png&quot; alt=&quot;InitialAccess Step 1&quot;&gt;&lt;/p&gt;
 
@@ -104,7 +106,7 @@
 
 &lt;h1&gt;Post-Exploitation Enumeration&lt;/h1&gt;
 
-&lt;p&gt;Let&amp;#39;s see if there are any flags we can access as &lt;code&gt;thecybergeek&lt;/code&gt;. This is a PowerShell one-liner that I use to scrape flag content in the &lt;code&gt;C:\Users\&lt;/code&gt; directory.&lt;/p&gt;
+&lt;p&gt;Let&amp;#39;s see if there are any flags we can access as &lt;strong&gt;thecybergeek&lt;/strong&gt;. This is a PowerShell one-liner that I use to scrape flag content in the &lt;code&gt;C:\Users\&lt;/code&gt; directory.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;n&quot;&gt;Get-ChildItem&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;C:\Users\&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Include&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;local.txt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;proof.txt&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Recurse&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-ErrorAction&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;SilentlyContinue&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Write-Host&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;[!] &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;$PSItem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FullName&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;`r`n`t&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Get-Content&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;$PSItem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FullName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;}
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Local.png&quot; alt=&quot;Local&quot;&gt;&lt;/p&gt;
@@ -116,7 +118,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Unquoted-1.png&quot; alt=&quot;Post Exploit Enum 1&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;If my current user has write access to the &lt;code&gt;C:\&lt;/code&gt; directory, I could place a malicious executable there, restart the service, and send myself an NT Authority\SYSTEM shell. Unfortunately, my user cannot create files in that directory.&lt;/p&gt;
+&lt;p&gt;If my current user has write access to the &lt;code&gt;C:\&lt;/code&gt; directory, I could place a malicious executable there, restart the service, and send myself an NT Authority\SYSTEM shell (assuming it is running with SYSTEM privileges). Unfortunately, my user cannot create files in that directory.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Unquoted-2.png&quot; alt=&quot;Post Exploit Enum 2&quot;&gt;&lt;/p&gt;
 
@@ -154,8 +156,37 @@
 &lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-9.png&quot; alt=&quot;Post Exploit Enum Apache 9&quot;&gt;&lt;/p&gt;
 
 &lt;h1&gt;Privilege Escalation&lt;/h1&gt;
+
+&lt;p&gt;Full disclosure, I hit a mental roadblock on privilege escalation for a good while. The first rabbit hole I fell down was the &lt;code&gt;C:\output.txt&lt;/code&gt; file produced by a PowerShell script using the &lt;code&gt;Start-Transcript&lt;/code&gt; Cmdlet. In the generated transcription banner, it references the PowerShell script used, which was &lt;code&gt;C:\freezeScript\win10.ps1&lt;/code&gt;. I created a PowerShell reverse shell script under the same path and name, hoping this was some sort of scheduled task, but I never received a shell.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_PrivEsc-Output-File.png&quot; alt=&quot;Priv Esc Output File&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;The next rabbit hole was focusing on &lt;strong&gt;apache&amp;#39;s&lt;/strong&gt; Full Control permissions on the Apache service itself, &lt;code&gt;C:\xampp\apache\bin\httpd.exe&lt;/code&gt;. I had the same thought process from when I noticed the &lt;code&gt;ResumeService1&lt;/code&gt; service, only this time it wasn&amp;#39;t related to an unquoted path, but the ability overwrite the service executable itself. Then I realized I couldn&amp;#39;t overwrite a file currently being used by another process. Simple, I can just stop the service right?&lt;/p&gt;
+
+&lt;p&gt;Nope. My user doesn&amp;#39;t have the required permissions to stop the service.&lt;/p&gt;
+
+&lt;p&gt;Even if I could, I would likely cut off my current access because this shell resulted from a PHP backdoor located on the web server, and is therefore a child process of that service. This means there is a chance that the child process would also be killed, though there are exceptions in Windows. Regardless, overwriting the Apache executable is not an option.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_PrivEsc-Apache-Service-1.png&quot; alt=&quot;Priv Esc Apache Service 1&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_PrivEsc-Apache-Service-2.png&quot; alt=&quot;Priv Esc Apache Service 2&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Well I&amp;#39;ve laterally moved to a new user, what if I have new permissions? I listed them with &lt;code&gt;whoami /priv&lt;/code&gt; and immediately noticed the enabled Impersonate privilege. This privilege is likely vulnerable to the Potato family of exploits, RogueWinRM, or &lt;a href=&quot;https://github.com/itm4n/PrintSpoofer&quot;&gt;PrintSpoofer&lt;/a&gt;. I chose PrintSpoofer because the readme clearly states it is applicable to Windows Server 2019, which matches the target OS version.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_PrivEsc-Impersonate.png&quot; alt=&quot;PrivEsc Impersonate&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;After downloading the PrintSpoofer exploit onto Kali, I served it using the same Python HTTP server as before and downloaded the executable onto the target with the &lt;code&gt;Invoke-WebRequest&lt;/code&gt; Cmdlet. Once downloaded, all that is left to do is to execute it with the following flags:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-i&lt;/code&gt;: Interact with the process in the current shell&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-c&lt;/code&gt;: Command to execute&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;With a SYSTEM shell, I can now capture the proof flag and consider this machine rooted!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/PG-Craft-Walkthrough_Proof.png&quot; alt=&quot;PrivEsc PrintSpoofer&quot;&gt;&lt;/p&gt;
 </description>
-        <pubDate>Mon, 28 Jul 2025 00:00:00 -0400</pubDate>
+        <pubDate>Wed, 30 Jul 2025 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2025/PG-Craft-Walkthrough/</link>
         <guid isPermaLink="true">http://localhost:4000/2025/PG-Craft-Walkthrough/</guid>
         

@@ -2,7 +2,7 @@
 layout: post
 title: "Proving Grounds Craft: Walkthrough"
 ---
-Today's CTF blog will cover Proving Grounds machine Craft.
+This post provides a step-by-step walkthrough of the Proving Grounds machine Craft. I decided to write up the entire machine because it is a great example of how enabled content in documents can be weaponized against an end user. Ever wonder why you sometimes see a word doc banner saying macros have been disabled? This machine is the answer. As always, for anyone working through the PG practice machines, spoilers are ahead!
 
 # Enumeration
 
@@ -46,7 +46,7 @@ Now it's time to enlist the help of BurpSuite to modify the POST request. I spen
 
 ## .odt File Research & Creation
 
-Having created malicous Office 365 macros in the past, I assume LibreOffice may have similar functions that can be abused. I did some Googling and found this [Medium article](https://medium.com/@akshay__0/initial-access-via-malicious-odt-macro-ac7f5d15796d) detailing malicious ODT file macros. The syntax for this macro is targeted for Linux machines, so the script itself is not useful to me, but the instructions for creating a LibreOffice macro are still of value.
+Having created malicous Office 365 macros in the past, I assume LibreOffice may have similar functions that can be abused. I did some Googling and found this [Medium article](https://medium.com/@akshay__0/initial-access-via-malicious-odt-macro-ac7f5d15796d) detailing malicious `.odt` file macros. The syntax for this macro is specific to Linux machines, so the script itself is not useful to me, but the instructions for creating a LibreOffice macro are still of value.
 
 Knowing this, I searched for Microsoft VBA Macro reverse shell scripts and found another [Medium Article](https://medium.com/@mavrogiannispan/phishing-2-0-9f49654de4a6) written by Mavrogiannis Panagiotis that contained proper syntax for Windows targets. First, I need to create a malicious document in LibreOffice. Select **File > New > Text Document** to create a new file. Once the document window opens, navigate to **File > Save As..** and save the file, ensuring the `.odt` extension is specified.
 
@@ -66,23 +66,25 @@ Now I can copy the script structure from the Medium article and paste it into th
 
 ![Odt Step 6](/assets/img/PG-Craft-Walkthrough_Odt-Step-6.png)
 
-You may have noticed that I left out the entire string from the `objshell.Run` line. I am slightly modifying the VBA script example by generating a PowerShell Base64-encoded reverse shell command using `msfvenom`. I prefer this format because I don't have to fiddle with quotations within quotations which can be a headache at times. I'll copy everything starting from `powershell.exe` and paste into the empty double quotes in my script.
+You may have noticed that I left out the entire string from the `objshell.Run` line. I am slightly modifying the VBA script example by generating a PowerShell Base64-encoded reverse shell command using `msfvenom`. I prefer this format because I don't have to fiddle with quotations within quotations, which can be a headache at times. I'll copy everything starting from `powershell.exe` and paste into the empty double quotes in my script.
 
 ![Odt Step 7](/assets/img/PG-Craft-Walkthrough_Odt-Step-7.png)
 
 ![Odt Step 8](/assets/img/PG-Craft-Walkthrough_Odt-Step-8.png)
 
-The last step is to tie this macro to an event. I want this script to execute immediately after the document is open. To do this, I'll navigate to **Tools > Customize**. Inside the Customize window, click the  **Events** button, select the **Open Document** event, and click **Macro...** on the right-hand side.
+The last step is to tie this macro to an event. I want this script to execute immediately after the document is opened. To do this, I'll navigate to **Tools > Customize**. Inside the *Customize* window, click the  **Events** button, select the **Open Document** event, and click **Macro...** on the right-hand side.
 
 ![Odt Step 9](/assets/img/PG-Craft-Walkthrough_Odt-Step-9.png)
 
-Expand the document tree until you find the macro name and select it. Click **Ok** on the Macro Selector and Customize windows. Once in the document window, press `Ctrl + S` one more time for good measure and close LibreOffice.
+Expand the document tree until you find the macro name and select it. Click **Ok** on the *Macro Selector* and *Customize* windows. Once back in the document window, press `Ctrl + S` one more time for good measure and close LibreOffice.
 
 ![Odt Step 10](/assets/img/PG-Craft-Walkthrough_Odt-Step-10.png)
 
 # Initial Access
 
-Now it's time to upload the `.odt` file. Before I do that, I first need to setup a listener on Kali to catch the reverse shell connection. I am prepending my `nc` command with `rlwrap` which will help stabilize the Windows shell. Browse out to the root web directory again and select the saved `.odt` file and select the **Upload** button.
+Now it's time to upload the `.odt` file. Before I do that, I first need to setup a listener on Kali to catch the reverse shell connection. I am prepending my `nc` command with `rlwrap` which will help stabilize the Windows shell.
+
+Browse out to the root web directory again, select the saved `.odt` file, and click the **Upload** button.
 
 ![InitialAccess Step 1](/assets/img/PG-Craft-Walkthrough_InitialAccess-Step-1.png)
 
@@ -94,7 +96,7 @@ After a few seconds pass, a reverse shell is received from the target!
 
 # Post-Exploitation Enumeration
 
-Let's see if there are any flags we can access as `thecybergeek`. This is a PowerShell one-liner that I use to scrape flag content in the `C:\Users\` directory.
+Let's see if there are any flags we can access as **thecybergeek**. This is a PowerShell one-liner that I use to scrape flag content in the `C:\Users\` directory.
 
 ```powershell
 Get-ChildItem -Path C:\Users\* -Include "local.txt","proof.txt" -Recurse -ErrorAction SilentlyContinue | % {Write-Host "[!] $($PSItem.FullName)`r`n`t$(Get-Content $PSItem.FullName)"}
@@ -112,7 +114,7 @@ I immediately notice a custom service named **ResumeService1** with an unquoted 
 
 ![Post Exploit Enum 1](/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Unquoted-1.png)
 
-If my current user has write access to the `C:\` directory, I could place a malicious executable there, restart the service, and send myself an NT Authority\SYSTEM shell. Unfortunately, my user cannot create files in that directory.
+If my current user has write access to the `C:\` directory, I could place a malicious executable there, restart the service, and send myself an NT Authority\SYSTEM shell (assuming it is running with SYSTEM privileges). Unfortunately, my user cannot create files in that directory.
 
 ![Post Exploit Enum 2](/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Unquoted-2.png)
 
@@ -153,3 +155,30 @@ I now have a shell as the **apache** user.
 ![Post Exploit Enum Apache 9](/assets/img/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-9.png)
 
 # Privilege Escalation
+
+Full disclosure, I hit a mental roadblock on privilege escalation for a good while. The first rabbit hole I fell down was the `C:\output.txt` file produced by a PowerShell script using the `Start-Transcript` Cmdlet. In the generated transcription banner, it references the PowerShell script used, which was `C:\freezeScript\win10.ps1`. I created a PowerShell reverse shell script under the same path and name, hoping this was some sort of scheduled task, but I never received a shell.
+
+![Priv Esc Output File](/assets/img/PG-Craft-Walkthrough_PrivEsc-Output-File.png)
+
+The next rabbit hole was focusing on **apache's** Full Control permissions on the Apache service itself, `C:\xampp\apache\bin\httpd.exe`. I had the same thought process from when I noticed the `ResumeService1` service, only this time it wasn't related to an unquoted path, but the ability overwrite the service executable itself. Then I realized I couldn't overwrite a file currently being used by another process. Simple, I can just stop the service right?
+
+Nope. My user doesn't have the required permissions to stop the service.
+
+Even if I could, I would likely cut off my current access because this shell resulted from a PHP backdoor located on the web server, and is therefore a child process of that service. This means there is a chance that the child process would also be killed, though there are exceptions in Windows. Regardless, overwriting the Apache executable is not an option.
+
+![Priv Esc Apache Service 1](/assets/img/PG-Craft-Walkthrough_PrivEsc-Apache-Service-1.png)
+
+![Priv Esc Apache Service 2](/assets/img/PG-Craft-Walkthrough_PrivEsc-Apache-Service-2.png)
+
+Well I've laterally moved to a new user, what if I have new permissions? I listed them with `whoami /priv` and immediately noticed the enabled Impersonate privilege. This privilege is likely vulnerable to the Potato family of exploits, RogueWinRM, or [PrintSpoofer](https://github.com/itm4n/PrintSpoofer). I chose PrintSpoofer because the readme clearly states it is applicable to Windows Server 2019, which matches the target OS version.
+
+![PrivEsc Impersonate](/assets/img/PG-Craft-Walkthrough_PrivEsc-Impersonate.png)
+
+After downloading the PrintSpoofer exploit onto Kali, I served it using the same Python HTTP server as before and downloaded the executable onto the target with the `Invoke-WebRequest` Cmdlet. Once downloaded, all that is left to do is to execute it with the following flags:
+
+- `-i`: Interact with the process in the current shell
+- `-c`: Command to execute
+
+With a SYSTEM shell, I can now capture the proof flag and consider this machine rooted!
+
+![PrivEsc PrintSpoofer](/assets/img/PG-Craft-Walkthrough_Proof.png)
