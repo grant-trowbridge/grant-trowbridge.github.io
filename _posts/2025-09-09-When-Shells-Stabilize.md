@@ -19,7 +19,7 @@ Host the file on your attack machine with `python3 -m http.server 80`.
 ┌──(kali㉿kali)-[~/Documents/MyTools/ConPtyShell]
 └─$ ls   
 Invoke-ConPtyShell.ps1
-                                                                                                                                                                                                                                            
+                                                                                                                                                                                      
 ┌──(kali㉿kali)-[~/Documents/MyTools/ConPtyShell]
 └─$ python3 -m http.server 80  
 Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
