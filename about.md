@@ -8,8 +8,9 @@ I am a Cybersecurity Engineer with 3 years of experience in defense contracting.
 
 ### Certifications
 
-- CompTIA Security+
+- Offensive Security Certified Professional (OSCP)
 - TCM Security Practical Junior Penetration Tester (PJPT)
+- CompTIA Security+
 
 ### Contact me
 

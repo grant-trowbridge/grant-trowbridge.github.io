@@ -21,4 +21,22 @@ I recall completing the PDF entirely about one month before graduation and spent
 
 ### Attempt #1
 
-Since I had no idea what to expect, I spent the entire night staring at the ceiling with my mind racing. I considered all possibilities and imagined every topic I felt underprepared for appearing on the exam. What if HTTP is blocked on a machine and I have to transfer files another way? What if I have to exploit blind SQLi? etc, etc. Needless to say I was wound tight.
+Since I had no idea what to expect, I spent the entire night staring at the ceiling with my mind racing. I considered all possibilities and imagined every topic I felt underprepared for appearing on the exam. What if HTTP is blocked on a machine and I have to transfer files another way? What if I have to exploit blind SQLi? etc, etc. Needless to say I was wound tight. After grabbing breakfast, I connected to the exam VPN, followed all prerequisite steps, and was off to the races. I decided to focus on Active Directory first, which at the time did not have assumed breach credentials. I actually managed to gain an initial foothold, and then escalated privileges to spawn a system shell on the Windows target! I don't recall how long this took, but I can assure you it wasn't impressive. I went back through my notes and saw the next step was to dump credentials. I transferred the necessary tools to the target, dumped hashes, but I wasn't able to find credentials that could provide access to the next machine in the AD network. What was I missing??
+
+I spent the rest of the exam toiling on the Windows machine, retracing my steps and looking for something, *anything* that may provide access to the next AD machine. I would occassionally review my `nmap` output from the other exam machines, did some basic enumeration, but never found any initial access. I felt defeated, and figured it was time to lay down and get some sleep.
+
+I woke up around 5AM to revisit the machines for one last ditch effort, but it was futile. I knew this attempt was a fail. I decided to not waste time on drafting a PDF report, and laid down to catch up on some sleep.
+
+#### The Silver Lining
+
+Remember how I said this certification would help set me up for a job? It did, but more specifically the *failure* set me up for my current job! Believe it or not, I was hired on to [Scientific Research Corporation](https://www.scires.com/) roughly one month after my first OSCP attempt. I didn't discover this until a year and a half in when I decided to ask my boss:
+
+> Why did you hire me?
+
+I was aware that my situation was unusual. It is rather uncommon for a new graduate with no prior DoD experience to be working Cyber Security right out of the gate. I can't remember what he said word for word, but I clearly remember him mentioning my OSCP exam attempt as something that separated me from the rest of the candidates. To his credit as well, he wanted to give a fresh graduate a chance in Cyber Security, which I am eternally grateful for. The lesson for the reader: 
+
+Your efforts, even in failure, do not go unnoticed. Hard work and dedication is always valued.
+
+### Attempt #2
+
+At this point, I began working full time at SRC starting on July 11th, 2022. OSCP was still in the back of my mind, but my full attention was now on learning the ins and outs of my new job. I knew I wasn't ready to give up, so I saved over a few months to purchase my PEN-200 Learn One subscription on December 28th, 2022.
