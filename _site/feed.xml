@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 25 Nov 2025 13:20:01 -0500</pubDate>
-    <lastBuildDate>Tue, 25 Nov 2025 13:20:01 -0500</lastBuildDate>
+    <pubDate>Mon, 01 Dec 2025 22:05:52 -0500</pubDate>
+    <lastBuildDate>Mon, 01 Dec 2025 22:05:52 -0500</lastBuildDate>
     <generator>Jekyll v3.9.4</generator>
     
       <item>
@@ -41,16 +41,35 @@
 &lt;p&gt;Remember how I said this certification would help set me up for a job? It did, but more specifically the &lt;em&gt;failure&lt;/em&gt; set me up for my current job! Believe it or not, I was hired on to &lt;a href=&quot;https://www.scires.com/&quot;&gt;Scientific Research Corporation&lt;/a&gt; roughly one month after my first OSCP attempt. I didn&amp;#39;t discover this until a year and a half in when I decided to ask my boss:&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;Why did you hire me?&lt;/p&gt;
+&lt;p&gt;Why &lt;em&gt;did&lt;/em&gt; you hire me?&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;I was aware that my situation was unusual. It is rather uncommon for a new graduate with no prior DoD experience to be working Cyber Security right out of the gate. I can&amp;#39;t remember what he said word for word, but I clearly remember him mentioning my OSCP exam attempt as something that separated me from the rest of the candidates. To his credit as well, he wanted to give a fresh graduate a chance in Cyber Security, which I am eternally grateful for. The lesson for the reader: &lt;/p&gt;
 
-&lt;p&gt;Your efforts, even in failure, do not go unnoticed. Hard work and dedication is always valued.&lt;/p&gt;
+&lt;p&gt;Your efforts, even in failure, do not go unnoticed. Take that leap of faith!&lt;/p&gt;
 
-&lt;h3&gt;Attempt #2&lt;/h3&gt;
+&lt;h3&gt;Attempt #2 (and #3)&lt;/h3&gt;
 
 &lt;p&gt;At this point, I began working full time at SRC starting on July 11th, 2022. OSCP was still in the back of my mind, but my full attention was now on learning the ins and outs of my new job. I knew I wasn&amp;#39;t ready to give up, so I saved over a few months to purchase my PEN-200 Learn One subscription on December 28th, 2022.&lt;/p&gt;
+
+&lt;p&gt;Starting off the New Year in 2023, I dove right back into the PDF course work. At this point, I knew what areas I needed to focus on. I understood the general concepts, but now was the time to get into the knitty gritty details of topics like web app enumeration, Windows and Linux privilege escalation methods, pivoting, etc. I also knew I had to be more organized, so I attempted to create my own cheat sheets in Google Docs, each covering the topics I felt I needed the most help with. In no particular order:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Active Directory&lt;/li&gt;
+&lt;li&gt;Client Side Attacks&lt;/li&gt;
+&lt;li&gt;Common Web Application Attacks&lt;/li&gt;
+&lt;li&gt;Information Gathering (General Enumeration &amp;amp; Scanning)&lt;/li&gt;
+&lt;li&gt;Introduction to Web Application Attacks (Noticing a pattern yet?)&lt;/li&gt;
+&lt;li&gt;Pivoting&lt;/li&gt;
+&lt;li&gt;Privilege Escalation (Windows &amp;amp; Linux Combined)&lt;/li&gt;
+&lt;li&gt;SQL Injection&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The formatting was basic. Create a descriptive header (and subheaders when necessary) where the body of the section contained a brief explanation of a command/concept, then display the example command directly below in bold font:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;This is a description about a command. The command does this. It is useful for blah blah blah:
+my-command
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;It&amp;#39;s not the worst format, but it certainly could&amp;#39;ve been improved upon. This obvious fact reared it&amp;#39;s ugly head during my Learn One lab practice. I&amp;#39;d like to say that this is where things started to turn around for me, but it was rare occurence for me to complete a lab machine on my own. I found myself having to rely on hints and assistance more often than not, but I was still picking up nuggets of information and realizing the gaps in my initial and post-exploit enumeration. It was also around this halfway point in 2023 that I began to learn about Markdown&amp;#39;s intuitive note taking advantages and incorporated &lt;a href=&quot;https://obsidian.md/&quot;&gt;Obsidian&lt;/a&gt; into my daily CTF/pentesting workflow.&lt;/p&gt;
 </description>
         <pubDate>Mon, 24 Nov 2025 00:00:00 -0500</pubDate>
         <link>http://localhost:4000/2025/Journey-to-OSCP/</link>

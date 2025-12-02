@@ -31,12 +31,32 @@ I woke up around 5AM to revisit the machines for one last ditch effort, but it w
 
 Remember how I said this certification would help set me up for a job? It did, but more specifically the *failure* set me up for my current job! Believe it or not, I was hired on to [Scientific Research Corporation](https://www.scires.com/) roughly one month after my first OSCP attempt. I didn't discover this until a year and a half in when I decided to ask my boss:
 
-> Why did you hire me?
+> Why *did* you hire me?
 
 I was aware that my situation was unusual. It is rather uncommon for a new graduate with no prior DoD experience to be working Cyber Security right out of the gate. I can't remember what he said word for word, but I clearly remember him mentioning my OSCP exam attempt as something that separated me from the rest of the candidates. To his credit as well, he wanted to give a fresh graduate a chance in Cyber Security, which I am eternally grateful for. The lesson for the reader: 
 
-Your efforts, even in failure, do not go unnoticed. Hard work and dedication is always valued.
+Your efforts, even in failure, do not go unnoticed. Take that leap of faith!
 
-### Attempt #2
+### Attempt #2 (and #3)
 
 At this point, I began working full time at SRC starting on July 11th, 2022. OSCP was still in the back of my mind, but my full attention was now on learning the ins and outs of my new job. I knew I wasn't ready to give up, so I saved over a few months to purchase my PEN-200 Learn One subscription on December 28th, 2022.
+
+Starting off the New Year in 2023, I dove right back into the PDF course work. At this point, I knew what areas I needed to focus on. I understood the general concepts, but now was the time to get into the knitty gritty details of topics like web app enumeration, Windows and Linux privilege escalation methods, pivoting, etc. I also knew I had to be more organized, so I attempted to create my own cheat sheets in Google Docs, each covering the topics I felt I needed the most help with. In no particular order:
+
+- Active Directory
+- Client Side Attacks
+- Common Web Application Attacks
+- Information Gathering (General Enumeration & Scanning)
+- Introduction to Web Application Attacks (Noticing a pattern yet?)
+- Pivoting
+- Privilege Escalation (Windows & Linux Combined)
+- SQL Injection
+
+The formatting was basic. Create a descriptive header (and subheaders when necessary) where the body of the section contained a brief explanation of a command/concept, then display the example command directly below in bold font:
+
+```
+This is a description about a command. The command does this. It is useful for blah blah blah:
+my-command
+```
+
+It's not the worst format, but it certainly could've been improved upon. This obvious fact reared it's ugly head during my Learn One lab practice. I'd like to say that this is where things started to turn around for me, but it was rare occurence for me to complete a lab machine on my own. I found myself having to rely on hints and assistance more often than not, but I was still picking up nuggets of information and realizing the gaps in my initial and post-exploit enumeration. It was also around this halfway point in 2023 that I began to learn about Markdown's intuitive note taking advantages and incorporated [Obsidian](https://obsidian.md/) into my daily CTF/pentesting workflow.
