@@ -3,7 +3,7 @@ layout: post
 title: "Journey to OSCP"
 ---
 
-Having recently passed my Offensive Security Certified Professional exam, I wanted to give back to the OffSec community and share my three year journey towards OSCP. You heard that right, not only *three* years, but passing on my *fourth* attempt as well. It hurts the ego to say that out loud, but I feel it is important to be fully transparent, especially for those out there considering beginning your own journey, or perhaps feel like giving up.
+Having recently passed my Offensive Security Certified Professional exam, I wanted to give back to the OffSec community and share my three year journey towards OSCP. You heard that right. Not only *three* years, but passing on my *fourth* attempt as well. It hurts the ego to say that out loud, but I feel it is important to be fully transparent, especially for those out there considering beginning your own journey, or perhaps feel like giving up.
 
 # In the Beninging
 
@@ -29,7 +29,7 @@ I woke up around 5AM to revisit the machines for one last ditch effort, but it w
 
 #### The Silver Lining
 
-Remember how I said this certification would help set me up for a job? It did, but more specifically the *failure* set me up for my current job! Believe it or not, I was hired on to [Scientific Research Corporation](https://www.scires.com/) roughly one month after my first OSCP attempt. I didn't discover this until a year and a half in when I decided to ask my boss:
+Let's fast forward to 2023 for a moment. Remember how I thought this certification would help set me up for a job? It did, but more specifically the *failure* set me up for my current job! Believe it or not, I was hired on to [Scientific Research Corporation](https://www.scires.com/) roughly one month after my first OSCP attempt. I didn't discover this until a year and a half in when I decided to ask my boss:
 
 > Why *did* you hire me?
 
@@ -37,7 +37,7 @@ I was aware that my situation was unusual. It is rather uncommon for a new gradu
 
 Your efforts, even in failure, do not go unnoticed. Take that leap of faith!
 
-### Attempt #2 (and #3)
+## Defense by Day, Offense by Night
 
 At this point, I began working full time at SRC starting on July 11th, 2022. OSCP was still in the back of my mind, but my full attention was now on learning the ins and outs of my new job. I knew I wasn't ready to give up, so I saved over a few months to purchase my PEN-200 Learn One subscription on December 28th, 2022.
 
@@ -55,8 +55,27 @@ Starting off the New Year in 2023, I dove right back into the PDF course work. A
 The formatting was basic. Create a descriptive header (and subheaders when necessary) where the body of the section contained a brief explanation of a command/concept, then display the example command directly below in bold font:
 
 ```
+This is a concept to help understand the following commands. This is why you should care:
+my-concept-diagram
+
 This is a description about a command. The command does this. It is useful for blah blah blah:
 my-command
 ```
 
-It's not the worst format, but it certainly could've been improved upon. This obvious fact reared it's ugly head during my Learn One lab practice. I'd like to say that this is where things started to turn around for me, but it was rare occurence for me to complete a lab machine on my own. I found myself having to rely on hints and assistance more often than not, but I was still picking up nuggets of information and realizing the gaps in my initial and post-exploit enumeration. It was also around this halfway point in 2023 that I began to learn about Markdown's intuitive note taking advantages and incorporated [Obsidian](https://obsidian.md/) into my daily CTF/pentesting workflow.
+It's not the worst format, but it certainly could've been improved upon. This obvious fact reared it's ugly head during my Learn One lab practice. I'd like to say that this is where things started to turn around for me, but it was rare occurence for me to complete a lab machine on my own. I found myself having to rely on hints and assistance more often than not, but I was still picking up nuggets of information and realizing the gaps in my initial and post-exploit enumeration. It was also around this halfway point in 2023 that I began to learn about Markdown's intuitive note taking advantages and incorporated [Obsidian](https://obsidian.md/) into my daily CTF/pentesting workflow. In spite of this, my notes still lacked an overarching structure that made sense. Looking back through my CTF notes from the challenge labs during this time I can see the frustration. Solutions seem to appear out of thin air, and I can't see my thought process play out on the page because I relied on those hints. It was a vicious cycle of laziness and burn out. I would bang my head against the proverbial wall for hours (sometimes days), ask for a solution, and record it in my lab notes. The problem? Those solutions never made it to those cheat sheets.
+
+> A man reaps what he sows.
+
+> - Galatians 6:7 NIV
+
+### Attempt #2 (and #3)
+
+With a solid year of practice in the OffSec labs, my confidence and proficiency with portions of the pentest cycle began to increase and I was sleeping just fine prior to my second attempt on October 1st, 2023. I knew the drill. Connect to the VPN and proctoring service, complete the exam prerequisites and begin enumerating as fast as I could type. Unfortunately, this attempt was a bust. I wasn't able to establish a foothold on any Windows system. The 40 points from AD was already off the table. It took about 9 hours for me to eventually hone in on one standalone Linux machine which I successfully rooted. It was a short lived moment of glee as I began to relive the same experience from my first attempt. Toiling in my `nmap` and `gobuster` scans, revisiting previously enumerated services on a hope and prayer. Nothing came of it, it was clear my enumeration skills were not going to cut it. Somewhere around midnight I ran out of gas and called it. I slept through most the exam time, waking up with an hour and half left to attempt a few more hail marys, but I knew it was a fail. 20/100.
+
+I did submit my report in spite of failing to ensure I had documented my captured flags and exploitation properly. It also taught me the value of Obsidian's PDF conversion feature and how it made converting my markdown notes into a PDF report an absolute *breeze* 👌.
+
+Having purchased a Learn One subscription, I still had one more exam attempt to use. I scheduled the third attempt for December 1st, 2023. I took that two month gap to revisit the OffSec mock OSCP exam sets, as well as starting on some of the AD sets that I hadn't reached yet. I was at my wits end and didn't record any additional notes or commands for my cheat sheets. Looking back, I think it was good to keep my methodology fresh in my mind, though I probably could have benefited from taking a week off prior to the exam. I'll keep another long story short. The outcome was **identical** to my previous attempt. I was only able to root one Linux machine.
+
+PDF generated. Submitted. 20/100.
+
+## A Brief Hiatus and a New Objective
