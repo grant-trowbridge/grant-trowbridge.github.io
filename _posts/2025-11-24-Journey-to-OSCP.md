@@ -78,4 +78,22 @@ Having purchased a Learn One subscription, I still had one more exam attempt to 
 
 PDF generated. Submitted. 20/100.
 
-## A Brief Hiatus and a New Objective
+# A Hiatus and a New Objective
+
+At this point I was beyond frustrated with myself and the OSCP exam. I needed a break. I decided to take a good few months off, and during that time I learned of TCM Security's [Practical Junior Penetration Tester (PJPT)](https://certifications.tcm-sec.com/pjpt/) certification. I felt that taking a step back and considering a less intense exam would get some wind in my sails for the next attempt. I kept my eye on this certification as I refocused on work and tried not to dwell on those back-to-back failures.
+
+After a hefty break, I decided to pull the trigger on the PJPT coursework on July 22nd, 2024 for $199.20 during a sale. I cannot recommend PJPT enough. Having gone through the OSCP coursework multiple times, I was blown away by the level of quality TCM Security delivered at this price point.  I can confidently say that you will be thoroughly overprepared for your PJPT exam. I certainly picked up a few new tricks from their web application sections! As I progressed through the coursework, my note taking methodology improved slightly. While still resembling the previously discussed "format", I began to take cheatsheet mindset more seriously. My explanations were consise, and I made the conscious decision to recognize the difference between substance and fluff.
+
+Fast forwarding to mid November (I can't recall the exact date), I sat down for the exam and truly felt confident for the first time. I'll keep this section short for brevity sake, the exam went much better than expected. I ended up completing all objectives at a reasonable time by the evening. I decided to use all two days to retrace all of my steps and ensure that my report was bullet proof, and it was! I was issued my official PJPT certification on November 17th, 2024. This certification was a nice boost for morale, but I knew this was a (valuable) stepping stone towards my ultimate goal of OSCP.
+
+## The Proving Grounds
+
+I allowed myself some time to focus on other topics I wanted to learn. I dabbled in some C# YouTube courses to try and understand the brushes with DotNET I experienced while using PowerShell at work. I began to learn about the Windows API and things quickly became complicating and frustrating. I later learned that it is better to approach the API through C before attempting unmanaged function declaration and marshaling. I was hesitant to invest more time into C, and knew OSCP remained in the back of my mind. This time around I wanted things to be different. Coursework wasn't going to save me, I needed repetition. I had previously heard of [TJ Null's Proving Grounds List](https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview) after my first OSCP attempt but I was just too eager to jump back into the PEN-200 labs and didn't consider it seriously. I recognized this thinking was a grave mistake, and purchased my Proving Grounds access on March 21st 2025.
+
+### Effective Note Taking
+
+At this point I knew my lack of organization would ruin my next attempt if I didn't find a system that worked for me. I began researching different methods for OSCP and found this [Medium](https://medium.com/@0xP/oscp-2022-tips-to-help-you-pass-dddd3563967e) blog written by 0xP. In his article, he references someone by the name of Rowbot who had written a CherryTree note template. I converted those sections into markdown format for use in Obsidian and I felt much more deliberate and organized during my Proving Grounds lab practice. Overtime, I decided to incorporate two additional concepts. The first is something I picked up from my time in defense contracting called **Lessons Learned**.
+
+> The term Lessons Learned is broadly used to describe people, things, and activities related to the act of learning from experience to achieve improvements. The idea of Lessons Learned in an organization is that, through a formal approach to learning (i.e. a Lessons Learned procedure), individuals and the organization can reduce the risk of encountering the same problems and increase the chance that successes are repeated.
+
+> - NATO Lessons Learned Handbook, Fourth edition, June 2022
