@@ -82,7 +82,7 @@ PDF generated. Submitted. 20/100.
 
 At this point I was beyond frustrated with myself and the OSCP exam. I needed a break. I decided to take a good few months off, and during that time I learned of TCM Security's [Practical Junior Penetration Tester (PJPT)](https://certifications.tcm-sec.com/pjpt/) certification. I felt that taking a step back and considering a less intense exam would get some wind in my sails for the next attempt. I kept my eye on this certification as I refocused on work and tried not to dwell on those back-to-back failures.
 
-After a hefty break, I decided to pull the trigger on the PJPT coursework on July 22nd, 2024 for $199.20 during a sale. I cannot recommend PJPT enough. Having gone through the OSCP coursework multiple times, I was blown away by the level of quality TCM Security delivered at this price point.  I can confidently say that you will be thoroughly overprepared for your PJPT exam. I certainly picked up a few new tricks from their web application sections! As I progressed through the coursework, my note taking methodology improved slightly. While still resembling the previously discussed "format", I began to take cheatsheet mindset more seriously. My explanations were consise, and I made the conscious decision to recognize the difference between substance and fluff.
+After a hefty break, I decided to pull the trigger on the PJPT coursework on July 22nd, 2024 for $199 during a sale. I cannot recommend PJPT enough. Having gone through the OSCP coursework multiple times, I was blown away by the level of quality TCM Security delivered at this price point.  I can confidently say that you will be thoroughly overprepared for your PJPT exam. I certainly picked up a few new tricks from their web application sections! As I progressed through the coursework, my note taking methodology improved slightly. While still resembling the previously discussed "format", I began to take cheatsheet mindset more seriously. My explanations were consise, and I made the conscious decision to recognize the difference between substance and fluff.
 
 Fast forwarding to mid November (I can't recall the exact date), I sat down for the exam and truly felt confident for the first time. I'll keep this section short for brevity sake, the exam went much better than expected. I ended up completing all objectives at a reasonable time by the evening. I decided to use all two days to retrace all of my steps and ensure that my report was bullet proof, and it was! I was issued my official PJPT certification on November 17th, 2024. This certification was a nice boost for morale, but I knew this was a (valuable) stepping stone towards my ultimate goal of OSCP.
 
@@ -92,8 +92,75 @@ I allowed myself some time to focus on other topics I wanted to learn. I dabbled
 
 ### Effective Note Taking
 
-At this point I knew my lack of organization would ruin my next attempt if I didn't find a system that worked for me. I began researching different methods for OSCP and found this [Medium](https://medium.com/@0xP/oscp-2022-tips-to-help-you-pass-dddd3563967e) blog written by 0xP. In his article, he references someone by the name of Rowbot who had written a CherryTree note template. I converted those sections into markdown format for use in Obsidian and I felt much more deliberate and organized during my Proving Grounds lab practice. Overtime, I decided to incorporate two additional concepts. The first is something I picked up from my time in defense contracting called **Lessons Learned**.
+At this point I knew my lack of organization would ruin my next attempt if I didn't find a system that worked for me. I began researching different methods for OSCP and found this [Medium](https://medium.com/@0xP/oscp-2022-tips-to-help-you-pass-dddd3563967e) blog written by 0xP. In his article, he references someone by the name of Rowbot who had written a CherryTree note template. I translated those sections into markdown format for use in Obsidian and I felt much more deliberate and organized during my Proving Grounds lab practice. Overtime, I decided to incorporate two additional concepts. The first is something I picked up in the defense contracting world called **Lessons Learned**.
 
 > The term Lessons Learned is broadly used to describe people, things, and activities related to the act of learning from experience to achieve improvements. The idea of Lessons Learned in an organization is that, through a formal approach to learning (i.e. a Lessons Learned procedure), individuals and the organization can reduce the risk of encountering the same problems and increase the chance that successes are repeated.
 
 > - NATO Lessons Learned Handbook, Fourth edition, June 2022
+
+The idea is to have a section at the very end of your pen testing note template for listing your weakpoints or knowledge gaps, anything that prevented you from solving a box on your own. If there was a chain of events that led up to this misunderstanding, write down every single moment and what your thought process was. If you lay it out on paper, you're much more likely to identify your mistake and prevent it from happening in the future. If there wasn't a chain of events, simply note what happened in as many or as few bullet points as you see fit. The markdown format is as follows:
+
+```markdown
+# Lessons Learned
+## Initial Access
+Order of failures:
+## Privilege Escalation
+Order of failures:
+```
+
+It is crucial that you go through this mental exercise **IMMEDIATELY** after rooting a machine while it is fresh in your mind. Yes, your brain is probably fried and yes it may be the last thing you want to do. I promise it is the most important part of a CTF you will complete. Take the time to do it.
+
+The second concept is referred to as the **Parking Lot**. Its original application is for meetings, specificially when off-topic questions/discussions arise that aren't part of the current discussion. They are noted in the "parking lot" so they are not forgotten and can be addressed later. In my offsec methodogoly, it serves as a place to let my conscious flow directly into my notes as I enumerate each discovered port or privilege escalation vector. The entire section should be limited to bullet points for short blurbs about what has been enumerated, what should be done next, and any public exploits that may be applicable. Keep them as concise as possible. If done right, you should be able to read over your parking lot after rooting a machine and see exactly how you discovered initial access and privilege escalation! Here's an example of what your parking lot should look like:
+
+```markdown
+# Parking Lot
+- Port 21 (FTP)
+	- Downloaded all files from /public directory
+    - No sensitive info contained
+- Port 80 (HTTP)
+	- Found a login.php file
+        - Default login default:default was still configured for service
+            - Enumerated additional user accounts alice and bob
+            - Service 1.0 vulnerable to CVE-XXXX-XXXXX
+- Privilege Escalation
+    - Another bullet
+    - More bullets
+        - Even sub bullets blah blah you get the idea
+```
+
+This evolution in my note taking for OSCP was by far the most important for me. I finally felt that my notes were serving me and contributing to my victories in the OffSec labs. Here is my entire Obsidian note template put together. I hope it helps you as much as it helped me 🙂:
+
+```markdown
+# Enumeration
+## TCP
+## UDP
+# Parking Lot
+## Web Services
+## Other Services
+## Potential Service Exploits
+# Exploitation
+# Post-Exploitation
+## Host Information
+Hostname:
+OS:
+Kernel:
+Architecture:
+## File System
+## Running Processes
+## Installed Applications
+## Users & Groups
+## Network
+## Scheduled Jobs
+# Privilege Escalation
+# Loot
+## Hashes
+## Passwords
+## Flags
+# Lessons Learned
+## Initial Access
+Order of failures:
+## Privilege Escalation
+Order of failures:
+```
+
+### Conquering TJ Null's List

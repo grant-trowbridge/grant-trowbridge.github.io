@@ -119,7 +119,7 @@ my-command
 
 <p>At this point I was beyond frustrated with myself and the OSCP exam. I needed a break. I decided to take a good few months off, and during that time I learned of TCM Security&#39;s <a href="https://certifications.tcm-sec.com/pjpt/">Practical Junior Penetration Tester (PJPT)</a> certification. I felt that taking a step back and considering a less intense exam would get some wind in my sails for the next attempt. I kept my eye on this certification as I refocused on work and tried not to dwell on those back-to-back failures.</p>
 
-<p>After a hefty break, I decided to pull the trigger on the PJPT coursework on July 22nd, 2024 for $199.20 during a sale. I cannot recommend PJPT enough. Having gone through the OSCP coursework multiple times, I was blown away by the level of quality TCM Security delivered at this price point.  I can confidently say that you will be thoroughly overprepared for your PJPT exam. I certainly picked up a few new tricks from their web application sections! As I progressed through the coursework, my note taking methodology improved slightly. While still resembling the previously discussed &quot;format&quot;, I began to take cheatsheet mindset more seriously. My explanations were consise, and I made the conscious decision to recognize the difference between substance and fluff.</p>
+<p>After a hefty break, I decided to pull the trigger on the PJPT coursework on July 22nd, 2024 for $199 during a sale. I cannot recommend PJPT enough. Having gone through the OSCP coursework multiple times, I was blown away by the level of quality TCM Security delivered at this price point.  I can confidently say that you will be thoroughly overprepared for your PJPT exam. I certainly picked up a few new tricks from their web application sections! As I progressed through the coursework, my note taking methodology improved slightly. While still resembling the previously discussed &quot;format&quot;, I began to take cheatsheet mindset more seriously. My explanations were consise, and I made the conscious decision to recognize the difference between substance and fluff.</p>
 
 <p>Fast forwarding to mid November (I can&#39;t recall the exact date), I sat down for the exam and truly felt confident for the first time. I&#39;ll keep this section short for brevity sake, the exam went much better than expected. I ended up completing all objectives at a reasonable time by the evening. I decided to use all two days to retrace all of my steps and ensure that my report was bullet proof, and it was! I was issued my official PJPT certification on November 17th, 2024. This certification was a nice boost for morale, but I knew this was a (valuable) stepping stone towards my ultimate goal of OSCP.</p>
 
@@ -129,7 +129,7 @@ my-command
 
 <h3>Effective Note Taking</h3>
 
-<p>At this point I knew my lack of organization would ruin my next attempt if I didn&#39;t find a system that worked for me. I began researching different methods for OSCP and found this <a href="https://medium.com/@0xP/oscp-2022-tips-to-help-you-pass-dddd3563967e">Medium</a> blog written by 0xP. In his article, he references someone by the name of Rowbot who had written a CherryTree note template. I converted those sections into markdown format for use in Obsidian and I felt much more deliberate and organized during my Proving Grounds lab practice. Overtime, I decided to incorporate two additional concepts. The first is something I picked up from my time in defense contracting called <strong>Lessons Learned</strong>.</p>
+<p>At this point I knew my lack of organization would ruin my next attempt if I didn&#39;t find a system that worked for me. I began researching different methods for OSCP and found this <a href="https://medium.com/@0xP/oscp-2022-tips-to-help-you-pass-dddd3563967e">Medium</a> blog written by 0xP. In his article, he references someone by the name of Rowbot who had written a CherryTree note template. I translated those sections into markdown format for use in Obsidian and I felt much more deliberate and organized during my Proving Grounds lab practice. Overtime, I decided to incorporate two additional concepts. The first is something I picked up in the defense contracting world called <strong>Lessons Learned</strong>.</p>
 
 <blockquote>
 <p>The term Lessons Learned is broadly used to describe people, things, and activities related to the act of learning from experience to achieve improvements. The idea of Lessons Learned in an organization is that, through a formal approach to learning (i.e. a Lessons Learned procedure), individuals and the organization can reduce the risk of encountering the same problems and increase the chance that successes are repeated.</p>
@@ -138,6 +138,64 @@ my-command
 <li>NATO Lessons Learned Handbook, Fourth edition, June 2022</li>
 </ul>
 </blockquote>
+
+<p>The idea is to have a section at the very end of your pen testing note template for listing your weakpoints or knowledge gaps, anything that prevented you from solving a box on your own. If there was a chain of events that led up to this misunderstanding, write down every single moment and what your thought process was. If you lay it out on paper, you&#39;re much more likely to identify your mistake and prevent it from happening in the future. If there wasn&#39;t a chain of events, simply note what happened in as many or as few bullet points as you see fit. The markdown format is as follows:</p>
+<div class="highlight"><pre><code class="language-markdown" data-lang="markdown"><span class="gh"># Lessons Learned</span>
+<span class="gu">## Initial Access</span>
+Order of failures:
+<span class="gu">## Privilege Escalation</span>
+Order of failures:
+</code></pre></div>
+<p>It is crucial that you go through this mental exercise <strong>IMMEDIATELY</strong> after rooting a machine while it is fresh in your mind. Yes, your brain is probably fried and yes it may be the last thing you want to do. I promise it is the most important part of a CTF you will complete. Take the time to do it.</p>
+
+<p>The second concept is referred to as the <strong>Parking Lot</strong>. Its original application is for meetings, specificially when off-topic questions/discussions arise that aren&#39;t part of the current discussion. They are noted in the &quot;parking lot&quot; so they are not forgotten and can be addressed later. In my offsec methodogoly, it serves as a place to let my conscious flow directly into my notes as I enumerate each discovered port or privilege escalation vector. The entire section should be limited to bullet points for short blurbs about what has been enumerated, what should be done next, and any public exploits that may be applicable. Keep them as concise as possible. If done right, you should be able to read over your parking lot after rooting a machine and see exactly how you discovered initial access and privilege escalation! Here&#39;s an example of what your parking lot should look like:</p>
+<div class="highlight"><pre><code class="language-markdown" data-lang="markdown"><span class="gh"># Parking Lot</span>
+<span class="p">-</span> Port 21 (FTP)
+<span class="p">    -</span> Downloaded all files from /public directory
+<span class="p">    -</span> No sensitive info contained
+<span class="p">-</span> Port 80 (HTTP)
+<span class="p">    -</span> Found a login.php file
+<span class="p">        -</span> Default login default:default was still configured for service
+<span class="p">            -</span> Enumerated additional user accounts alice and bob
+<span class="p">            -</span> Service 1.0 vulnerable to CVE-XXXX-XXXXX
+<span class="p">-</span> Privilege Escalation
+<span class="p">    -</span> Another bullet
+<span class="p">    -</span> More bullets
+<span class="p">        -</span> Even sub bullets blah blah you get the idea
+</code></pre></div>
+<p>This evolution in my note taking for OSCP was by far the most important for me. I finally felt that my notes were serving me and contributing to my victories in the OffSec labs. Here is my entire Obsidian note template put together. I hope it helps you as much as it helped me 🙂:</p>
+<div class="highlight"><pre><code class="language-markdown" data-lang="markdown"><span class="gh"># Enumeration</span>
+<span class="gu">## TCP</span>
+<span class="gu">## UDP</span>
+<span class="gh"># Parking Lot</span>
+<span class="gu">## Web Services</span>
+<span class="gu">## Other Services</span>
+<span class="gu">## Potential Service Exploits</span>
+<span class="gh"># Exploitation</span>
+<span class="gh"># Post-Exploitation</span>
+<span class="gu">## Host Information</span>
+Hostname:
+OS:
+Kernel:
+Architecture:
+<span class="gu">## File System</span>
+<span class="gu">## Running Processes</span>
+<span class="gu">## Installed Applications</span>
+<span class="gu">## Users &amp; Groups</span>
+<span class="gu">## Network</span>
+<span class="gu">## Scheduled Jobs</span>
+<span class="gh"># Privilege Escalation</span>
+<span class="gh"># Loot</span>
+<span class="gu">## Hashes</span>
+<span class="gu">## Passwords</span>
+<span class="gu">## Flags</span>
+<span class="gh"># Lessons Learned</span>
+<span class="gu">## Initial Access</span>
+Order of failures:
+<span class="gu">## Privilege Escalation</span>
+Order of failures:
+</code></pre></div>
+<h3>Conquering TJ Null&#39;s List</h3>
 
   </article>
 </div>
