@@ -88,7 +88,7 @@ Fast forwarding to mid November (I can't recall the exact date), I sat down for 
 
 ## The Proving Grounds
 
-I allowed myself some time to focus on other topics I wanted to learn. I dabbled in some C# YouTube courses to try and understand the brushes with DotNET I experienced while using PowerShell at work. I began to learn about the Windows API and things quickly became complicating and frustrating. I later learned that it is better to approach the API through C before attempting unmanaged function declaration and marshaling. I was hesitant to invest more time into C, and knew OSCP remained in the back of my mind. This time around I wanted things to be different. Coursework wasn't going to save me, I needed repetition. I had previously heard of [TJ Null's Proving Grounds List](https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview) after my first OSCP attempt but I was just too eager to jump back into the PEN-200 labs and didn't consider it seriously. I recognized this thinking was a grave mistake, and purchased my Proving Grounds access on March 21st 2025.
+I allowed myself some time to focus on other topics I wanted to learn. I dabbled in some C# YouTube courses to try and understand the brushes with DotNET I experienced while using PowerShell at work. I began to learn about the Windows API and things quickly became complicating and frustrating. I later learned that it is better to approach the API through C before attempting unmanaged function declaration and marshaling. I was hesitant to invest more time into C, and knew OSCP remained in the back of my mind. This time around I wanted things to be different. Coursework wasn't going to save me, I needed repetition. I had previously heard of [TJ Null's Proving Grounds List](https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview) after my first OSCP attempt but I was just too eager to jump back into the PEN-200 labs and didn't consider it seriously. I recognized this thinking was a grave mistake, and purchased my Proving Grounds access on February 20th 2025.
 
 ### Effective Note Taking
 
@@ -164,3 +164,21 @@ Order of failures:
 ```
 
 ### Conquering TJ Null's List
+
+30 Linux machines. 15 Windows machines. Roughly seven months of lab access in total spanning from February to September of 2025. Ouch.
+
+Granted I lost time due to obligations at work, family events, vacation, breaks, all of which are important. Besides that, what else prevented me from completing TJ Null's list sooner? My ego. I absolutely **HATED** having to rely on walkthroughs when I was stumped. I felt it was a sign of failure and weakness, I should *know* this stuff already. In reality, if I had to turn to a walkthrough for help, it meant I was about to learn something new or be given an opportunity to recognize my knowledge gap in enumeration. I can say this for certain, I rarely learned *anything* new from a machine that I was able to complete on my own. Sure it was great for my confidence and validated my skills for that particular scenario, but it did nothing to add to my knowledge base.
+
+To avoid this pitfall that can drag out your prep time for OSCP, here is my advice. If you find yourself hitting a roadblock on a lab machine, stop what you're doing and set a timer for at least **one hour**, and at most **one day**. Not a second more. If you can't figure it out within that time frame, swallow your pride and look up the walkthrough. There is nothing wrong with using the walkthroughs while you are practicing. Remember this:
+
+> You don't know what you don't know.
+
+Make sure to head to the Lessons Learned section of your notes and write down what went wrong and *why*. So long as you write down what happened, and maybe add some new commands to your cheat sheets (more on that later), there is nothing to worry about. Keep moving forward.
+
+### Obsidian Cheat Sheets for Fun and for Profit 📈
+
+## Returning to the OffSec Labs
+
+With the Proving Grounds list *finally* completed, the only thing I felt was left to practice was Active Directory and pivoting. So I purchased my one month PEN-200 lab extension on October 9th, 2025. My plan was to complete the OSCP A, B, and C mock exam sets. At this point in my journey I had put in so many CTF reps in the Proving Grounds that things were finally starting to click. With [Ligolo-NG](https://github.com/nicocha30/ligolo-ng), pivoting was an absolute breeze. I was tearing through the AD domains, and I only ever asked for a hint on one set! With the extra time, I went ahead and completed all standalone machines for all three sets. I even gave the Poseiden AD set a shot, but I ran out of time. November 8th, 2025 marked the last day of hands on practice for OSCP. I decided to take that final week off and didn't allow myself preparation of any kind (besides a strategic purchase of Red Bull). This really helped me reset my stress levels before my exam attempt on November 14th, 2025.
+
+# The 4th and Final Attempt

@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 09 Dec 2025 21:19:36 -0500</pubDate>
-    <lastBuildDate>Tue, 09 Dec 2025 21:19:36 -0500</lastBuildDate>
+    <pubDate>Wed, 10 Dec 2025 20:47:37 -0500</pubDate>
+    <lastBuildDate>Wed, 10 Dec 2025 20:47:37 -0500</lastBuildDate>
     <generator>Jekyll v3.9.4</generator>
     
       <item>
@@ -102,7 +102,7 @@ my-command
 
 &lt;h2&gt;The Proving Grounds&lt;/h2&gt;
 
-&lt;p&gt;I allowed myself some time to focus on other topics I wanted to learn. I dabbled in some C# YouTube courses to try and understand the brushes with DotNET I experienced while using PowerShell at work. I began to learn about the Windows API and things quickly became complicating and frustrating. I later learned that it is better to approach the API through C before attempting unmanaged function declaration and marshaling. I was hesitant to invest more time into C, and knew OSCP remained in the back of my mind. This time around I wanted things to be different. Coursework wasn&amp;#39;t going to save me, I needed repetition. I had previously heard of &lt;a href=&quot;https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview&quot;&gt;TJ Null&amp;#39;s Proving Grounds List&lt;/a&gt; after my first OSCP attempt but I was just too eager to jump back into the PEN-200 labs and didn&amp;#39;t consider it seriously. I recognized this thinking was a grave mistake, and purchased my Proving Grounds access on March 21st 2025.&lt;/p&gt;
+&lt;p&gt;I allowed myself some time to focus on other topics I wanted to learn. I dabbled in some C# YouTube courses to try and understand the brushes with DotNET I experienced while using PowerShell at work. I began to learn about the Windows API and things quickly became complicating and frustrating. I later learned that it is better to approach the API through C before attempting unmanaged function declaration and marshaling. I was hesitant to invest more time into C, and knew OSCP remained in the back of my mind. This time around I wanted things to be different. Coursework wasn&amp;#39;t going to save me, I needed repetition. I had previously heard of &lt;a href=&quot;https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview&quot;&gt;TJ Null&amp;#39;s Proving Grounds List&lt;/a&gt; after my first OSCP attempt but I was just too eager to jump back into the PEN-200 labs and didn&amp;#39;t consider it seriously. I recognized this thinking was a grave mistake, and purchased my Proving Grounds access on February 20th 2025.&lt;/p&gt;
 
 &lt;h3&gt;Effective Note Taking&lt;/h3&gt;
 
@@ -173,6 +173,26 @@ Order of failures:
 Order of failures:
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;Conquering TJ Null&amp;#39;s List&lt;/h3&gt;
+
+&lt;p&gt;30 Linux machines. 15 Windows machines. Roughly seven months of lab access in total spanning from February to September of 2025. Ouch.&lt;/p&gt;
+
+&lt;p&gt;Granted I lost time due to obligations at work, family events, vacation, breaks, all of which are important. Besides that, what else prevented me from completing TJ Null&amp;#39;s list sooner? My ego. I absolutely &lt;strong&gt;HATED&lt;/strong&gt; having to rely on walkthroughs when I was stumped. I felt it was a sign of failure and weakness, I should &lt;em&gt;know&lt;/em&gt; this stuff already. In reality, if I had to turn to a walkthrough for help, it meant I was about to learn something new or be given an opportunity to recognize my knowledge gap in enumeration. I can say this for certain, I rarely learned &lt;em&gt;anything&lt;/em&gt; new from a machine that I was able to complete on my own. Sure it was great for my confidence and validated my skills for that particular scenario, but it did nothing to add to my knowledge base.&lt;/p&gt;
+
+&lt;p&gt;To avoid this pitfall that can drag out your prep time for OSCP, here is my advice. If you find yourself hitting a roadblock on a lab machine, stop what you&amp;#39;re doing and set a timer for at least &lt;strong&gt;one hour&lt;/strong&gt;, and at most &lt;strong&gt;one day&lt;/strong&gt;. Not a second more. If you can&amp;#39;t figure it out within that time frame, swallow your pride and look up the walkthrough. There is nothing wrong with using the walkthroughs while you are practicing. Remember this:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;You don&amp;#39;t know what you don&amp;#39;t know.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Make sure to head to the Lessons Learned section of your notes and write down what went wrong and &lt;em&gt;why&lt;/em&gt;. So long as you write down what happened, and maybe add some new commands to your cheat sheets (more on that later), there is nothing to worry about. Keep moving forward.&lt;/p&gt;
+
+&lt;h3&gt;Obsidian Cheat Sheets for Fun and for Profit 📈&lt;/h3&gt;
+
+&lt;h2&gt;Returning to the OffSec Labs&lt;/h2&gt;
+
+&lt;p&gt;With the Proving Grounds list &lt;em&gt;finally&lt;/em&gt; completed, the only thing I felt was left to practice was Active Directory and pivoting. So I purchased my one month PEN-200 lab extension on October 9th, 2025. My plan was to complete the OSCP A, B, and C mock exam sets. At this point in my journey I had put in so many CTF reps in the Proving Grounds that things were finally starting to click. With &lt;a href=&quot;https://github.com/nicocha30/ligolo-ng&quot;&gt;Ligolo-NG&lt;/a&gt;, pivoting was an absolute breeze. I was tearing through the AD domains, and I only ever asked for a hint on one set! With the extra time, I went ahead and completed all standalone machines for all three sets. I even gave the Poseiden AD set a shot, but I ran out of time. November 8th, 2025 marked the last day of hands on practice for OSCP. I decided to take that final week off and didn&amp;#39;t allow myself preparation of any kind (besides a strategic purchase of Red Bull). This really helped me reset my stress levels before my exam attempt on November 14th, 2025.&lt;/p&gt;
+
+&lt;h1&gt;The 4th and Final Attempt&lt;/h1&gt;
 </description>
         <pubDate>Mon, 24 Nov 2025 00:00:00 -0500</pubDate>
         <link>http://localhost:4000/2025/Journey-to-OSCP/</link>
