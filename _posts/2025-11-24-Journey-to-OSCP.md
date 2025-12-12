@@ -177,6 +177,8 @@ Make sure to head to the Lessons Learned section of your notes and write down wh
 
 ### Obsidian Cheat Sheets for Fun and for Profit 📈
 
+After completing TJ Null's list and having revamped my note template for CTFs, I decided to do a complete overhaul of my cheat sheets. The basic Word Document format was not going to cut it. Just like my note template, it was time to make cheat sheets
+
 ## Returning to the OffSec Labs
 
 With the Proving Grounds list *finally* completed, the only thing I felt was left to practice was Active Directory and pivoting. So I purchased my one month PEN-200 lab extension on October 9th, 2025. My plan was to complete the OSCP A, B, and C mock exam sets. At this point in my journey I had put in so many CTF reps in the Proving Grounds that things were finally starting to click. With [Ligolo-NG](https://github.com/nicocha30/ligolo-ng), pivoting was an absolute breeze. I was tearing through the AD domains, and I only ever asked for a hint on one set! With the extra time, I went ahead and completed all standalone machines for all three sets. I even gave the Poseiden AD set a shot, but I ran out of time. November 8th, 2025 marked the last day of hands on practice for OSCP. I decided to take that final week off and didn't allow myself preparation of any kind (besides a strategic purchase of Red Bull). This really helped me reset my stress levels before my exam attempt on November 14th, 2025.
