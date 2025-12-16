@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 10 Dec 2025 20:47:37 -0500</pubDate>
-    <lastBuildDate>Wed, 10 Dec 2025 20:47:37 -0500</lastBuildDate>
+    <pubDate>Mon, 15 Dec 2025 22:26:57 -0500</pubDate>
+    <lastBuildDate>Mon, 15 Dec 2025 22:26:57 -0500</lastBuildDate>
     <generator>Jekyll v3.9.4</generator>
     
       <item>
@@ -188,11 +188,23 @@ Order of failures:
 
 &lt;h3&gt;Obsidian Cheat Sheets for Fun and for Profit 📈&lt;/h3&gt;
 
+&lt;p&gt;After completing TJ Null&amp;#39;s list and having revamped my note template for CTFs, I decided to do a complete overhaul of my cheat sheets. The basic Word Document format was not going to cut it. Just like my note template, it was time to make cheat sheets&lt;/p&gt;
+
 &lt;h2&gt;Returning to the OffSec Labs&lt;/h2&gt;
 
 &lt;p&gt;With the Proving Grounds list &lt;em&gt;finally&lt;/em&gt; completed, the only thing I felt was left to practice was Active Directory and pivoting. So I purchased my one month PEN-200 lab extension on October 9th, 2025. My plan was to complete the OSCP A, B, and C mock exam sets. At this point in my journey I had put in so many CTF reps in the Proving Grounds that things were finally starting to click. With &lt;a href=&quot;https://github.com/nicocha30/ligolo-ng&quot;&gt;Ligolo-NG&lt;/a&gt;, pivoting was an absolute breeze. I was tearing through the AD domains, and I only ever asked for a hint on one set! With the extra time, I went ahead and completed all standalone machines for all three sets. I even gave the Poseiden AD set a shot, but I ran out of time. November 8th, 2025 marked the last day of hands on practice for OSCP. I decided to take that final week off and didn&amp;#39;t allow myself preparation of any kind (besides a strategic purchase of Red Bull). This really helped me reset my stress levels before my exam attempt on November 14th, 2025.&lt;/p&gt;
 
 &lt;h1&gt;The 4th and Final Attempt&lt;/h1&gt;
+
+&lt;p&gt;At 08:00 the exam kicked off. I immediately focused on Active Directory using the assumed breach credentials, added to the exam on November 1st, 2024. Enumerating the intended privilege escalation path took around one hour, and a little bit longer for actual exploitation after going down some Microsoft Learn documentation rabbit holes. After recovering from the rabbit hole, I had my first admin shell on the AD set in about 2 hours! Next, I focused on pivoting to the first internal machine but nothing seemed to be working properly. I began to toil and fall back into my old habit of re-attempting the same solutions &lt;em&gt;over&lt;/em&gt; and &lt;em&gt;over&lt;/em&gt; and &lt;em&gt;over&lt;/em&gt; again. I was able to recognize this desperation and decided to break for lunch around 12:00. I used this time away to really think about what I&amp;#39;ve attempted, and what I may be overlooking.&lt;/p&gt;
+
+&lt;p&gt;ADD LINUX SIDEQUEST/BREAK FROM AD.&lt;/p&gt;
+
+&lt;p&gt;I sat back down, re-tried some previous attempts as a sanity check, and then it me. Using the troubleshooting skills I&amp;#39;ve learned on the job, my assumption was correct and I had my pivot up and running to the first external machine! I audibly exhaled as there were more than a few times where I thought I was looking at another failure.&lt;/p&gt;
+
+&lt;p&gt;Using the new pivot, I logged into the internal machine and sent a fully interactive reverse shell to my Kali machine in that user context (you read my &lt;a href=&quot;https://grant-trowbridge.github.io/2025/When-Shells-Stabilize/&quot;&gt;Invoke-ConPtyShell&lt;/a&gt; post right. Right?). From here, I rinsed and repeated my privilege escalation enumeration spawned a system shell in about 30 minutes! After some post-exploit enumeration on the internal machine, I was able to gather sensitive domain information. I crossed my fingers in hopes it was what I needed and...&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;DOMAIN ADMIN!!!&lt;/strong&gt; This was the first time I had seen all three AD flags submitted in the portal and the feeling was amazing. 40 points down, 30 to go.&lt;/p&gt;
 </description>
         <pubDate>Mon, 24 Nov 2025 00:00:00 -0500</pubDate>
         <link>http://localhost:4000/2025/Journey-to-OSCP/</link>
