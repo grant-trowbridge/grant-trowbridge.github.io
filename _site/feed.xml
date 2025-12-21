@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 15 Dec 2025 22:26:57 -0500</pubDate>
-    <lastBuildDate>Mon, 15 Dec 2025 22:26:57 -0500</lastBuildDate>
+    <pubDate>Sun, 21 Dec 2025 14:53:26 -0500</pubDate>
+    <lastBuildDate>Sun, 21 Dec 2025 14:53:26 -0500</lastBuildDate>
     <generator>Jekyll v3.9.4</generator>
     
       <item>
@@ -188,7 +188,39 @@ Order of failures:
 
 &lt;h3&gt;Obsidian Cheat Sheets for Fun and for Profit 📈&lt;/h3&gt;
 
-&lt;p&gt;After completing TJ Null&amp;#39;s list and having revamped my note template for CTFs, I decided to do a complete overhaul of my cheat sheets. The basic Word Document format was not going to cut it. Just like my note template, it was time to make cheat sheets&lt;/p&gt;
+&lt;p&gt;After completing TJ Null&amp;#39;s list and having revamped my note template for CTFs, I decided to do a complete overhaul of my cheat sheets. The basic Word Document format was not going to cut it. I eventually decided that the bulk of my change would revolve around the addition of a Table of Contents. Thankfully there is an &lt;a href=&quot;https://obsidian.md/plugins?search=Table%20of%20Contents&quot;&gt;Obisidian Community Plugin&lt;/a&gt; that automates this process. I chose the one authored by Andrew Lisowski which I can&amp;#39;t seem to find anymore. I suggest you choose the hipstersmoothie or Johan Satgé plugin options. As long as it automates the process for you, that&amp;#39;s all that matters.&lt;/p&gt;
+
+&lt;p&gt;I recommend to have multiple cheat sheet Obsidian files. Here&amp;#39;s how I broke mine out. This is not what I recommend necessarily for any one person, but an example for you to start brainstorming your own note structure:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Active Directory Attacks&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;All things AD-related to easily navigate tools and commands for the exam AD set&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Enumeration and Exploitation&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;One-off tools that I wanted easy flag and argument explanations&lt;/li&gt;
+&lt;li&gt;Port/service specific commands to avoid wasting time Googling commands&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;File Transfers&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Contains multiple examples using different protocols in case of a firewall block&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pivoting&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Network tools and methods for accessing internal networks&lt;/li&gt;
+&lt;li&gt;Tools for localhost service access&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Privilege Escalation&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Contains methods of escalation for both Windows and Linux.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2&gt;Returning to the OffSec Labs&lt;/h2&gt;
 

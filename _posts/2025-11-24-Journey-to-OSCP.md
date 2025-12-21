@@ -177,7 +177,22 @@ Make sure to head to the Lessons Learned section of your notes and write down wh
 
 ### Obsidian Cheat Sheets for Fun and for Profit 📈
 
-After completing TJ Null's list and having revamped my note template for CTFs, I decided to do a complete overhaul of my cheat sheets. The basic Word Document format was not going to cut it. Just like my note template, it was time to make cheat sheets
+After completing TJ Null's list and having revamped my note template for CTFs, I decided to do a complete overhaul of my cheat sheets. The basic Word Document format was not going to cut it. I eventually decided that the bulk of my change would revolve around the addition of a Table of Contents. Thankfully there is an [Obisidian Community Plugin](https://obsidian.md/plugins?search=Table%20of%20Contents) that automates this process. I chose the one authored by Andrew Lisowski which I can't seem to find anymore. I suggest you choose the hipstersmoothie or Johan Satgé plugin options. As long as it automates the process for you, that's all that matters.
+
+I recommend to have multiple cheat sheet Obsidian files. Here's how I broke mine out. This is not what I recommend necessarily for any one person, but an example for you to start brainstorming your own note structure:
+
+- **Active Directory Attacks**
+    - All things AD-related to easily navigate tools and commands for the exam AD set
+- **Enumeration and Exploitation**
+    - One-off tools that I wanted easy flag and argument explanations
+    - Port/service specific commands to avoid wasting time Googling commands
+- **File Transfers**
+    - Contains multiple examples using different protocols in case of a firewall block
+- **Pivoting**
+    - Network tools and methods for accessing internal networks
+    - Tools for localhost service access
+- **Privilege Escalation**
+    - Contains methods of escalation for both Windows and Linux.
 
 ## Returning to the OffSec Labs
 
