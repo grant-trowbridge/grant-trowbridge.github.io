@@ -194,19 +194,69 @@ I recommend to have multiple cheat sheet Obsidian files. Here's how I broke mine
 - **Privilege Escalation**
     - Contains methods of escalation for both Windows and Linux.
 
+I would then format my notes in the same simple format as my original notes in the Word docs under a heading of some sort. Here's an example from my Pivoting cheat sheet for `ligolo-ng`:
+
+```markdown
+# Ligolo-NG
+## Creating the TUN Interface
+Create a TUN interface for `ligolo-ng`:
+sudo ip tuntap add user kali mode tun ligolo
+sudo ip link set ligolo up
+
+> [!DANGER]
+> This interface must be created after every reboot.
+
+## Ligolo-NG Server
+Start a `ligolo-ng` server on Kali:
+./linux-proxy -selfcert
+```
+
+I recommend using callouts for important things to remember, like how I needed to create that previous interface after every reboot. I like to use callouts for listing additional command flags that might be useful to me. Here's an example format from my Active Directory Attacks cheat sheet for `impacket-secretsdump`:
+
+```markdown
+# Dumping & Cracking Hashes
+## impacket-secretsdump
+If you find the `ntds.dit`, `SYSTEM` Registry hive, `SECURITY` Registry hive, or the `System bootkey`,
+you can parse the `ntds.dit` file locally on Kali like so:
+impacket-secretsdump LOCAL -ntds ./ntds.dit -just-dc -system ./SYSTEM -security ./SECURITY
+
+> [!EXAMPLE] Arguments and Flags
+> `-ntds`: ntds.dit file to parse
+> `-just-dc`: Extract only ntds.dit data (NTLM hashes & Kerberos keys)
+> `-system`: SYSTEM Registry hive to parse
+> `-security`: SECURITY Registry hive to parse
+```
+
+Once I felt my cheat sheet was fully fleshed out, I would scroll to the top of the page and use `Ctrl + P` to search and run my table of contents plugin. If you choose the automatic update plugin by Johan Satgé, you won't need to constantly repeat this step if you add new headers in the future. I like to contain my table of contents in a callout. This can be done by highlighting the table of contents, *right-clicking* the selection, hovering over `Insert`, and *left-clicking* `Callout`. Here's what the end result should look like. Don't be worried if it's not completely identical as you'll probably be using a different plugin than what I chose. As long as you're able to left-click a header and it links properly, that's all that matters. The goal is to provide yourself quick access to commands:
+
+```markdown
+> [!ABSTRACT]- Table of Contents
+> - [[#Chisel]]
+> 	- [[#Chisel Server]]
+> 	- [[#Chisel Client]]
+> - [[#Ligolo-NG]]
+> 	- [[#Creating the TUN Interface]]
+> 	- [[#Ligolo-NG Server]]
+> 		- [[#Server Console]]
+> 			- [[#Create the Pivot]]
+> 			- [[#Catching a Reverse Shell]]
+> 	- [[#Ligolo-NG Agent]]
+```
+
 ## Returning to the OffSec Labs
 
 With the Proving Grounds list *finally* completed, the only thing I felt was left to practice was Active Directory and pivoting. So I purchased my one month PEN-200 lab extension on October 9th, 2025. My plan was to complete the OSCP A, B, and C mock exam sets. At this point in my journey I had put in so many CTF reps in the Proving Grounds that things were finally starting to click. With [Ligolo-NG](https://github.com/nicocha30/ligolo-ng), pivoting was an absolute breeze. I was tearing through the AD domains, and I only ever asked for a hint on one set! With the extra time, I went ahead and completed all standalone machines for all three sets. I even gave the Poseiden AD set a shot, but I ran out of time. November 8th, 2025 marked the last day of hands on practice for OSCP. I decided to take that final week off and didn't allow myself preparation of any kind (besides a strategic purchase of Red Bull). This really helped me reset my stress levels before my exam attempt on November 14th, 2025.
 
 # The 4th and Final Attempt
 
-At 08:00 the exam kicked off. I immediately focused on Active Directory using the assumed breach credentials, added to the exam on November 1st, 2024. Enumerating the intended privilege escalation path took around one hour, and a little bit longer for actual exploitation after going down some Microsoft Learn documentation rabbit holes. After recovering from the rabbit hole, I had my first admin shell on the AD set in about 2 hours! Next, I focused on pivoting to the first internal machine but nothing seemed to be working properly. I began to toil and fall back into my old habit of re-attempting the same solutions *over* and *over* and *over* again. I was able to recognize this desperation and decided to break for lunch around 12:00. I used this time away to really think about what I've attempted, and what I may be overlooking.
+At 08:00 the exam kicked off. I immediately focused on Active Directory using the assumed breach credentials, added to the exam on November 1st, 2024. Enumerating the intended privilege escalation path took around one hour, and a little bit longer for actual exploitation after going down some Microsoft Learn documentation rabbit holes. After recovering from the rabbit hole, I had my first admin shell on the AD set in about 2 hours! 10/100 points so far. Next, I focused on pivoting to the first internal machine but nothing seemed to be working properly. I began to toil and fall back into my old habit of re-attempting the same solutions *over* and *over* and *over* again. I was able to recognize this desperation and decided to break for lunch around 12:00. I used this time away to really think about what I've attempted, and what I may be overlooking.
 
-ADD LINUX SIDEQUEST/BREAK FROM AD.
+When I sat back down, I decided to switch gears and attack a standalone Linux machine to get fresh eyes. In about 30ish minutes, I was able to enumerate all services, and gain initial access! I did some post-exploitataion enumeration and still believe I found the correct privilege escalation vector, but I couldn't resolve a networking hurdle and wasn't able to root this machine. 20/100, not bad for now.
 
-I sat back down, re-tried some previous attempts as a sanity check, and then it me. Using the troubleshooting skills I've learned on the job, my assumption was correct and I had my pivot up and running to the first external machine! I audibly exhaled as there were more than a few times where I thought I was looking at another failure.
+I shifted focus back to the AD set and re-tried some previous attempts as a sanity check, and then it me. Using the troubleshooting skills I've learned on the job, my assumption was correct. I resolved my networking issue and I had my pivot up and running to the first internal machine! I audibly exhaled as there were more than a few times where I thought I was looking at another failure.
 
-Using the new pivot, I logged into the internal machine and sent a fully interactive reverse shell to my Kali machine in that user context (you read my [Invoke-ConPtyShell](https://grant-trowbridge.github.io/2025/When-Shells-Stabilize/) post right. Right?). From here, I rinsed and repeated my privilege escalation enumeration spawned a system shell in about 30 minutes! After some post-exploit enumeration on the internal machine, I was able to gather sensitive domain information. I crossed my fingers in hopes it was what I needed and...
+Using the new pivot, I logged into the internal machine and sent a fully interactive reverse shell to my Kali machine in that user context (you read my [Invoke-ConPtyShell](https://grant-trowbridge.github.io/2025/When-Shells-Stabilize/) post right. Right?). From here, I rinsed and repeated my privilege escalation enumeration spawned a system shell in about 30 minutes, putting my total at 30/100. After some post-exploit enumeration on the internal machine, I was able to gather sensitive domain credentials. I crossed my fingers in hopes it was what I needed and...
 
-**DOMAIN ADMIN!!!** This was the first time I had seen all three AD flags submitted in the portal and the feeling was amazing. 40 points down, 30 to go.
+**DOMAIN ADMIN!!!** This was the first time I had seen all three AD flags submitted in the portal and the feeling was amazing. 50 points down, 20 to go.
 
+I revisited that previous Linux machine with initial access and kept attempting the same solutions for a good while. Recognizing this trap again, I shifted focus to the next standalone machine which happened to be Windows.
