@@ -5,7 +5,9 @@ title: "Journey to OSCP"
 
 Having recently passed my Offensive Security Certified Professional exam, I wanted to give back to the OffSec community and share my three year journey towards OSCP. You heard that right. Not only *three* years, but passing on my *fourth* attempt as well. It hurts the ego to say that out loud, but I feel it is important to be fully transparent, especially for those out there considering beginning your own journey, or perhaps feel like giving up.
 
-# In the Beninging
+# tl;dr
+
+# Humble Beginnings
 
 I first heard of the OSCP exam during a Cyber Security club presentation in college from the one and only [Connor McGarr](https://www.linkedin.com/in/connor-mcgarr-7522a6152/). After watching his buffer overflow demonstration, and learning of the OSCP exam's difficulty, I knew I was hooked. At this time, I was still a fairly green Cyber Security student and didn't consider preparation or further investigation until a year later.
 
@@ -259,4 +261,14 @@ Using the new pivot, I logged into the internal machine and sent a fully interac
 
 **DOMAIN ADMIN!!!** This was the first time I had seen all three AD flags submitted in the portal and the feeling was amazing. 50 points down, 20 to go.
 
-I revisited that previous Linux machine with initial access and kept attempting the same solutions for a good while. Recognizing this trap again, I shifted focus to the next standalone machine which happened to be Windows.
+I revisited that previous Linux machine with initial access and kept attempting the same solutions for a good while. I spent lots of time googling this particular privilege escalation vector, but I wasn't able to properly execute. Recognizing this time trap again, I shifted focus to the next standalone machine which happened to be Windows. I rinsed and repeated my usual enumeration strategies for all discovered ports and services. I was able to enumerate a login page which I gained access to through some other context clues. I was able to exploit service using a discovered CVE that was applicable to the version and gained initial access! That puts the total at 60/100. I started my search for low hanging fruit for privilege escalation, transferred the required tools to the target, and read the last `proof.txt` flag, and submitted it in the exam portal. 70/100, I finally reached a passing score around 01:15.
+
+I double, triple, and quadruple-checked my score to make sure I wasn't missing anything. I called my brother to let him know I officially passed, and it was still hard to believe. I took an hour break to reset myself and get some food before revisiting anything. I began to look at the last standalone machine I hadn't touched yet, but my enumeration wasn't returning any promising results. With no luck on the standalone Linux machine privilege escalation, and no promising enumeration results for initial access on the last standalone machine, I decided to cut my losses and ensure my report was going to be bullet proof for those 70 points. From about 03:00 onward, I stayed awake for the rest of the exam to retrace every single step of exploitation across the AD set and standalone machines. I wanted to write my report while I still had exam access in case I needed to re-run commands for verification or take updated screenshots.
+
+Once my exam ended and I loss lab access at 07:45AM the next day, I spent another few hours meticulously re-reading my report, looking for any gaps in my logic or explanations, as well as grammatical errors. After three or four reviews, I finally submitted my exam into the OffSec report portal with proper formatting around 10:30.
+
+I spent the ensuing days trying to keep my mind from running, wondering if I had missed some small detail that would send me back to the labs for more practice. While I was talking with my family on the phone, I saw the email hit my inbox. I officially received passing confirmation that following Tuesday. OSCP is complete!
+
+![OSCP Email](/assets/img/Journey-to-OSCP-Email.png)
+
+# Closing Thoughts
