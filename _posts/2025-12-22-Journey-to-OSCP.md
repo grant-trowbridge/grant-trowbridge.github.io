@@ -94,7 +94,7 @@ I allowed myself some time to focus on other topics I wanted to learn. I dabbled
 
 ### Effective Note Taking
 
-At this point I knew my lack of organization would ruin my next attempt if I didn't find a system that worked for me. I began researching different methods for OSCP and found this [Medium](https://medium.com/@0xP/oscp-2022-tips-to-help-you-pass-dddd3563967e) blog written by 0xP. In his article, he references someone by the name of Rowbot who had written a CherryTree note template. I translated those sections into markdown format for use in Obsidian and I felt much more deliberate and organized during my Proving Grounds lab practice. Overtime, I decided to incorporate two additional concepts. The first is something I picked up in the defense contracting world called **Lessons Learned**.
+At this point I knew my lack of organization would ruin my next attempt if I didn't find a system that worked for me. I began researching different methods for OSCP and found this [Medium blog](https://medium.com/@0xP/oscp-2022-tips-to-help-you-pass-dddd3563967e) written by 0xP. In his article, he references someone by the name of Rowbot who had written a CherryTree note template. I translated those sections into markdown format for use in Obsidian and I felt much more deliberate and organized during my Proving Grounds lab practice. Overtime, I decided to incorporate two additional concepts. The first is something I picked up in the defense contracting world called **Lessons Learned**.
 
 > The term Lessons Learned is broadly used to describe people, things, and activities related to the act of learning from experience to achieve improvements. The idea of Lessons Learned in an organization is that, through a formal approach to learning (i.e. a Lessons Learned procedure), individuals and the organization can reduce the risk of encountering the same problems and increase the chance that successes are repeated.
 
@@ -189,7 +189,7 @@ I recommend to have multiple cheat sheet Obsidian files. Here's how I broke mine
     - One-off tools that I wanted easy flag and argument explanations
     - Port/service specific commands to avoid wasting time Googling commands
 - **File Transfers**
-    - Contains multiple examples using different protocols in case of a firewall block
+    - Contains multiple examples using different protocols in case of a firewall block for any one solution
 - **Pivoting**
     - Network tools and methods for accessing internal networks
     - Tools for localhost service access
@@ -272,3 +272,11 @@ I spent the ensuing days trying to keep my mind from running, wondering if I had
 ![OSCP Email](/assets/img/Journey-to-OSCP-Email.png)
 
 # Closing Thoughts
+
+OSCP was an exhausting journey, but one that I don't regret. It is my proudest accomplishment of my career so far. Are there things I would've done differently looking back to make the journey shorter? Absolutely. The big one would be completing [TJ Null's Proving Grounds List](https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview) *before* diving into the OSCP labs. In my opinion, going straight into the labs without any prior CTF experience is a waste of time and money. I'm sure there are people out there smarter than I who've bought the coursework and passed first try, but why put yourself at a disadvantage? Take the time to go through TJ Null's list (many of which are retired OSCP exam machines).
+
+While my current job is defensive in nature, understanding the mindset of an attacker completes the cyber security picture in my mind. Knowing the *why* behind ACAS findings and [STIG](https://www.cyber.mil/stigs/downloads) rules helps me prioritize vulnerabilities based on severity. It also allows me to speak intelligently with other security teams the program office may interface with in the future.
+
+OSCP has not only validated my understanding and knowledge of offensive security TTPs, but has cemented the "try harder" mindset the community often espouses. This work ethic will carry over into my day-to-day work in cyber security, and I look forward to using everything I have learned to continue securing the Department of The Navy.
+
+> "Non sibi sed patriae."
