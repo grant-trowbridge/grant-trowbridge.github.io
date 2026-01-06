@@ -3,13 +3,18 @@ layout: post
 title: "Journey to OSCP"
 ---
 
-Having recently passed my Offensive Security Certified Professional exam, I wanted to give back to the OffSec community and share my three year journey towards OSCP. You heard that right. Not only *three* years, but passing on my *fourth* attempt as well. It hurts the ego to say that out loud, but I feel it is important to be fully transparent, especially for those out there considering beginning your own journey, or perhaps feel like giving up.
+Having recently passed my Offensive Security Certified Professional exam, I wanted to give back to the OffSec community and share my three year journey towards OSCP. You heard that right. Not only *three* years, but passing on my *fourth* attempt as well. It hurts the ego to say that out loud, but I feel it is important to be fully transparent, especially for those out there considering your own attempt, or perhaps feel like giving up.
 
 # tl;dr
 
-This post is a long one, so for those of you who are always going a mile a minute and don't have the time for the full article, here's my proposed OSCP roadmap to go from zero to hero:
+This post is a long one, so for those of you who are always going a mile a minute and don't have the time for the full article, here is my proposed OSCP roadmap to go from zero to hero:
 
 1. [Practical Ethical Hacking Course](https://www.youtube.com/playlist?list=PLLKT__MCUeixqHJ1TRqrHsEd6_EdEvo47)
+2. [TryHackMe Jr Penetration Tester Learning Path](https://tryhackme.com/path/outline/jrpenetrationtester) (Either complete it or cherry-pick sections covering your weakpoints)
+3. [TCM Security's Practical Junior Penetration Tester](https://certifications.tcm-sec.com/pjpt/)
+4. [TJ Null's Proving Grounds List](https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview) (Complete Linux and Windows list)
+5. [OSCP PEN-200 Lab Machines](https://www.offsec.com/courses/pen-200/?gad_campaignid=9248778671) (Complete OSCP mock exams and as many AD sets as you can stomach)
+6. Exam day!!!
 
 # Humble Beginnings
 
@@ -17,17 +22,17 @@ I first heard of the OSCP exam during a Cyber Security club presentation in coll
 
 ## Exploring Offensive Security
 
-My first dive into the topic began in my sophomore year of college with the free [Practical Ethical Hacking Course](https://www.youtube.com/playlist?list=PLLKT__MCUeixqHJ1TRqrHsEd6_EdEvo47) YouTube playlist offered by Heath Adams. The course has been updated in recent years, but even back then I felt it was a great primer of the different stages of penetration testing, and appropriate tools to be used for each stage. Even at the end of the course, I still felt out of my depth and didn't attempt any CTF boxes at the time. My note taking methodology needed **a lot** of work, I wasn't seriously considering OSCP down the road. In reality, I remained a casual observer. This would change drastically my senior year of college.
+My first dive into the topic began in my sophomore year of college with the free [Practical Ethical Hacking Course](https://www.youtube.com/playlist?list=PLLKT__MCUeixqHJ1TRqrHsEd6_EdEvo47) YouTube playlist offered by Heath Adams. The course has been updated in recent years, but even back then I felt it was a great primer of the different stages of penetration testing, and the tools used for each stage. Even at the end of the course, I still felt out of my depth and didn't attempt any CTF boxes at the time. My note taking methodology needed **a lot** of work, I wasn't seriously considering OSCP down the road. In reality, I remained a casual observer. This would change drastically my senior year of college.
 
 ## Purchasing PEN-200
 
-Halfway through my senior year in 2021, I decided to take my career seriously and push myself to learn more about offensive security. I figured if I could pass my OSCP after graduation, it would set me up for a job. This turned out to be true, but not in the way I thought it would. I picked up my coursework during OffSec's end of the year sale for a slight discount and began taking notes as fast as I was able to. At this time, I modeled my notes after the chapter structure in the PDF itself. Remember when I said my note taking methodology needed work? This is going to be a common theme throughout this post.
+Halfway through my senior year in 2021, I decided to take my career seriously and push myself to learn more about offensive security. I figured if I could pass my OSCP after graduation, it would set me up for a job. This turned out to be *partly* true. I picked up my coursework during OffSec's end of the year sale and began taking notes as fast as I could type. At this time, I modeled my notes after the chapter structure in the PDF itself. Remember when I said my note taking methodology needed work? This is going to be a common theme throughout this post.
 
 I recall completing the PDF entirely about one month before graduation and spent the rest of my time practicing in the labs and revisiting extra mile challenges from the PDF. The exam purchase only included 90 days of lab access which left me rushing to prepare as much as I could, essentially grasping for straws. I scheduled my exam for June of 2022 and nearly prepared every day leading up to my exam.
 
 ### Attempt #1
 
-Since I had no idea what to expect, I spent the entire night staring at the ceiling with my mind racing. I considered all possibilities and imagined every topic I felt underprepared for appearing on the exam. What if HTTP is blocked on a machine and I have to transfer files another way? What if I have to exploit blind SQLi? etc, etc. Needless to say I was wound tight. After grabbing breakfast, I connected to the exam VPN, followed all prerequisite steps, and was off to the races. I decided to focus on Active Directory first, which at the time did not have assumed breach credentials. I actually managed to gain an initial foothold, and then escalated privileges to spawn a system shell on the Windows target! I don't recall how long this took, but I can assure you it wasn't impressive. I went back through my notes and saw the next step was to dump credentials. I transferred the necessary tools to the target, dumped hashes, but I wasn't able to find credentials that could provide access to the next machine in the AD network. What was I missing??
+Since I had no idea what to expect, I spent the entire night staring at the ceiling with my mind racing. I considered all possibilities and imagined every topic I underprepared for appearing on the exam. What if HTTP is blocked on a machine and I have to transfer files another way? What if I have to exploit blind SQLi? etc, etc. Needless to say I was wound tight. After grabbing breakfast, I connected to the exam VPN, followed all prerequisite steps, and was off to the races. I decided to focus on Active Directory first, which at the time did not have assumed breach credentials. I actually managed to gain an initial foothold, and then escalated privileges to spawn a system shell on the Windows target! I don't recall how long this took, but I can assure you it wasn't impressive. Afterwards, I began transferring the necessary tools for post-exploit enumeration, but I wasn't able to find credentials that could provide access to the next machine in the AD network. What was I missing??
 
 I spent the rest of the exam toiling on the Windows machine, retracing my steps and looking for something, *anything* that may provide access to the next AD machine. I would occassionally review my `nmap` output from the other exam machines, did some basic enumeration, but never found any initial access. I felt defeated, and figured it was time to lay down and get some sleep.
 
@@ -35,13 +40,13 @@ I woke up around 5AM to revisit the machines for one last ditch effort, but it w
 
 #### The Silver Lining
 
-Let's fast forward to 2023 for a moment. Remember how I thought this certification would help set me up for a job? It did, but more specifically the *failure* set me up for my current job! Believe it or not, I was hired on to [Scientific Research Corporation](https://www.scires.com/) roughly one month after my first OSCP attempt. I didn't discover this until a year and a half in when I decided to ask my boss:
+Let's fast forward to 2023 for a moment. Remember how I thought this certification would help set me up for a job? It did, but more specifically the *failure* set me up for my current job! Believe it or not, I was hired on to [Scientific Research Corporation](https://www.scires.com/) roughly one month after my first OSCP attempt. I didn't discover this until a year and a half later when I decided to ask my boss:
 
 > Why *did* you hire me?
 
 I was aware that my situation was unusual. It is rather uncommon for a new graduate with no prior DoD experience to be working Cyber Security right out of the gate. I can't remember what he said word for word, but I clearly remember him mentioning my OSCP exam attempt as something that separated me from the rest of the candidates. To his credit as well, he wanted to give a fresh graduate a chance in Cyber Security, which I am eternally grateful for. The lesson for the reader: 
 
-Your efforts, even in failure, do not go unnoticed. Take that leap of faith!
+Your efforts, even in failure, do not go unnoticed.
 
 ## Defense by Day, Offense by Night
 
@@ -53,7 +58,7 @@ Starting off the New Year in 2023, I dove right back into the PDF course work. A
 - Client Side Attacks
 - Common Web Application Attacks
 - Information Gathering (General Enumeration & Scanning)
-- Introduction to Web Application Attacks (Noticing a pattern yet?)
+- Introduction to Web Application Attacks
 - Pivoting
 - Privilege Escalation (Windows & Linux Combined)
 - SQL Injection
@@ -88,7 +93,7 @@ PDF generated. Submitted. 20/100.
 
 At this point I was beyond frustrated with myself and the OSCP exam. I needed a break. I decided to take a good few months off, and during that time I learned of TCM Security's [Practical Junior Penetration Tester (PJPT)](https://certifications.tcm-sec.com/pjpt/) certification. I felt that taking a step back and considering a less intense exam would get some wind in my sails for the next attempt. I kept my eye on this certification as I refocused on work and tried not to dwell on those back-to-back failures.
 
-After a hefty break, I decided to pull the trigger on the PJPT coursework on July 22nd, 2024 for $199 during a sale. I cannot recommend PJPT enough. Having gone through the OSCP coursework multiple times, I was blown away by the level of quality TCM Security delivered at this price point.  I can confidently say that you will be thoroughly overprepared for your PJPT exam. I certainly picked up a few new tricks from their web application sections! As I progressed through the coursework, my note taking methodology improved slightly. While still resembling the previously discussed "format", I began to take cheatsheet mindset more seriously. My explanations were consise, and I made the conscious decision to recognize the difference between substance and fluff.
+After a hefty break, I decided to pull the trigger on the PJPT coursework on July 22nd, 2024 for $199 during a sale. I cannot recommend PJPT enough. Having gone through the OSCP coursework multiple times, I was blown away by the level of quality TCM Security delivered at this price point.  I can confidently say that you will be *overprepared* for your PJPT exam. I certainly picked up a few new tricks from their web application sections! As I progressed through the coursework, my note taking methodology improved slightly. While still resembling the previously discussed "format", I began to take cheatsheet mindset more seriously. My explanations were consise, and I made the conscious decision to recognize the difference between substance and fluff.
 
 Fast forwarding to mid November (I can't recall the exact date), I sat down for the exam and truly felt confident for the first time. I'll keep this section short for brevity sake, the exam went much better than expected. I ended up completing all objectives at a reasonable time by the evening. I decided to use all two days to retrace all of my steps and ensure that my report was bullet proof, and it was! I was issued my official PJPT certification on November 17th, 2024. This certification was a nice boost for morale, but I knew this was a (valuable) stepping stone towards my ultimate goal of OSCP.
 
@@ -217,7 +222,7 @@ Start a `ligolo-ng` server on Kali:
 ./linux-proxy -selfcert
 ```
 
-I recommend using callouts for important things to remember, like how I needed to create that previous interface after every reboot. I like to use callouts for listing additional command flags that might be useful to me. Here's an example format from my Active Directory Attacks cheat sheet for `impacket-secretsdump`:
+I recommend using [callouts](https://help.obsidian.md/callouts) for important things to remember, like how I needed to create that previous interface after every reboot. I also like to use callouts for listing additional command flags that might be useful to me. Here's an example format from my Active Directory Attacks cheat sheet for `impacket-secretsdump`:
 
 ```markdown
 # Dumping & Cracking Hashes
@@ -233,7 +238,9 @@ impacket-secretsdump LOCAL -ntds ./ntds.dit -just-dc -system ./SYSTEM -security 
 > `-security`: SECURITY Registry hive to parse
 ```
 
-Once I felt my cheat sheet was fully fleshed out, I would scroll to the top of the page and use `Ctrl + P` to search and run my table of contents plugin. If you choose the automatic update plugin by Johan Satgé, you won't need to constantly repeat this step if you add new headers in the future. I like to contain my table of contents in a callout. This can be done by highlighting the table of contents, *right-clicking* the selection, hovering over `Insert`, and *left-clicking* `Callout`. Here's what the end result should look like. Don't be worried if it's not completely identical as you'll probably be using a different plugin than what I chose. As long as you're able to left-click a header and it links properly, that's all that matters. The goal is to provide yourself quick access to commands:
+Once I felt my cheat sheet was fully fleshed out, I would scroll to the top of the page and use `Ctrl + P` to search and run my table of contents plugin. If you choose the automatic update plugin by Johan Satgé, you won't need to constantly repeat this step if you add new headers in the future.
+
+I like to contain my table of contents in a callout. This can be done by highlighting the table of contents, *right-clicking* the selection, hovering over `Insert`, and *left-clicking* `Callout`. Here's what the end result should look like. Don't be worried if it's not completely identical as you'll probably be using a different plugin than what I chose. As long as you're able to left-click a header and it links properly, that's all that matters. The goal is to provide yourself quick access to commands:
 
 ```markdown
 > [!ABSTRACT]- Table of Contents
@@ -251,7 +258,7 @@ Once I felt my cheat sheet was fully fleshed out, I would scroll to the top of t
 
 ## Returning to the OffSec Labs
 
-With the Proving Grounds list *finally* completed, the only thing I felt was left to practice was Active Directory and pivoting. So I purchased my one month PEN-200 lab extension on October 9th, 2025. My plan was to complete the OSCP A, B, and C mock exam sets. At this point in my journey I had put in so many CTF reps in the Proving Grounds that things were finally starting to click. With [Ligolo-NG](https://github.com/nicocha30/ligolo-ng), pivoting was an absolute breeze. I was tearing through the AD domains, and I only ever asked for a hint on one set! With the extra time, I went ahead and completed all standalone machines for all three sets. I even gave the Poseiden AD set a shot, but I ran out of time. November 8th, 2025 marked the last day of hands on practice for OSCP. I decided to take that final week off and didn't allow myself preparation of any kind (besides a strategic purchase of Red Bull). This really helped me reset my stress levels before my exam attempt on November 14th, 2025.
+With the Proving Grounds list *finally* completed, the only thing I felt was left to practice was Active Directory and pivoting. So I purchased my one month PEN-200 lab extension on October 9th, 2025. My plan was to complete the OSCP A, B, and C mock exam sets. At this point in my journey I had put in so many reps in the Proving Grounds that things were finally starting to click. With [Ligolo-NG](https://github.com/nicocha30/ligolo-ng), pivoting was an absolute breeze. I was tearing through the AD domains, and I only ever asked for a hint on one set! With the extra time, I went ahead and completed all standalone machines for all three sets. I even gave the Poseiden AD set a shot, but I ran out of time. November 8th, 2025 marked the last day of hands on practice for OSCP. I decided to take that final week off and didn't allow myself preparation of any kind (besides a strategic purchase of Red Bull). This really helped me reset my stress levels before my exam attempt on November 14th, 2025.
 
 # The 4th and Final Attempt
 
