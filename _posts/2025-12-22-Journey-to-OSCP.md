@@ -7,6 +7,10 @@ Having recently passed my Offensive Security Certified Professional exam, I want
 
 # tl;dr
 
+This post is a long one, so for those of you who are always going a mile a minute and don't have the time for the full article, here's my proposed OSCP roadmap to go from zero to hero:
+
+1. [Practical Ethical Hacking Course](https://www.youtube.com/playlist?list=PLLKT__MCUeixqHJ1TRqrHsEd6_EdEvo47)
+
 # Humble Beginnings
 
 I first heard of the OSCP exam during a Cyber Security club presentation in college from the one and only [Connor McGarr](https://www.linkedin.com/in/connor-mcgarr-7522a6152/). After watching his buffer overflow demonstration, and learning of the OSCP exam's difficulty, I knew I was hooked. At this time, I was still a fairly green Cyber Security student and didn't consider preparation or further investigation until a year later.
