@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Grant Trowbridge&apos;s Blog</title>
-    <description>Cybersecurity blog covering security-related topics, CTFs, and signals
+    <description>A Cyber Security blog covering security-related topics, CTFs, and signals
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 07 Jan 2026 21:15:41 -0500</pubDate>
-    <lastBuildDate>Wed, 07 Jan 2026 21:15:41 -0500</lastBuildDate>
+    <pubDate>Wed, 07 Jan 2026 21:31:23 -0500</pubDate>
+    <lastBuildDate>Wed, 07 Jan 2026 21:31:23 -0500</lastBuildDate>
     <generator>Jekyll v3.9.4</generator>
     
       <item>
