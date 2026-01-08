@@ -5,9 +5,9 @@ title: "Journey to OSCP"
 
 Having recently passed my Offensive Security Certified Professional exam, I wanted to give back to the OffSec community and share my three year journey towards OSCP. You heard that right. Not only *three* years, but passing on my *fourth* attempt as well. It hurts the ego to say that out loud, but I feel it is important to be fully transparent, especially for those out there considering your own attempt, or perhaps feel like giving up.
 
-# tl;dr
+# tl;dr 🥱
 
-This post is a long one, so for those of you who are always going a mile a minute and don't have the time for the full article, here is my proposed OSCP roadmap to go from zero to hero:
+This post is a long one. For those of you who don't have time for the full article, here is my proposed OSCP roadmap to go from zero to hero:
 
 1. [Practical Ethical Hacking Course](https://www.youtube.com/playlist?list=PLLKT__MCUeixqHJ1TRqrHsEd6_EdEvo47)
 2. [TryHackMe Jr Penetration Tester Learning Path](https://tryhackme.com/path/outline/jrpenetrationtester) (Either complete it or cherry-pick sections covering your weakpoints)
