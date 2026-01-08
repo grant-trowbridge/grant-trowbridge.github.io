@@ -4,7 +4,7 @@ title: whoami
 permalink: /about/
 ---
 
-I am a Cybersecurity Engineer with 3 years of experience in defense contracting. My primary interests are in offensive security and signals intelligence.
+I am a Cyber Security Engineer with 3 years of experience in defense contracting. My primary interests are in offensive security and signals intelligence.
 
 ### Certifications
 
