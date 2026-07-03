@@ -17,3 +17,10 @@ At intelligence agencies like NSA, CIA, MI5/6, and KGB, there exists a job role 
 
 > As a Targeting Officer at CIA, you will identify the people, relationships, and organizations having access to the information needed to address the most critical U.S. foreign intelligence requirements and find opportunities to disrupt terrorist attacks, illegal arms trade, drug networks, cyber threats, and counterintelligence threats.
 
+What often surprises people is how much OSINT (Open Source Intelligence) is used by law enforcement and the IC (Intelligence Community). Movies often depict advanced satellite imagery and recruiting assets. Sometimes all it takes is an OPSEC (Operational Security) slip-up. A cell phone someone forgot to power-off or place in a faraday bag. A message sent at the wrong time. Or a picture posted to social media.
+
+# Extracting Metadata with exiftool
+
+As stated at the top of the article our example will cover the picture and social media example:
+
+![Exif Example](/assets/img/exif-example.jpg)

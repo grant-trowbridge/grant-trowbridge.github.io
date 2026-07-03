@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 03 Jul 2026 14:41:41 -0400</pubDate>
-    <lastBuildDate>Fri, 03 Jul 2026 14:41:41 -0400</lastBuildDate>
+    <pubDate>Fri, 03 Jul 2026 19:06:14 -0400</pubDate>
+    <lastBuildDate>Fri, 03 Jul 2026 19:06:14 -0400</lastBuildDate>
     <generator>Jekyll v3.9.4</generator>
     
       <item>
@@ -27,6 +27,14 @@
 &lt;blockquote&gt;
 &lt;p&gt;As a Targeting Officer at CIA, you will identify the people, relationships, and organizations having access to the information needed to address the most critical U.S. foreign intelligence requirements and find opportunities to disrupt terrorist attacks, illegal arms trade, drug networks, cyber threats, and counterintelligence threats.&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;p&gt;What often surprises people is how much OSINT (Open Source Intelligence) is used by law enforcement and the IC (Intelligence Community). Movies often depict advanced satellite imagery and recruiting assets. Sometimes all it takes is an OPSEC (Operational Security) slip-up. A cell phone someone forgot to power-off or place in a faraday bag. A message sent at the wrong time. Or a picture posted to social media.&lt;/p&gt;
+
+&lt;h1&gt;Extracting Metadata with exiftool&lt;/h1&gt;
+
+&lt;p&gt;As stated at the top of the article our example will cover the picture and social media example:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/exif-example.jpg&quot; alt=&quot;Exif Example&quot;&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 03 Jul 2026 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2026/Killed-by-Camera-Roll/</link>
