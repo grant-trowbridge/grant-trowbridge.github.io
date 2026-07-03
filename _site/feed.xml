@@ -6,13 +6,27 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 03 Jul 2026 11:33:07 -0400</pubDate>
-    <lastBuildDate>Fri, 03 Jul 2026 11:33:07 -0400</lastBuildDate>
+    <pubDate>Fri, 03 Jul 2026 14:41:41 -0400</pubDate>
+    <lastBuildDate>Fri, 03 Jul 2026 14:41:41 -0400</lastBuildDate>
     <generator>Jekyll v3.9.4</generator>
     
       <item>
         <title>How to Get Killed by Your Camera Roll</title>
-        <description>&lt;p&gt;Test&lt;/p&gt;
+        <description>&lt;p&gt;At some point in your life you&amp;#39;ve heard the word &amp;quot;metadata&amp;quot; in the news. But what is it exactly? Who would want your metadata? And why should you care? In this blog post, I will be using a real-life photo as an example of what kind of data can be extracted from your camera roll pictures. The image is from a Tyler Childers concert I attended with my sister back in 2023 (and we&amp;#39;ll be able to confirm this further down).&lt;/p&gt;
+
+&lt;h1&gt;What is Metadata and Why Does it Matter?&lt;/h1&gt;
+
+&lt;p&gt;Simply put, metadata is data about data. It is information about content that is not contained within the content itself. Think of it as reading the nutrition facts label on a gallon of milk at the grocery store. But what if instead of containing proteins, carbs and fats, this metadata contained information about your device, when a file was created, and where the device was at the exact time of file creation. That could be valuable to advertisers, law enforcement, even foreign militaries and intelligence agencies.&lt;/p&gt;
+
+&lt;h2&gt;&amp;quot;We Kill People Based on Metadata&amp;quot;&lt;/h2&gt;
+
+&lt;p&gt;A direct quote from former head of NSA, General Michael Hayden, during a panel debate regarding privacy at Johns Hopkins University in April 2014. I bring this up not to scare you, but rather inform you of what metadata can be used for. From the most &amp;quot;benign&amp;quot;, like advertising, all the way to shortening the kill chain to launch pinpoint accurate artillery and drone strikes.&lt;/p&gt;
+
+&lt;p&gt;At intelligence agencies like NSA, CIA, MI5/6, and KGB, there exists a job role called Targeting Officer. According to CIA&amp;#39;s own job summary:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;As a Targeting Officer at CIA, you will identify the people, relationships, and organizations having access to the information needed to address the most critical U.S. foreign intelligence requirements and find opportunities to disrupt terrorist attacks, illegal arms trade, drug networks, cyber threats, and counterintelligence threats.&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         <pubDate>Fri, 03 Jul 2026 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2026/Killed-by-Camera-Roll/</link>
