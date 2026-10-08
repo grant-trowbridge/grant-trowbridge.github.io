@@ -138,12 +138,17 @@ Lens ID                         : iPhone 13 Pro Max back triple camera 5.7mm f/1
 
 <h2>Converting HEIC GPS to Decimal Degrees</h2>
 
-<p>The GPS data in the images metadata is denoted in Degrees, Minutes, and Seconds (DMS) by default. In order to view these coordinates in Google Maps, we&#39;ll need to convert them to Decimal Degrees (DD) format. I found <a href="https://www.latlong.net/degrees-minutes-seconds-to-decimal-degrees">this site</a> that performs the conversion automatically. When I enter my coordinates, I get the decimal degrees <code>32.86138889, 79.90409722</code>. All that&#39;s left to do is to head to <a href="https://maps.google.com">Google Maps</a> and enter the coordinates. The most shocking part of this all is how accurate the coordinates being recorded are. Google Maps places me at the exact seat I had at the Credit One Stadium on Daniel Island. This also confirms the exact viewing angle shown in the picture too:</p>
+<p>The GPS data in the images metadata is denoted in Degrees, Minutes, and Seconds (DMS) by default. In order to view these coordinates in Google Maps, we&#39;ll need to convert them to Decimal Degrees (DD) format. I found <a href="https://www.latlong.net/degrees-minutes-seconds-to-decimal-degrees">this site</a> that performs the conversion automatically. When I enter my coordinates, I get the decimal degrees <code>32.86138889, 79.90409722</code>. All that&#39;s left to do is to head to <a href="https://maps.google.com">Google Maps</a> and enter the coordinates. The most shocking part is how accurate the coordinates being recorded are. Google Maps places me at the exact seat I had at the Credit One Stadium on Daniel Island. This also validates the exact viewing angle shown in the picture too:</p>
 
 <p><img src="/assets/img/exif-gps-location-1.jpg" alt="Exif GPS Location 1"></p>
 
 <p><img src="/assets/img/exif-gps-location-2.jpg" alt="Exif GPS Location 2"></p>
 
+<h2>Removing Metadata</h2>
+
+<p>Fortunately, most social media platforms are good about automatically stripping metadata to help protect their users. The same cannot be said about that same image sitting on your phone&#39;s hard drive or cloud storage. <code>exiftool</code> can still solve this problem. To erase metadata, specify the exact name of the metadata field, add an <code>=</code> sign to denote the new value to overwrite the field:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">
+</code></pre></div>
   </article>
 </div>
     </div>

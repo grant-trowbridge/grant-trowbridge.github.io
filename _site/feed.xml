@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 06 Oct 2026 23:05:13 -0400</pubDate>
-    <lastBuildDate>Tue, 06 Oct 2026 23:05:13 -0400</lastBuildDate>
+    <pubDate>Wed, 07 Oct 2026 20:56:40 -0400</pubDate>
+    <lastBuildDate>Wed, 07 Oct 2026 20:56:40 -0400</lastBuildDate>
     <generator>Jekyll v3.9.4</generator>
     
       <item>
@@ -115,12 +115,17 @@ Lens ID                         : iPhone 13 Pro Max back triple camera 5.7mm f/1
 
 &lt;h2&gt;Converting HEIC GPS to Decimal Degrees&lt;/h2&gt;
 
-&lt;p&gt;The GPS data in the images metadata is denoted in Degrees, Minutes, and Seconds (DMS) by default. In order to view these coordinates in Google Maps, we&amp;#39;ll need to convert them to Decimal Degrees (DD) format. I found &lt;a href=&quot;https://www.latlong.net/degrees-minutes-seconds-to-decimal-degrees&quot;&gt;this site&lt;/a&gt; that performs the conversion automatically. When I enter my coordinates, I get the decimal degrees &lt;code&gt;32.86138889, 79.90409722&lt;/code&gt;. All that&amp;#39;s left to do is to head to &lt;a href=&quot;https://maps.google.com&quot;&gt;Google Maps&lt;/a&gt; and enter the coordinates. The most shocking part of this all is how accurate the coordinates being recorded are. Google Maps places me at the exact seat I had at the Credit One Stadium on Daniel Island. This also confirms the exact viewing angle shown in the picture too:&lt;/p&gt;
+&lt;p&gt;The GPS data in the images metadata is denoted in Degrees, Minutes, and Seconds (DMS) by default. In order to view these coordinates in Google Maps, we&amp;#39;ll need to convert them to Decimal Degrees (DD) format. I found &lt;a href=&quot;https://www.latlong.net/degrees-minutes-seconds-to-decimal-degrees&quot;&gt;this site&lt;/a&gt; that performs the conversion automatically. When I enter my coordinates, I get the decimal degrees &lt;code&gt;32.86138889, 79.90409722&lt;/code&gt;. All that&amp;#39;s left to do is to head to &lt;a href=&quot;https://maps.google.com&quot;&gt;Google Maps&lt;/a&gt; and enter the coordinates. The most shocking part is how accurate the coordinates being recorded are. Google Maps places me at the exact seat I had at the Credit One Stadium on Daniel Island. This also validates the exact viewing angle shown in the picture too:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/exif-gps-location-1.jpg&quot; alt=&quot;Exif GPS Location 1&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/exif-gps-location-2.jpg&quot; alt=&quot;Exif GPS Location 2&quot;&gt;&lt;/p&gt;
-</description>
+
+&lt;h2&gt;Removing Metadata&lt;/h2&gt;
+
+&lt;p&gt;Fortunately, most social media platforms are good about automatically stripping metadata to help protect their users. The same cannot be said about that same image sitting on your phone&amp;#39;s hard drive or cloud storage. &lt;code&gt;exiftool&lt;/code&gt; can still solve this problem. To erase metadata, specify the exact name of the metadata field, add an &lt;code&gt;=&lt;/code&gt; sign to denote the new value to overwrite the field:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         <pubDate>Tue, 06 Oct 2026 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2026/Killed-by-Camera-Roll/</link>
         <guid isPermaLink="true">http://localhost:4000/2026/Killed-by-Camera-Roll/</guid>

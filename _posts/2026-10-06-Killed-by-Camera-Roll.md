@@ -105,8 +105,26 @@ Even excluding some of the output, that is quite a lot of information. So what p
 
 ## Converting HEIC GPS to Decimal Degrees
 
-The GPS data in the images metadata is denoted in Degrees, Minutes, and Seconds (DMS) by default. In order to view these coordinates in Google Maps, we'll need to convert them to Decimal Degrees (DD) format. I found [this site](https://www.latlong.net/degrees-minutes-seconds-to-decimal-degrees) that performs the conversion automatically. When I enter my coordinates, I get the decimal degrees `32.86138889, 79.90409722`. All that's left to do is to head to [Google Maps](https://maps.google.com) and enter the coordinates. The most shocking part of this all is how accurate the coordinates being recorded are. Google Maps places me at the exact seat I had at the Credit One Stadium on Daniel Island. This also confirms the exact viewing angle shown in the picture too:
+The GPS data in the images metadata is denoted in Degrees, Minutes, and Seconds (DMS) by default. In order to view these coordinates in Google Maps, we'll need to convert them to Decimal Degrees (DD) format. I found [this site](https://www.latlong.net/degrees-minutes-seconds-to-decimal-degrees) that performs the conversion automatically. When I enter my coordinates, I get the decimal degrees `32.86138889, 79.90409722`. All that's left to do is to head to [Google Maps](https://maps.google.com) and enter the coordinates. The most shocking part is how accurate the coordinates being recorded are. Google Maps places me at the exact seat I had at the Credit One Stadium on Daniel Island. This also validates the exact viewing angle shown in the picture too:
 
 ![Exif GPS Location 1](/assets/img/exif-gps-location-1.jpg)
 
 ![Exif GPS Location 2](/assets/img/exif-gps-location-2.jpg)
+
+## Removing Metadata
+
+Fortunately, most social media platforms are good about automatically stripping metadata to help protect their users. The same cannot be said about that same image sitting on your phone's hard drive or cloud storage. `exiftool` can still solve this problem. To erase all GPS metadata, use the -gps parameter and specify the all:
+
+```
+PS C:\Users\Trowb\Downloads> .\exiftool-13.59_64\exiftool-13.59_64\exiftool.exe -gps:all= .\IMG_3211.HEIC
+    1 image files updated
+```
+
+To remove even more information
+
+```
+PS C:\Users\Trowb\Downloads> .\exiftool-13.59_64\exiftool-13.59_64\exiftool.exe -all= --ColorSpaceTags --Rotation --Orientation .\IMG_3211.HEIC
+Can't convert Sony:Rotation (matches more than one PrintConv)
+Warning: ICC_Profile deleted. Image colors may be affected - ./IMG_3211.HEIC
+    1 image files updated
+```
