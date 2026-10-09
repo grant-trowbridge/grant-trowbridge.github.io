@@ -7,9 +7,9 @@ At some point in your life you've heard the word "metadata" in the news. But wha
 
 # What is Metadata and Why Does it Matter?
 
-Simply put, metadata is data about data. It is information about content that is not contained within the content itself. Think of it as reading the nutrition facts label on a gallon of milk at the grocery store. But what if instead of containing proteins, carbs and fats, this metadata contained information about your device, when a file was created, and where the device was at the exact time of file creation. That could be valuable to advertisers, law enforcement, even foreign militaries and intelligence agencies.
+Simply put, metadata is data about data. It is information about content that is not contained within the content itself. Think of it as reading the nutrition facts label on a gallon of milk at the grocery store. What if instead of containing proteins, carbs and fats, this metadata contained information about your device, when a file was created, and where the device was at the exact time of file creation. That could be valuable to advertisers, law enforcement, even foreign militaries and intelligence agencies.
 
-## "We Kill People Based on Metadata"
+## We Kill People Based on Metadata
 
 A direct quote from former head of NSA, General Michael Hayden, during a panel debate regarding privacy at Johns Hopkins University in April 2014. I bring this up not to scare you, but rather inform you of what metadata can be used for. From the most "benign", like advertising, all the way to shortening the kill chain to launch pinpoint accurate artillery and drone strikes.
 
@@ -113,18 +113,29 @@ The GPS data in the images metadata is denoted in Degrees, Minutes, and Seconds 
 
 ## Removing Metadata
 
-Fortunately, most social media platforms are good about automatically stripping metadata to help protect their users. The same cannot be said about that same image sitting on your phone's hard drive or cloud storage. `exiftool` can still solve this problem. To erase all GPS metadata, use the -gps parameter and specify the all:
+Fortunately, most social media platforms are good about automatically stripping metadata to help protect their users. The same cannot be said about that same image sitting on your phone's hard drive or cloud storage. `exiftool` can still solve this problem. To erase all GPS metadata, use the `-gps:all=` flag:
 
 ```
 PS C:\Users\Trowb\Downloads> .\exiftool-13.59_64\exiftool-13.59_64\exiftool.exe -gps:all= .\IMG_3211.HEIC
     1 image files updated
 ```
 
-To remove even more information
+To remove even more information, use the `-all=` flag. Before using this flag, however, be sure that you are not removing sensitive color data from your image. Some fields are required in order for the image to properly render. In this case with HEIC, I did not see any degredation in color, but what I did notice is that the image was rotated 90 degrees counter-clockwise in my Google Drive afterwards. That's no good. To fix this let's first note the value of the `Orientation` field:
 
 ```
-PS C:\Users\Trowb\Downloads> .\exiftool-13.59_64\exiftool-13.59_64\exiftool.exe -all= --ColorSpaceTags --Rotation --Orientation .\IMG_3211.HEIC
-Can't convert Sony:Rotation (matches more than one PrintConv)
+PS C:\Users\XXX\Downloads\exiftool-13.59_64\exiftool-13.59_64> .\exiftool.exe -Orientation ..\..\IMG_3211.HEIC
+Orientation                     : Rotate 90 CW
+```
+
+WORKING ORIENTATION FIX:
+
+```
+PS C:\Users\XXX\Downloads\exiftool-13.59_64\exiftool-13.59_64> .\exiftool.exe -all= ..\..\IMG_3211.HEIC
 Warning: ICC_Profile deleted. Image colors may be affected - ./IMG_3211.HEIC
+    1 image files updated
+```
+
+```
+PS C:\Users\XXX\Downloads\exiftool-13.59_64\exiftool-13.59_64> .\exiftool.exe -EXIF:Orientation#=6 ..\..\IMG_3211.HEIC
     1 image files updated
 ```

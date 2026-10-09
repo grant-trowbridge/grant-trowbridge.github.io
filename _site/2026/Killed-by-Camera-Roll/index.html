@@ -39,9 +39,9 @@
 
 <h1>What is Metadata and Why Does it Matter?</h1>
 
-<p>Simply put, metadata is data about data. It is information about content that is not contained within the content itself. Think of it as reading the nutrition facts label on a gallon of milk at the grocery store. But what if instead of containing proteins, carbs and fats, this metadata contained information about your device, when a file was created, and where the device was at the exact time of file creation. That could be valuable to advertisers, law enforcement, even foreign militaries and intelligence agencies.</p>
+<p>Simply put, metadata is data about data. It is information about content that is not contained within the content itself. Think of it as reading the nutrition facts label on a gallon of milk at the grocery store. What if instead of containing proteins, carbs and fats, this metadata contained information about your device, when a file was created, and where the device was at the exact time of file creation. That could be valuable to advertisers, law enforcement, even foreign militaries and intelligence agencies.</p>
 
-<h2>&quot;We Kill People Based on Metadata&quot;</h2>
+<h2>We Kill People Based on Metadata</h2>
 
 <p>A direct quote from former head of NSA, General Michael Hayden, during a panel debate regarding privacy at Johns Hopkins University in April 2014. I bring this up not to scare you, but rather inform you of what metadata can be used for. From the most &quot;benign&quot;, like advertising, all the way to shortening the kill chain to launch pinpoint accurate artillery and drone strikes.</p>
 
@@ -146,8 +146,20 @@ Lens ID                         : iPhone 13 Pro Max back triple camera 5.7mm f/1
 
 <h2>Removing Metadata</h2>
 
-<p>Fortunately, most social media platforms are good about automatically stripping metadata to help protect their users. The same cannot be said about that same image sitting on your phone&#39;s hard drive or cloud storage. <code>exiftool</code> can still solve this problem. To erase metadata, specify the exact name of the metadata field, add an <code>=</code> sign to denote the new value to overwrite the field:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">
+<p>Fortunately, most social media platforms are good about automatically stripping metadata to help protect their users. The same cannot be said about that same image sitting on your phone&#39;s hard drive or cloud storage. <code>exiftool</code> can still solve this problem. To erase all GPS metadata, use the <code>-gps:all=</code> flag:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">PS C:\Users\Trowb\Downloads&gt; .\exiftool-13.59_64\exiftool-13.59_64\exiftool.exe -gps:all= .\IMG_3211.HEIC
+    1 image files updated
+</code></pre></div>
+<p>To remove even more information, use the <code>-all=</code> flag. Before using this flag, however, be sure that you are not removing sensitive color data from your image. Some fields are required in order for the image to properly render. In this case with HEIC, I did not see any degredation in color, but what I did notice is that the image was rotated 90 degrees counter-clockwise in my Google Drive afterwards. That&#39;s no good. To fix this let&#39;s first note the value of the <code>Orientation</code> field:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">PS C:\Users\XXX\Downloads\exiftool-13.59_64\exiftool-13.59_64&gt; .\exiftool.exe -Orientation ..\..\IMG_3211.HEIC
+Orientation                     : Rotate 90 CW
+</code></pre></div>
+<p>WORKING ORIENTATION FIX:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">PS C:\Users\XXX\Downloads\exiftool-13.59_64\exiftool-13.59_64&gt; .\exiftool.exe -all= ..\..\IMG_3211.HEIC
+Warning: ICC_Profile deleted. Image colors may be affected - ./IMG_3211.HEIC
+    1 image files updated
+</code></pre></div><div class="highlight"><pre><code class="language-" data-lang="">PS C:\Users\XXX\Downloads\exiftool-13.59_64\exiftool-13.59_64&gt; .\exiftool.exe -EXIF:Orientation#=6 ..\..\IMG_3211.HEIC
+    1 image files updated
 </code></pre></div>
   </article>
 </div>
