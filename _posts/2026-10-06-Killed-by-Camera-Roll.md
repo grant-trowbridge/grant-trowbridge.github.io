@@ -11,7 +11,7 @@ Simply put, metadata is data about data. It is information about content that is
 
 ## "We Kill People Based on Metadata"
 
-A direct quote from former head of NSA, General Michael Hayden, during a panel debate regarding privacy at Johns Hopkins University in April 2014. I bring this up not to scare you, but rather inform you of what metadata can be used for. From the most "benign", like advertising, all the way to shortening the kill chain to launch pinpoint accurate artillery and drone strikes.
+A direct quote from former head of NSA, General Michael Hayden, during a panel debate regarding privacy at Johns Hopkins University in April 2014. I bring this up not to scare you, but rather inform you of what metadata can be used for. From the most "benign", like advertising, to the most extreme (assassinations, artillery strikes, drone strikes, etc).
 
 This isn't some cheap shot at the US, this is simply the new reality of modern warfare that all nation states engage in. At intelligence agencies across the world, there typically exists a job role called Targeting Officer. These officers rely on both closed and open source methods to track down persons and networks of interest. Metadata is one of the pieces used to solve this intelligence puzzle. According to CIA's own job summary:
 
@@ -155,6 +155,6 @@ Under *Allow Location Access*, select **Never**.
 
 On Andriod, the settings names and locations may vary between phones. As a general rule, find the camera app and select the Settings icon. From there find the "GPS Location Info" or "Locations Tags" setting and disable it. Alternatively, you can outright disable Location Services under the phone's general Settings app.
 
-## Do you Always Need to Post Immediately?
+Do you always need to post ASAP? No. You don't. A simple but effective mitigation is to simply stop posting photos/videos the second you take them. Instead of immediately posting your international trip to your Instagram story, post them to your profile once you're back home. Beyond the potential GPS coordinates embedded in media, someone can determine your location based on what can be phyiscally seen. That in correlation with the timing of your post could put you at risk. This type of OSINT is a skill you can develop. If you haven't heard of [Geoguesser](https://www.geoguessr.com/), I'd highly recommend you do a search on YouTube for the best geoguessers in the world. With the advent of AI/ML, this becomes even easier to do for the layman.
 
-No. You don't. A simple but effective mitigation is to simply stop posting photos/videos the second you take them. Instead of immediately posting your international trip to your Instagram story, post them to your profile once you're back home. Beyond the potential GPS coordinates embedded in media, someone can determine your location based on what can be phyiscally seen. That in correlation with the timing of your post could put you at risk. This type of OSINT is a skill you can develop. If you haven't heard of [Geoguesser](https://www.geoguessr.com/), I'd highly recommend you do a search on YouTube for the best geoguessers in the world. With the advent of AI/ML, this becomes even easier to do.
+The metadata of the files you generate throughout life are the digital breadcrumbs used by advertisers and adversaries to determine your patterns of life, your personal network, even your next move. That doesn't mean you have to make it easy for them :)
