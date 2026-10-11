@@ -6,13 +6,13 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 09 Oct 2026 14:22:58 -0400</pubDate>
-    <lastBuildDate>Fri, 09 Oct 2026 14:22:58 -0400</lastBuildDate>
+    <pubDate>Sat, 10 Oct 2026 10:42:53 -0400</pubDate>
+    <lastBuildDate>Sat, 10 Oct 2026 10:42:53 -0400</lastBuildDate>
     <generator>Jekyll v3.9.4</generator>
     
       <item>
         <title>How to Get Killed by Your Camera Roll</title>
-        <description>&lt;p&gt;At some point in your life you&amp;#39;ve heard the word &amp;quot;metadata&amp;quot; in the news. But what is it exactly? Who would want your metadata? And why should you care? In this blog post, I will be using a real-life photo as an example of what kind of data can be extracted from your camera roll pictures. The image is from a Tyler Childers concert I attended with my sister back in 2023 (and we&amp;#39;ll be able to confirm this further down).&lt;/p&gt;
+        <description>&lt;p&gt;At some point in your life you&amp;#39;ve heard the word &amp;quot;metadata&amp;quot; in the news. But what is it exactly? Who would want your metadata? And why should you care? In this blog post, I will be using a real-life photo as an example of what kind of data can be extracted from your camera roll. The photo is from a Tyler Childers concert I attended with my sister back in 2023 (and we&amp;#39;ll be able to confirm this further down).&lt;/p&gt;
 
 &lt;h1&gt;What is Metadata and Why Does it Matter?&lt;/h1&gt;
 
@@ -20,7 +20,7 @@
 
 &lt;h2&gt;&amp;quot;We Kill People Based on Metadata&amp;quot;&lt;/h2&gt;
 
-&lt;p&gt;A direct quote from former head of NSA, General Michael Hayden, during a panel debate regarding privacy at Johns Hopkins University in April 2014. I bring this up not to scare you, but rather inform you of what metadata can be used for. From the most &amp;quot;benign&amp;quot;, like advertising, to the most extreme (assassinations, artillery strikes, drone strikes, etc).&lt;/p&gt;
+&lt;p&gt;A direct quote from former NSA director, General Michael Hayden, during a panel debate regarding privacy at Johns Hopkins University in April 2014. I bring this up not to scare you, but rather inform you of what metadata can be used for. From the most &amp;quot;benign&amp;quot;, like advertising, to the most extreme (assassinations, artillery strikes, drone strikes, etc).&lt;/p&gt;
 
 &lt;p&gt;This isn&amp;#39;t some cheap shot at the US, this is simply the new reality of modern warfare that all nation states engage in. At intelligence agencies across the world, there typically exists a job role called Targeting Officer. These officers rely on both closed and open source methods to track down persons and networks of interest. Metadata is one of the pieces used to solve this intelligence puzzle. According to CIA&amp;#39;s own job summary:&lt;/p&gt;
 

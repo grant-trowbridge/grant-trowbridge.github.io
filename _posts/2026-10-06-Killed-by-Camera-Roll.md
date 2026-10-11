@@ -3,7 +3,7 @@ layout: post
 title: "How to Get Killed by Your Camera Roll"
 ---
 
-At some point in your life you've heard the word "metadata" in the news. But what is it exactly? Who would want your metadata? And why should you care? In this blog post, I will be using a real-life photo as an example of what kind of data can be extracted from your camera roll pictures. The image is from a Tyler Childers concert I attended with my sister back in 2023 (and we'll be able to confirm this further down).
+At some point in your life you've heard the word "metadata" in the news. But what is it exactly? Who would want your metadata? And why should you care? In this blog post, I will be using a real-life photo as an example of what kind of data can be extracted from your camera roll. The photo is from a Tyler Childers concert I attended with my sister back in 2023 (and we'll be able to confirm this further down).
 
 # What is Metadata and Why Does it Matter?
 
@@ -11,7 +11,7 @@ Simply put, metadata is data about data. It is information about content that is
 
 ## "We Kill People Based on Metadata"
 
-A direct quote from former head of NSA, General Michael Hayden, during a panel debate regarding privacy at Johns Hopkins University in April 2014. I bring this up not to scare you, but rather inform you of what metadata can be used for. From the most "benign", like advertising, to the most extreme (assassinations, artillery strikes, drone strikes, etc).
+A direct quote from former NSA director, General Michael Hayden, during a panel debate regarding privacy at Johns Hopkins University in April 2014. I bring this up not to scare you, but rather inform you of what metadata can be used for. From the most "benign", like advertising, to the most extreme (assassinations, artillery strikes, drone strikes, etc).
 
 This isn't some cheap shot at the US, this is simply the new reality of modern warfare that all nation states engage in. At intelligence agencies across the world, there typically exists a job role called Targeting Officer. These officers rely on both closed and open source methods to track down persons and networks of interest. Metadata is one of the pieces used to solve this intelligence puzzle. According to CIA's own job summary:
 
