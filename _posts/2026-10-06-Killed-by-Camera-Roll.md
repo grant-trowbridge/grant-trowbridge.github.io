@@ -13,7 +13,7 @@ Simply put, metadata is data about data. It is information about content that is
 
 A direct quote from former NSA director, General Michael Hayden, during a panel debate regarding privacy at Johns Hopkins University in April 2014. I bring this up not to scare you, but rather inform you of what metadata can be used for. From the most "benign", like advertising, to the most extreme (assassinations, artillery strikes, drone strikes, etc).
 
-This isn't some cheap shot at the US, this is simply the new reality of modern warfare that all nation states engage in. At intelligence agencies across the world, there typically exists a job role called Targeting Officer. These officers rely on both closed and open source methods to track down persons and networks of interest. Metadata is one of the pieces used to solve this intelligence puzzle. According to CIA's own job summary:
+This isn't some cheap shot at the US, it is the new reality of modern warfare that all nation states engage in. At intelligence agencies across the world, there typically exists a job role called Targeting Officer. These officers rely on both closed and open source methods to track down persons and networks of interest. Metadata is one of the pieces used to solve this intelligence puzzle. According to CIA's own job summary:
 
 > As a Targeting Officer at CIA, you will identify the people, relationships, and organizations having access to the information needed to address the most critical U.S. foreign intelligence requirements and find opportunities to disrupt terrorist attacks, illegal arms trade, drug networks, cyber threats, and counterintelligence threats.
 
@@ -21,11 +21,11 @@ What often surprises people is how much OSINT (Open Source Intelligence) is used
 
 # Viewing Metadata with exiftool
 
-As stated at the top of the post, this example will cover the picture and social media example:
+Here is the original photo we took at the concert that I converted to jpg format:
 
 ![Exif Example](/assets/img/exif-example.jpg)
 
-To download `exiftool`, use your distro-specific package manager if you are on Linux. For Windows, navigate to the official [exiftool page](https://exiftool.org/) and select the Windows 32-bit or 64-bit download options. You will be linked SourceForge which *did* give me a heart attack at first, but the download is legit. After the tool is installed on your local machine, you can view the metadata of a specific file by providing it as a positional argument:
+To download `exiftool`, use your distro-specific package manager if you are on Linux. For Windows, navigate to the official [exiftool page](https://exiftool.org/) and select the Windows 32-bit or 64-bit download options. You will be linked to a SourceForge download which *did* give me a heart attack at first, but the download is legit. After the tool is installed on your local machine, you can view the metadata of a specific file by providing it as a positional argument:
 
 ```
 PS C:\Users\XXX\Downloads\exiftool-13.59_64\exiftool-13.59_64> .\exiftool.exe ..\..\IMG_3211.HEIC
@@ -113,7 +113,7 @@ The GPS data in the images metadata is denoted in Degrees, Minutes, and Seconds 
 
 ## Removing GPS Metadata
 
-Fortunately, most social media platforms are good about automatically stripping metadata to help protect their users. The same cannot be said about that same image sitting on your phone's hard drive or cloud storage. `exiftool` can still solve this problem. To erase all GPS metadata, use the `-gps:all=` flag:
+Fortunately, most social media platforms are good about automatically stripping metadata to help protect their users. The same cannot be said about that same image sitting on your phone's hard drive or cloud storage. `exiftool` can solve this problem. To erase all GPS metadata, use the `-gps:all=` flag:
 
 ```
 PS C:\Users\XXX\Downloads\exiftool-13.59_64\exiftool-13.59_64> .\exiftool.exe -gps:all= ..\..\IMG_3211.HEIC
@@ -121,7 +121,11 @@ PS C:\Users\XXX\Downloads\exiftool-13.59_64\exiftool-13.59_64> .\exiftool.exe -g
 ```
 ### Removing All Metadata While Retaining Values of Importance
 
-To remove even more information, use the `-all=` flag. Before using this flag, however, be sure that you are not removing sensitive color data from your image. Some fields are required in order for the image to properly render. In this case with HEIC, and despite the `ICC_Profile` warning, I did not see any degredation in color. What I did notice was the image now being rotated 90 degrees counter-clockwise in my Google Drive afterwards. That's no good. To fix this, let's first note the value of the `Orientation` field before we remove any metadata:
+To remove even more information, use the `-all=` flag. Before using this flag, however, be sure that you are not removing sensitive color data from your image. Some fields are required in order for the image to properly render. In this case with HEIC, and despite the `ICC_Profile` warning, I did not see any degredation in color. What I did notice was the image now being rotated 90 degrees counter-clockwise in my Google Drive afterwards:
+
+![Exif Rotated](/assets/img/exif-rotated.jpg)
+
+That's no good. To fix this, let's first note the value of the `Orientation` field before we remove any metadata:
 
 ```
 PS C:\Users\XXX\Downloads\exiftool-13.59_64\exiftool-13.59_64> .\exiftool.exe -Orientation ..\..\IMG_3211.HEIC
@@ -134,6 +138,7 @@ PS C:\Users\XXX\Downloads\exiftool-13.59_64\exiftool-13.59_64> .\exiftool.exe -a
 Warning: ICC_Profile deleted. Image colors may be affected - ./IMG_3211.HEIC
     1 image files updated
 ```
+
 Now we can simply add the `Orientation` metadata value back to the image:
 
 ```
@@ -144,6 +149,10 @@ PS C:\Users\XXX\Downloads\exiftool-13.59_64\exiftool-13.59_64> .\exiftool.exe -E
 - **-EXIF:Orientation**: `-EXIF` (Exchangeable Image File Format) specifies the type of tag that will be created. `Orientation` is the tag name to be created and added to the image.
 - **#**: This symbol disables print conversion so the value being written is its raw value. This is important because the valid values for Orientation are integers 1-8, and our input must be interpreted as such.
 - **6**: Referencing exiftool's [official tag name documentation](https://exiftool.org/TagNames/EXIF.html), the integer 6 correlates to `Rotate 90 CW`, the original value that we read prior to deleting all metadata.
+
+Much better:
+
+![Exif Fixed](/assets/img/exif-fixed.jpg)
 
 # Mitigations
 
@@ -157,4 +166,4 @@ On Andriod, the settings names and locations may vary between phones. As a gener
 
 Do you always need to post ASAP? No. You don't. A simple but effective mitigation is to simply stop posting photos/videos the second you take them. Instead of immediately posting your international trip to your Instagram story, post them to your profile once you're back home. Beyond the potential GPS coordinates embedded in media, someone can determine your location based on what can be phyiscally seen. That in correlation with the timing of your post could put you at risk. This type of OSINT is a skill you can develop. If you haven't heard of [Geoguesser](https://www.geoguessr.com/), I'd highly recommend you do a search on YouTube for the best geoguessers in the world. With the advent of AI/ML, this becomes even easier to do for the layman.
 
-The metadata of the files you generate throughout life are the digital breadcrumbs used by advertisers and adversaries to determine your patterns of life, your personal network, even your next move. That doesn't mean you have to make it easy for them :)
+The metadata of the files you generate are the digital breadcrumbs used by advertisers and adversaries to determine your patterns of life, your personal network, even your next move. Hopefully this quick blog post has made you more aware on both a wavetop level and technical level!
