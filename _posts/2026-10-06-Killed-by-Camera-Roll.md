@@ -123,6 +123,12 @@ PS C:\Users\XXX\Downloads\exiftool-13.59_64\exiftool-13.59_64> .\exiftool.exe -g
 
 To remove even more information, use the `-all=` flag. Before using this flag, however, be sure that you are not removing sensitive color data from your image. Some fields are required in order for the image to properly render. In this case with HEIC, and despite the `ICC_Profile` warning, I did not see any degredation in color. What I did notice was the image now being rotated 90 degrees counter-clockwise in my Google Drive afterwards:
 
+```
+PS C:\Users\XXX\Downloads\exiftool-13.59_64\exiftool-13.59_64> .\exiftool.exe -all= ..\..\IMG_3211.HEIC
+Warning: ICC_Profile deleted. Image colors may be affected - ./IMG_3211.HEIC
+    1 image files updated
+```
+
 ![Exif Rotated](/assets/img/exif-rotated.jpg)
 
 That's no good. To fix this, let's first note the value of the `Orientation` field before we remove any metadata:
@@ -166,4 +172,4 @@ On Andriod, the settings names and locations may vary between phones. As a gener
 
 Do you always need to post ASAP? No. You don't. A simple but effective mitigation is to simply stop posting photos/videos the second you take them. Instead of immediately posting your international trip to your Instagram story, post them to your profile once you're back home. Beyond the potential GPS coordinates embedded in media, someone can determine your location based on what can be phyiscally seen. That in correlation with the timing of your post could put you at risk. This type of OSINT is a skill you can develop. If you haven't heard of [Geoguesser](https://www.geoguessr.com/), I'd highly recommend you do a search on YouTube for the best geoguessers in the world. With the advent of AI/ML, this becomes even easier to do for the layman.
 
-The metadata of the files you generate are the digital breadcrumbs used by advertisers and adversaries to determine your patterns of life, your personal network, even your next move. Hopefully this quick blog post has made you more aware on both a wavetop level and technical level!
+The metadata of files you generate are the digital breadcrumbs used by advertisers and adversaries to determine your patterns of life, your personal network, even your next move. By using `exiftool` you can check your own digital footprint, as well as glean information from any file you come across.

@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 11 Oct 2026 21:29:03 -0400</pubDate>
-    <lastBuildDate>Sun, 11 Oct 2026 21:29:03 -0400</lastBuildDate>
+    <pubDate>Sun, 11 Oct 2026 22:35:24 -0400</pubDate>
+    <lastBuildDate>Sun, 11 Oct 2026 22:35:24 -0400</lastBuildDate>
     <generator>Jekyll v3.9.4</generator>
     
       <item>
@@ -130,7 +130,10 @@ Lens ID                         : iPhone 13 Pro Max back triple camera 5.7mm f/1
 &lt;h3&gt;Removing All Metadata While Retaining Values of Importance&lt;/h3&gt;
 
 &lt;p&gt;To remove even more information, use the &lt;code&gt;-all=&lt;/code&gt; flag. Before using this flag, however, be sure that you are not removing sensitive color data from your image. Some fields are required in order for the image to properly render. In this case with HEIC, and despite the &lt;code&gt;ICC_Profile&lt;/code&gt; warning, I did not see any degredation in color. What I did notice was the image now being rotated 90 degrees counter-clockwise in my Google Drive afterwards:&lt;/p&gt;
-
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;PS C:\Users\XXX\Downloads\exiftool-13.59_64\exiftool-13.59_64&amp;gt; .\exiftool.exe -all= ..\..\IMG_3211.HEIC
+Warning: ICC_Profile deleted. Image colors may be affected - ./IMG_3211.HEIC
+    1 image files updated
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/img/exif-rotated.jpg&quot; alt=&quot;Exif Rotated&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;That&amp;#39;s no good. To fix this, let&amp;#39;s first note the value of the &lt;code&gt;Orientation&lt;/code&gt; field before we remove any metadata:&lt;/p&gt;
@@ -170,7 +173,7 @@ Warning: ICC_Profile deleted. Image colors may be affected - ./IMG_3211.HEIC
 
 &lt;p&gt;Do you always need to post ASAP? No. You don&amp;#39;t. A simple but effective mitigation is to simply stop posting photos/videos the second you take them. Instead of immediately posting your international trip to your Instagram story, post them to your profile once you&amp;#39;re back home. Beyond the potential GPS coordinates embedded in media, someone can determine your location based on what can be phyiscally seen. That in correlation with the timing of your post could put you at risk. This type of OSINT is a skill you can develop. If you haven&amp;#39;t heard of &lt;a href=&quot;https://www.geoguessr.com/&quot;&gt;Geoguesser&lt;/a&gt;, I&amp;#39;d highly recommend you do a search on YouTube for the best geoguessers in the world. With the advent of AI/ML, this becomes even easier to do for the layman.&lt;/p&gt;
 
-&lt;p&gt;The metadata of the files you generate are the digital breadcrumbs used by advertisers and adversaries to determine your patterns of life, your personal network, even your next move. Hopefully this quick blog post has made you more aware on both a wavetop level and technical level!&lt;/p&gt;
+&lt;p&gt;The metadata of files you generate are the digital breadcrumbs used by advertisers and adversaries to determine your patterns of life, your personal network, even your next move. By using &lt;code&gt;exiftool&lt;/code&gt; you can check your own digital footprint, as well as glean information from any file you come across.&lt;/p&gt;
 </description>
         <pubDate>Tue, 06 Oct 2026 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2026/Killed-by-Camera-Roll/</link>
