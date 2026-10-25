@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Grant Trowbridge&#039;s Blog</title>
+      <link>https://grant-trowbridge.github.io</link>
+      <description>Last 10 notes on Grant Trowbridge&#039;s Blog</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>blog-posts</title>
+    <link>https://grant-trowbridge.github.io/blog-posts/</link>
+    <guid>https://grant-trowbridge.github.io/blog-posts/</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Sun, 25 Oct 2026 00:41:16 GMT</pubDate>
+  </item><item>
+    <title>cert</title>
+    <link>https://grant-trowbridge.github.io/tags/cert</link>
+    <guid>https://grant-trowbridge.github.io/tags/cert</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Sun, 25 Oct 2026 00:41:16 GMT</pubDate>
+  </item><item>
+    <title>digital-forensics</title>
+    <link>https://grant-trowbridge.github.io/tags/digital-forensics</link>
+    <guid>https://grant-trowbridge.github.io/tags/digital-forensics</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Sun, 25 Oct 2026 00:41:16 GMT</pubDate>
+  </item><item>
+    <title>ctf</title>
+    <link>https://grant-trowbridge.github.io/tags/ctf</link>
+    <guid>https://grant-trowbridge.github.io/tags/ctf</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Sun, 25 Oct 2026 00:41:16 GMT</pubDate>
+  </item><item>
+    <title>windows</title>
+    <link>https://grant-trowbridge.github.io/tags/windows</link>
+    <guid>https://grant-trowbridge.github.io/tags/windows</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Sun, 25 Oct 2026 00:41:16 GMT</pubDate>
+  </item><item>
+    <title>powershell</title>
+    <link>https://grant-trowbridge.github.io/tags/powershell</link>
+    <guid>https://grant-trowbridge.github.io/tags/powershell</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Sun, 25 Oct 2026 00:41:16 GMT</pubDate>
+  </item><item>
+    <title>privesc</title>
+    <link>https://grant-trowbridge.github.io/tags/privesc</link>
+    <guid>https://grant-trowbridge.github.io/tags/privesc</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Sun, 25 Oct 2026 00:41:16 GMT</pubDate>
+  </item><item>
+    <title>linux</title>
+    <link>https://grant-trowbridge.github.io/tags/linux</link>
+    <guid>https://grant-trowbridge.github.io/tags/linux</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Sun, 25 Oct 2026 00:41:16 GMT</pubDate>
+  </item><item>
+    <title>Tag Index</title>
+    <link>https://grant-trowbridge.github.io/tags/</link>
+    <guid>https://grant-trowbridge.github.io/tags/</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Sun, 25 Oct 2026 00:41:16 GMT</pubDate>
+  </item><item>
+    <title>How to Get Killed by Your Camera Roll</title>
+    <link>https://grant-trowbridge.github.io/blog-posts/killed-by-camera-roll</link>
+    <guid>https://grant-trowbridge.github.io/blog-posts/killed-by-camera-roll</guid>
+    <description><![CDATA[ A real-world example of viewing metadata with exiftool. ]]></description>
+    <pubDate>Sun, 11 Oct 2026 04:00:00 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>
