@@ -11,14 +11,10 @@
             "id": "49c6614c10d29553",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "content/blog-posts/Killed-by-Camera-Roll.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Killed-by-Camera-Roll"
+              "title": "New tab"
             }
           }
         ]
@@ -99,7 +95,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "content/blog-posts/Killed-by-Camera-Roll.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +113,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "content/blog-posts/Killed-by-Camera-Roll.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -188,9 +182,31 @@
       "bases:Create new base": false
     }
   },
-  "active": "49c6614c10d29553",
+  "active": "7c6d4f1b2c8940b1",
   "lastOpenFiles": [
+    "content/img/PG-Craft-Walkthrough/PG-Craft-Walkthrough_Proof.jpg",
+    "content/img/PG-Craft-Walkthrough/PG-Craft-Walkthrough_PrivEsc-Output-File.jpg",
+    "content/img/PG-Craft-Walkthrough/PG-Craft-Walkthrough_PrivEsc-Impersonate.jpg",
+    "content/img/PG-Craft-Walkthrough/PG-Craft-Walkthrough_PrivEsc-Apache-Service-2.jpg",
+    "content/img/PG-Craft-Walkthrough/PG-Craft-Walkthrough_PrivEsc-Apache-Service-1.jpg",
+    "content/img/PG-Craft-Walkthrough/PG-Craft-Walkthrough_Post-Exploit-Enum-Unquoted-2.jpg",
+    "content/img/PG-Craft-Walkthrough/PG-Craft-Walkthrough_Post-Exploit-Enum-Unquoted-1.jpg",
+    "content/img/PG-Craft-Walkthrough/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-9.jpg",
+    "content/img/PG-Craft-Walkthrough/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-8.jpg",
+    "content/img/PG-Craft-Walkthrough/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-7.jpg",
+    "content/img/PG-Craft-Walkthrough/PG-Craft-Walkthrough_Post-Exploit-Enum-Apache-6.jpg",
+    "content/img/PG-Craft-Walkthrough",
+    "content/img/PG-SPX-PrivEsc",
+    "content/img/Killed-by-Camera-Roll",
+    "content/img/Journey-to-OSCP",
+    "content/img",
+    "content/blog-posts/When-Shells-Stabilize.md",
+    "content/blog-posts/PG-SPX-PrivEsc.md",
+    "content/blog-posts/PG-Craft-Walkthrough.md",
+    "content/blog-posts/Killed-by-Camera-Roll.md",
     "content/blog-posts/Journey-to-OSCP.md",
+    "content/blog-posts",
+    "content",
     "docs/Base.base"
   ]
 }
