@@ -2,7 +2,7 @@
 title: Welcome!
 date: 2025-07-07
 ---
-This is my Cybersecurity blog covering all things security-related. Specific blog posts can be found using the graph view to the right (or below if you're on mobile), or by clicking [[blog-posts|here.]]
+This is my Cybersecurity blog covering all things security-related. Specific blog posts can be found using the graph view to the right (bottom of the page if you're on mobile), or by clicking [[blog-posts|here.]]
 
 Continue further down to review my digital resume.
 

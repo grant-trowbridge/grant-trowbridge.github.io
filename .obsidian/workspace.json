@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "8ead5fbb96d163a7",
+        "id": "76a786292c00e25c",
         "type": "tabs",
         "children": [
           {
-            "id": "972004a0d31adb38",
+            "id": "c3ad6ba1c4efdf54",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -184,7 +184,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "972004a0d31adb38",
+  "active": "c3ad6ba1c4efdf54",
   "lastOpenFiles": [
     "content/index.md",
     "public/tags/index-og-image.webp",
