@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "17f6f68764be623a",
+        "id": "8ead5fbb96d163a7",
         "type": "tabs",
         "children": [
           {
-            "id": "ca3a67bb24947762",
+            "id": "972004a0d31adb38",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -184,31 +184,33 @@
       "bases:Create new base": false
     }
   },
-  "active": "7c6d4f1b2c8940b1",
+  "active": "972004a0d31adb38",
   "lastOpenFiles": [
-    "content/img/PG-SPX-PrivEsc/PG-SPX-PrivEsc_New-Makefile.jpg",
-    "content/img/PG-SPX-PrivEsc/PG-SPX-PrivEsc_Sudo-Make-Exploit.jpg",
-    "content/img/PG-SPX-PrivEsc/PG-SPX-PrivEsc_Sudo-Cmd.jpg",
-    "content/img/PG-SPX-PrivEsc/PG-SPX-PrivEsc_Make-Medium-Blog.jpg",
-    "content/img/PG-SPX-PrivEsc/PG-SPX-PrivEsc_Make-GTFOBin.jpg",
-    "content/img/PG-SPX-PrivEsc/PG-SPX-PrivEsc_Lessons-Learned.jpg",
-    "content/img/PG-SPX-PrivEsc/PG-SPX-PrivEsc_Bash-Privilege-Escalation.jpg",
-    "content/img/PG-Craft-Walkthrough/PG-Craft-Walkthrough_Proof.jpg",
-    "content/img/PG-Craft-Walkthrough/PG-Craft-Walkthrough_PrivEsc-Output-File.jpg",
-    "content/img/PG-Craft-Walkthrough/PG-Craft-Walkthrough_PrivEsc-Impersonate.jpg",
-    "content/img/PG-Craft-Walkthrough/PG-Craft-Walkthrough_PrivEsc-Apache-Service-2.jpg",
-    "content/img/PG-SPX-PrivEsc",
-    "content/img/PG-Craft-Walkthrough",
-    "content/img/Killed-by-Camera-Roll",
-    "content/img/Journey-to-OSCP",
-    "content/img",
+    "content/index.md",
+    "public/tags/index-og-image.webp",
+    "public/tags/linux-og-image.webp",
+    "public/tags/privesc-og-image.webp",
+    "public/tags/powershell-og-image.webp",
+    "public/tags/windows-og-image.webp",
+    "public/tags/ctf-og-image.webp",
+    "public/tags/digital-forensics-og-image.webp",
+    "public/tags/cert-og-image.webp",
+    "public/blog-posts/index-og-image.webp",
+    "public/index-og-image.webp",
+    "public/img/pg-craft-walkthrough",
+    "public/static/giscus/light.css",
+    "public/static/giscus/dark.css",
+    "public/static/giscus",
+    "public/img/pg-spx-privesc",
+    "public/img/killed-by-camera-roll",
+    "public/img/journey-to-oscp",
+    "public/img",
+    "public/static/contentIndex.json",
+    "public/index.xml",
     "content/blog-posts/When-Shells-Stabilize.md",
     "content/blog-posts/PG-SPX-PrivEsc.md",
     "content/blog-posts/PG-Craft-Walkthrough.md",
     "content/blog-posts/Killed-by-Camera-Roll.md",
-    "content/blog-posts/Journey-to-OSCP.md",
-    "content/blog-posts",
-    "content",
-    "docs/Base.base"
+    "content/blog-posts/Journey-to-OSCP.md"
   ]
 }
