@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "76a786292c00e25c",
+        "id": "20f1922dac35122e",
         "type": "tabs",
         "children": [
           {
-            "id": "c3ad6ba1c4efdf54",
+            "id": "e83df905d0986282",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -184,7 +184,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "c3ad6ba1c4efdf54",
+  "active": "e83df905d0986282",
   "lastOpenFiles": [
     "content/index.md",
     "public/tags/index-og-image.webp",
@@ -197,11 +197,11 @@
     "public/tags/cert-og-image.webp",
     "public/blog-posts/index-og-image.webp",
     "public/index-og-image.webp",
-    "public/img/pg-craft-walkthrough",
+    "public/img/pg-spx-privesc",
     "public/static/giscus/light.css",
     "public/static/giscus/dark.css",
     "public/static/giscus",
-    "public/img/pg-spx-privesc",
+    "public/img/pg-craft-walkthrough",
     "public/img/killed-by-camera-roll",
     "public/img/journey-to-oscp",
     "public/img",

@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Grant Trowbridge's Blog
+  pageTitle: Grant Trowbridge
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
@@ -17,8 +17,8 @@ configuration:
     cdnCaching: true
     typography:
       header: Orbitron
-      body: JetBrains Mono
-      code: Google Sans Code
+      body: Open Sans
+      code: JetBrains Mono
     colors:
       lightMode:
         light: "#faf8f8"

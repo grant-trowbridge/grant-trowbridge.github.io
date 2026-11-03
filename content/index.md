@@ -1,6 +1,7 @@
 ---
 title: Welcome!
 date: 2025-07-07
+modified: 2026-11-02
 ---
 This is my Cybersecurity blog covering all things security-related. Specific blog posts can be found using the graph view to the right (bottom of the page if you're on mobile), or by clicking [[blog-posts|here.]]
 
@@ -10,18 +11,11 @@ Continue further down to review my digital resume.
 
 🚧 **Under Construction** 🚧
 
-## Experian
+## BAH
 
-**Software Security Internship: July 2020 - March 2021**
+**Cyber Warfare Engineer/Developer III: Jun 2026 - Present**
 
-About halfway through my studies at [SEMO](https://semo.edu/), I was referred to an internship by a family friend at [Experian.](https://www.experian.com/) It was here that I learned how large corporations track and manage vulnerabilities across networks. Though I wasn't able to flex any technical skills, it was a great opportunity to understand the 30,000 ft view of vulnerability management.
-
-**Accomplishments**
-
-- Created and managed weekly security reports for North American-based assets.
-- Communicated with vulnerability contact groups and scheduled patches for known vulnerabilities.
-- Owned key information updates to server database.
-- Analyzed heatmap reports to prioritize high severity threats.
+After [[Journey-to-OSCP|passing my OSCP exam]] on November 19th, 2025, I decided to start angling for an offensive security job. While applying for new jobs in April and May of 2026, I received a callback from a [Booz Allen Hamilton](https://www.boozallen.com/) recruiter and the rest is history. Here I use my newly minted skills to help build lab environments and documentation to support OCO (Offensive Cyber Operations) exercises.
 
 ## SRC
 
@@ -47,3 +41,16 @@ Luckily, I had some of the most talented engineers to foster my growth who were 
 - Led discussions and development decisions in response to red teaming results to improve security posture.
 - Maintained 5 eMASS packages as the primary Information System Security Engineer (ISSE).
 - Secured 5 individual ATOs within a year.
+
+## Experian
+
+**Software Security Internship: July 2020 - March 2021**
+
+About halfway through my studies at [SEMO](https://semo.edu/), I was referred to an internship by a family friend at [Experian.](https://www.experian.com/) It was here that I learned how large corporations track and manage vulnerabilities across networks. Though I wasn't able to flex any technical skills, it was a great opportunity to understand the 30,000 ft view of vulnerability management.
+
+**Accomplishments**
+
+- Created and managed weekly security reports for North American-based assets.
+- Communicated with vulnerability contact groups and scheduled patches for known vulnerabilities.
+- Owned key information updates to server database.
+- Analyzed heatmap reports to prioritize high severity threats.
